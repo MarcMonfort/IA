@@ -4,15 +4,10 @@ package IA.ProbIA5;
  * Created by bejar on 17/01/17.
  */
 public class ProbIA5Board {
-    /* Class independent from AIMA classes
-       - It has to implement the state of the problem and its operators
-     *
-
-    /* State data structure
-        vector with the parity of the coins (we can assume 0 = heads, 1 = tails
-     */
-
-    private int [] board;
+    
+	//private static final ArrayList<Estacion> = Estaciones(int nest, int nbic, int dem, int seed);
+    
+	private int [] board;
     private static int [] solution;
 
     /* Constructor */
@@ -27,6 +22,15 @@ public class ProbIA5Board {
         }
 
     }
+    
+   /* public BicingBoard(ArrayList<Estacion>int []init, int[] goal) {
+
+        
+
+    }*/
+    
+    
+    
 
     /* vvvvv TO COMPLETE vvvvv */
     public void flip_it(int i){
