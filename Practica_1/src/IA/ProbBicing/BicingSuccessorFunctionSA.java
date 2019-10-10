@@ -1,4 +1,4 @@
-package IA.ProbIA5;
+package IA.ProbBicing;
 
 import aima.search.framework.SuccessorFunction;
 import aima.search.framework.Successor;
@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by bejar on 17/01/17
  */
-public class BicingSuccesorFunction implements SuccessorFunction{
+public class BicingSuccessorFunctionSA implements SuccessorFunction{
 
     public List getSuccessors(Object state){
         ArrayList retval = new ArrayList();

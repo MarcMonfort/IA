@@ -1,4 +1,4 @@
-package IA.ProbIA5;
+package IA.ProbBicing;
 
 import aima.search.framework.GoalTest;
 
