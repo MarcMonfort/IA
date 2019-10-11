@@ -19,6 +19,7 @@ public class BicingBoard {
 	// List<Pair<String, Integer>> list = new ArrayList<Pair<String, Integer>>();
 
 	private static Estaciones est;
+	private static int nest;
 	private static int[][] distEst;
 
 	private int nfurgos;
@@ -42,11 +43,12 @@ public class BicingBoard {
 		}
 
 		est = new Estaciones(nest, nbic, dem, seed);
-		distEst = new int[est.size()][est.size()];
+		nest = est.size();
+		distEst = new int[nest][nest];
 		
 		
-		for (int i = 0; i < est.size(); ++i) {
-			for (int j = i+1; j < est.size(); ++j) {
+		for (int i = 0; i < nest; ++i) {
+			for (int j = i+1; j < nest; ++j) {
 				distEst[i][j] = Math.abs(est.get(i).getCoordX() - est.get(j).getCoordX()) + Math.abs(est.get(i).getCoordY() - est.get(j).getCoordY());
 				distEst[j][i] = distEst[i][j];
 			}
@@ -63,9 +65,20 @@ public class BicingBoard {
 
 		est = new Estaciones(nest, nbic, dem, seed);
 	}
+	
+	
+	//GETTERS
 
 	public int getNFurgos() {
 		return (nfurgos);
+	}
+	
+	public int getNEst() {
+		return (nest);
+	}
+	
+	public Estacion getEst(int i) {
+		return (est.get(i));
 	}
 
 	public Pair[] getOrigen() {
@@ -79,13 +92,30 @@ public class BicingBoard {
 	public Pair[] getDest2() {
 		return (dest2);
 	}
+	
+	public Pair getFurgoOrigen(int i) {
+		return (origen[i]);
+	}
+
+	public Pair getFurgoDest1(int i) {
+		return (dest1[i]);
+	}
+
+	public Pair getFurgoDest2(int i) {
+		return (dest2[i]);
+	}
 
 	
 	public int distEst(int i, int j) {
-		return distEst[i][j];
+		return (distEst[i][j]);
 	}
 	
 	
+	
+	
+	
+	
+	//FING-GETERS
 	
 	
 	// Intercambia origen de furgo 1 con furgo 2
@@ -161,23 +191,20 @@ public class BicingBoard {
 	
 	
 	/* Heuristic function */
-	public double heuristic() {
-		// compute the number of coins out of place respect to solution
-		double sum = 0;
-		for (int i = 0; i < board.length; ++i) {
-			if (board[i] != solution[i])
-				++sum;
-		}
-		return sum;
-	}
-
-
+	
 
 	public String toString() {
-		String retVal = "|";
-		for (int i = 0; i < board.length; ++i) {
-			retVal = retVal + board[i] + "|";
+		String retVal = "Origen = |";
+		String Dest1 = "Dest1 = |";
+		String Dest2 = "Dest2 = |";
+		for (int i = 0; i < nfurgos; ++i) {
+			retVal = retVal + origen[i] + "|";
+			Dest1 = Dest1 + dest1[i] + "|";
+			Dest2 = Dest2 + dest2[i] + "|";
 		}
+		retVal = retVal + "\n";
+		Dest1 = Dest1 + "\n";
+		retVal = retVal + Dest1 + Dest2;
 		return retVal;
 	}
 

@@ -21,7 +21,7 @@ public class Main {
 
 
 	public static void main(String[] args) {
-		BicingBoard BB = new BicingBoard(prob,sol);
+		BicingBoard BB = new BicingBoard(5,25,1250,0,1);
 		BicingHillClimbingSearch(BB);
 		BicingSimulatedAnnealingSearch(BB);
 	}
