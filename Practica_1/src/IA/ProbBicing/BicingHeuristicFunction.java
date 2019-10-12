@@ -34,14 +34,14 @@ public class BicingHeuristicFunction implements HeuristicFunction {
 		BicingBoard board = (BicingBoard) state;
 		double sum = 0;
 
-		int[] est = new int[board.getNEst()];
+		int[] est = new int[board.getNumEst()];
 		
 		for (int i = 0; i < board.getNFurgos(); ++i) {
 			
 			Pair Pb = board.getFurgoOrigen(i);
 			int id = (int) Pb.getFirst();
 			if (id != -1) {
-				est[id] = - (int) Pb.getSecond();
+				est[id] = -(int)Pb.getSecond();
 				
 				Pb = board.getFurgoDest1(i);
 				id = (int) Pb.getFirst();

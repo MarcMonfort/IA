@@ -19,7 +19,7 @@ public class BicingBoard {
 	// List<Pair<String, Integer>> list = new ArrayList<Pair<String, Integer>>();
 
 	private static Estaciones est;
-	private static int nest;
+	private static int numEst;
 	private static int[][] distEst;
 
 	private int nfurgos;
@@ -28,9 +28,8 @@ public class BicingBoard {
 	private Pair[] dest2;
 
 	/* Constructor */
-	public BicingBoard(int f, int nest, int nbic, int dem, int seed) {
+	public BicingBoard(int f) {
 		// Random myRandom=new Random();
-
 		origen = new Pair[f];
 		dest1 = new Pair[f];
 		dest2 = new Pair[f];
@@ -42,10 +41,23 @@ public class BicingBoard {
 			dest2[i] = new Pair(-1, 0);
 		}
 
+	}
+
+	public BicingBoard(int f, Pair[] origen, Pair[] dest1, Pair[] dest2) {
+		// Random myRandom=new Random();
+
+		this.origen = origen;
+		this.dest1 = dest1;
+		this.dest2 = dest2;
+		nfurgos = f;
+	}
+	
+	//ALGO RARO
+	
+	public static void setEstaciones(int nest, int nbic, int dem, int seed) {
 		est = new Estaciones(nest, nbic, dem, seed);
-		nest = est.size();
+		numEst = est.size();
 		distEst = new int[nest][nest];
-		
 		
 		for (int i = 0; i < nest; ++i) {
 			for (int j = i+1; j < nest; ++j) {
@@ -53,17 +65,6 @@ public class BicingBoard {
 				distEst[j][i] = distEst[i][j];
 			}
 		}
-	}
-
-	public BicingBoard(int f, Pair[] origen, Pair[] dest1, Pair[] dest2, int nest, int nbic, int dem, int seed) {
-		// Random myRandom=new Random();
-
-		this.origen = origen;
-		this.dest1 = dest1;
-		this.dest2 = dest2;
-		nfurgos = f;
-
-		est = new Estaciones(nest, nbic, dem, seed);
 	}
 	
 	
@@ -73,8 +74,13 @@ public class BicingBoard {
 		return (nfurgos);
 	}
 	
-	public int getNEst() {
-		return (nest);
+	public int getNumEst() {
+		//System.out.println("bbb" + nest);
+		return (numEst);
+	}
+	
+	public Estaciones getEstaciones() {
+		return (est);
 	}
 	
 	public Estacion getEst(int i) {
@@ -115,8 +121,20 @@ public class BicingBoard {
 	
 	
 	
-	//FING-GETERS
+	//FIN-GETERS
+	public void changeOrigen(int i, int id2) {
+		Object n = origen[i].getSecond();
+		origen[i] = new Pair(id2, n);
+	}
+	public void changeDest1(int i, int id2) {
+		Object n = dest1[i].getSecond();
+		dest1[i] = new Pair(id2, n);
+	}
 	
+	public void changeDest2(int i, int id2) {
+		Object n = dest2[i].getSecond();
+		dest2[i] = new Pair(id2, n);
+	}
 	
 	// Intercambia origen de furgo 1 con furgo 2
 	// i != j
@@ -178,14 +196,14 @@ public class BicingBoard {
 	// n < origen[i].getSecond();
 	// if dest2[i].getFirst() == -1 --> n == origen[i].getSecond;
 	public void changeDescargaDest1(int i, int n) {
-		Object id = origen[i].getFirst();
-		origen[i] = new Pair(id, n);
+		Object id = dest1[i].getFirst();
+		dest1[i] = new Pair(id, n);
 	}
 
 	// n == origen[i].getSecond - dest1[i].getSecond
 	public void changeDescargaDest2(int i, int n) {
-		Object id = origen[i].getFirst();
-		origen[i] = new Pair(id, n);
+		Object id = dest2[i].getFirst();
+		dest2[i] = new Pair(id, n);
 	}
 
 	
@@ -204,7 +222,7 @@ public class BicingBoard {
 		}
 		retVal = retVal + "\n";
 		Dest1 = Dest1 + "\n";
-		retVal = retVal + Dest1 + Dest2;
+		retVal = retVal + Dest1 + Dest2 + "\n";
 		return retVal;
 	}
 

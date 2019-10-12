@@ -21,9 +21,12 @@ public class Main {
 
 
 	public static void main(String[] args) {
-		BicingBoard BB = new BicingBoard(5,25,1250,0,1);
+		BicingBoard.setEstaciones(25, 1250, 0, 1);
+		BicingBoard BB = new BicingBoard(5);
+		System.out.println(BB.getNFurgos());
+		System.out.println(BB.getNumEst());
 		BicingHillClimbingSearch(BB);
-		BicingSimulatedAnnealingSearch(BB);
+		//BicingSimulatedAnnealingSearch(BB);
 	}
 
 	private static void BicingHillClimbingSearch(BicingBoard BB) {
