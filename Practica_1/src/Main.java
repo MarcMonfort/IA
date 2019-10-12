@@ -32,14 +32,16 @@ public class Main {
 	private static void BicingHillClimbingSearch(BicingBoard BB) {
 		System.out.println("\nTSP HillClimbing  -->");
 		try {
-			Problem problem = new Problem(BB, new BicingSuccessorFunction(), new BicingGoalTest(),
-					new BicingHeuristicFunction());
+			Problem problem = new Problem(BB, new BicingSuccessorFunction(), new BicingGoalTest(), new BicingHeuristicFunction());
+			
 			Search search = new HillClimbingSearch();
 			SearchAgent agent = new SearchAgent(problem, search);
-
+			
 			System.out.println();
+			
 			printActions(agent.getActions());
 			printInstrumentation(agent.getInstrumentation());
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

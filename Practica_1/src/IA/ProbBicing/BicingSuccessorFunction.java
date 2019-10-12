@@ -1,8 +1,10 @@
 package IA.ProbBicing;
 
 import aima.search.framework.SuccessorFunction;
+import aima.util.Pair;
 import aima.search.framework.Successor;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -22,7 +24,12 @@ public class BicingSuccessorFunction implements SuccessorFunction {
 		for (int i = 0; i < board.getNFurgos(); ++i) {
 			// ProbIA5Board newBoard= new ProbIA5Board(board.getConfiguration());
 			for (int j = 0; j < board.getNumEst(); ++j) {
-				BicingBoard newBoard = new BicingBoard(board.getNFurgos(), board.getOrigen(), board.getDest1(), board.getDest2());
+				
+				Pair[] origen = Arrays.copyOf(board.getOrigen(), board.getNFurgos());
+				Pair[] dest1 = Arrays.copyOf(board.getDest1(), board.getNFurgos());
+				Pair[] dest2 = Arrays.copyOf(board.getDest2(), board.getNFurgos());				
+				
+				BicingBoard newBoard = new BicingBoard(board.getNFurgos(), origen, dest1, dest2);
 				
 				newBoard.changeOrigen(i, j);
 				newBoard.changeDest1(i, j);
@@ -31,14 +38,14 @@ public class BicingSuccessorFunction implements SuccessorFunction {
 
 				double v = bHeur.getHeuristicValue(newBoard);
 				
-				String S = "Origen de " + i + " a " + i + 1 + " Coste(" + v + ") ---> " + newBoard.toString();
+				String S = "Origen de " + i + " a " + (i + 1) + " Coste(" + v + ") ---> \n" + newBoard.toString();
 				
 				retval.add(new Successor(S, newBoard));
-				
-				System.out.println(newBoard.toString() + "   " + v);
+				System.out.println(S);
+
+				//System.out.println(newBoard.toString() + "   " + v);
 				
 			}
-			System.out.println("numXXX     " + board.getNFurgos());
 
 			/*for (int j = 0; j < 20; ++j) {
 
