@@ -70,64 +70,42 @@ public class BicingHeuristicFunction implements HeuristicFunction {
 		}
 		return sum;
 	}
-		
-		
-		/*
-		 * First thing we do is, for every van,checking whether it is used and, in
-		 * positive case, evaluate impact of remo- ving bikes from origin station
-		 */
-		/*HashMap<Integer, Integer> table = new HashMap<Integer, Integer>();
-		for (int i = 0; i < board.getNFurgos(); ++i) {
-			if ((int) board.getOrigen(i).getFirst() != -1) {
-				table.put(state.getOrigen[i].getKey(), -state.getOrigen[i].getValue());
-				if (board.getDest1(i).getKey() != -1) {
-					int new_nb = state.getDest1().getValue();
-					int val = table.get(state.getDest1().getKey());
-					if (val != null)
-						new_nb += val;
-					table.put(state.getDest1[i].getKey(), new_nb);
+	
+	/* This second criteria is just a balance between between benefits obtained by making stations
+	being closer to their demand point, and resources we spend by moving those bikes */
+	
+	public double getMixedCriteria(Object state) {
+		double benefit_demand = getHeuristicValue(state);
+		double costs_transport = 0;
 
-					if (state.getDest2().getKey() != 1) {
-						new_nb = state.getDest2().getValue();
-						val = table.get(state.getDest2().getKey());
-						if (val != null)
-							new_nb += val;
-						table.put(state.getDest1[i].getKey(), new_nb);
-					}
-				}
-			}
-		}*/
-		/*
-		 * At this point we have, for each station, the total number of bikes that will
-		 * be transported
-		 */
-		/*for (Integer key : table.keySet()) {
-			int k = table.get(key);
-			if (k >= 0) { // We add bikes
+		BicingBoard board = (BicingBoard) state;
 
-				/*
-				 * IMPORTANT!!! Necessito accés a l'estructura d'estacions => getters al file
-				 * Board o fer-la pública
-				 */
+		for (int i = 0; i < board.getNFurgos(); i++) {
+			Pair Pb = board.getFurgoOrigen(i);
+			int origen = (int) Pb.getFirst();
+			if (origen != -1) {
+				int nb = (int) Pb.getSecond();
+				Estacion e = board.getEst(origen);
+				int point_origen_x = e.getCoordX(), point_origen_y = e.getCoordY();
+				Pb = board.getFurgoDest1(i);
+				int dest1 = (int) Pb.getFirst();
+				e = board.getEst(dest1);
+				int point_dest1_x = e.getCoordX(), point_dest1_y = e.getCoordY();
+				double kms = (Math.abs(point_origen_x - point_dest1_x) + Math.abs(point_origen_y - point_dest1_y))/1000;  //distance in Km
+				costs_transport += kms*((int)((nb+9)/10));
 
-				/*int delta = state.est[key].getDemanda() - (state.est[key].getNumBicicletasNext() + k);
-				if (delta >= 0)
-					sum += k;
-				else
-					sum += state.est[key].getDemanda() - state.est[key].getNumBicicletasNext();
-			} else { // We remove bikes
-				if (state.est[key].getNumBicicletasNext() + k < state.est[key].getDemanda()) {
-					if (state.est[key].getNumBicicletasNext() < state.est[key].getDemanda())
-						sum += k;
-					else
-						sum += (k + (state.est[key].getNumBicicletasNext() - state.est[key].getDemanda()));
+				Pb = board.getFurgoDest2(i);
+				int dest2 = (int) Pb.getFirst();
+				if (dest2 != -1) {
+					e = board.getEst(dest2);
+					int point_dest2_x = e.getCoordX(), point_dest2_y = e.getCoordY();
+					kms = (Math.abs(point_dest2_x - point_dest1_x) + Math.abs(point_dest2_y - point_dest1_y));
+					nb = (int) Pb.getSecond();
+					costs_transport += kms*((int)((nb+9)/10));
 				}
 			}
 		}
-		return sum;
-	}*/
+		return (double) (benefit_demand - costs_transport);
+	}
 
-	/* Mixing both criterias */
-	/*public double getHeuristicSecondValue(Object state) {
-	}*/
 }
