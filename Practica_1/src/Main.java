@@ -14,6 +14,7 @@ import java.util.Properties;
 import IA.ProbBicing.BicingBoard;
 import IA.ProbBicing.BicingGoalTest;
 import IA.ProbBicing.BicingHeuristicFunction;
+import IA.ProbBicing.BicingHeuristicFunction2;
 import IA.ProbBicing.BicingSuccessorFunction;
 import IA.ProbBicing.BicingSuccessorFunctionSA;
 
@@ -23,8 +24,6 @@ public class Main {
 	public static void main(String[] args) {
 		BicingBoard.setEstaciones(25, 1250, 0, 1);
 		BicingBoard BB = new BicingBoard(5);
-		System.out.println(BB.getNFurgos());
-		System.out.println(BB.getNumEst());
 		BicingHillClimbingSearch(BB);
 		//BicingSimulatedAnnealingSearch(BB);
 	}
@@ -32,12 +31,13 @@ public class Main {
 	private static void BicingHillClimbingSearch(BicingBoard BB) {
 		System.out.println("\nTSP HillClimbing  -->");
 		try {
-			Problem problem = new Problem(BB, new BicingSuccessorFunction(), new BicingGoalTest(), new BicingHeuristicFunction());
+			Problem problem = new Problem(BB, new BicingSuccessorFunction(), new BicingGoalTest(), new BicingHeuristicFunction2());
 			
 			Search search = new HillClimbingSearch();
 			SearchAgent agent = new SearchAgent(problem, search);
 			
-			System.out.println();
+			System.out.println("fohdofiwehfowehfpweah");
+			//System.out.println(search.getGoalState());
 			
 			printActions(agent.getActions());
 			printInstrumentation(agent.getInstrumentation());

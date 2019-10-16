@@ -122,16 +122,16 @@ public class BicingBoard {
 	
 	
 	//FIN-GETERS
-	public void changeOrigen(int i, int id2) {
+	public void changeOrigen(int i, int id2) {		//nada//coger siempre el maximo de bicis n // se puede?
 		Object n = origen[i].getSecond();
 		origen[i] = new Pair(id2, n);
 	}
-	public void changeDest1(int i, int id2) {
+	public void changeDest1(int i, int id2) {		//cambiar numero bicis origen // es rentable?
 		Object n = dest1[i].getSecond();
 		dest1[i] = new Pair(id2, n);
 	}
 	
-	public void changeDest2(int i, int id2) {
+	public void changeDest2(int i, int id2) {		//cambiar numero bicis origen // es rentable?
 		Object n = dest2[i].getSecond();
 		dest2[i] = new Pair(id2, n);
 	}
@@ -141,7 +141,7 @@ public class BicingBoard {
 	// orgien[i] != dest1[j] y != dest2[j]
 	// origen[j] != dest1[i] y != dest2[i]
 
-	public void swapOrigen(int i, int j) {
+	public void swapOrigen(int i, int j) {			//eliminar //con restriccon de numero bicis //conservar n
 		Pair tmp;
 		tmp = origen[i];
 		origen[i] = origen[j];
@@ -152,7 +152,7 @@ public class BicingBoard {
 	// dest1[i].getFirst() != -1; dest1[j].getFirst() != -1;
 	// dest1[i] != origen[j] y != dest2[j]
 	// dest1[j] != origen[i] y != dest2[i]
-	public void swapDest1(int i, int j) {
+	public void swapDest1(int i, int j) {		//poner n la mejor posible, adaptar origen
 		Object id1 = dest1[j].getFirst();
 		Object id2 = dest1[i].getFirst();
 
@@ -168,7 +168,7 @@ public class BicingBoard {
 	// no puede haber destino 2 sin destino 1
 	// dest2[i] != origen[j] y != dest1[j]
 	// dest2[j] != origen[i] y != dest1[i]
-	public void swapDest2(int i, int j) {
+	public void swapDest2(int i, int j) {		//poner n la mejor posible, adaptar origen
 		Object id1 = dest2[j].getFirst();
 		Object id2 = dest2[i].getFirst();
 
@@ -180,7 +180,7 @@ public class BicingBoard {
 	}
 
 	// Poda: dist origen -> Dest1 > origen -> Dest2
-	public void swapDest1Dest2(int i) {
+	public void swapDest1Dest2(int i) {			//tambien passar la n del primer al segun destino (msimo en dest)
 		Pair tmp;
 		tmp = dest1[i];
 		dest1[i] = dest2[i];
@@ -188,20 +188,20 @@ public class BicingBoard {
 	}
 
 	// n != origen[i].getSecond();
-	public void changeCargaOrigen(int i, int n) {
+	public void changeCargaOrigen(int i, int n) {		//eliminamos
 		Object id = origen[i].getFirst();
 		origen[i] = new Pair(id, n);
 	}
 
 	// n < origen[i].getSecond();
 	// if dest2[i].getFirst() == -1 --> n == origen[i].getSecond;
-	public void changeDescargaDest1(int i, int n) {
+	public void changeDescargaDest1(int i, int n) {		//eliminamos //Restrccion no suficientes bicis // actualizar origen
 		Object id = dest1[i].getFirst();
 		dest1[i] = new Pair(id, n);
 	}
 
 	// n == origen[i].getSecond - dest1[i].getSecond
-	public void changeDescargaDest2(int i, int n) {
+	public void changeDescargaDest2(int i, int n) {		// eliminamos //Restriccion no suficientes bicis // actualizar origen
 		Object id = dest2[i].getFirst();
 		dest2[i] = new Pair(id, n);
 	}

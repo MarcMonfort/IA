@@ -7,6 +7,6 @@
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="lib/AIMA.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Marc/Desktop/IA/PracticaIA/Practica_1/lib/dist_bicing/Bicing.jar"/>
+    <classpathentry kind="lib" path="lib/dist_bicing/Bicing.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

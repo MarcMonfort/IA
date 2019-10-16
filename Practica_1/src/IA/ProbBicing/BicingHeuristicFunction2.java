@@ -21,16 +21,16 @@ import java.util.*;
 
 import IA.Bicing.Estacion;
 
-public class BicingHeuristicFunction implements HeuristicFunction {
+public class BicingHeuristicFunction2 implements HeuristicFunction {
 
 	/* First criteria only */
-	public double getHeuristicValue(Object state) {
+	public double getHeuristicValue_xxx(Object state) {
 
 		/*
 		 * This method evaluates the cost of a solution only taking into account the
 		 * benefits and losses caused by modifying the number of bycicles of a station
 		 */
-
+		System.out.println("holallaaaaa");
 		BicingBoard board = (BicingBoard) state;
 		double sum = 0;
 
@@ -74,9 +74,10 @@ public class BicingHeuristicFunction implements HeuristicFunction {
 	/* This second criteria is just a balance between between benefits obtained by making stations
 	being closer to their demand point, and resources we spend by moving those bikes */
 	
-	public double getMixedCriteria(Object state) {
-		double benefit_demand = getHeuristicValue(state);
+	public double getHeuristicValue(Object state) {
+		double benefit_demand = getHeuristicValue_xxx(state);
 		double costs_transport = 0;
+		System.out.println("----------" + benefit_demand);
 
 		BicingBoard board = (BicingBoard) state;
 
@@ -105,6 +106,8 @@ public class BicingHeuristicFunction implements HeuristicFunction {
 				}
 			}
 		}
+		System.out.println("++++++++++++" + benefit_demand);
+		System.out.println("++++++mm+++++" + costs_transport);
 		return (double) (benefit_demand - costs_transport);
 	}
 
