@@ -163,17 +163,19 @@ public class BicingBoard {
 	
 	
 	//FIN-GETERS
-	public void changeOrigen(int i, int idE) {		//nada//coger siempre el maximo de bicis n // se puede?
+	public void changeOrigen(int i, int idE) {		//nada//habira que adaptar todo
 		Object n = origen[i].getSecond();
 		origen[i] = new Pair(idE, n);
 	}
 	//solo si existe origen // solo remplazar si hay bicis que poner // no es origen y diff de cero , vamos que si es negativo..
 	public void changeDest1(int i, int idEst) {		//cambiar numero bicis origen // es rentable?
 		int nAnt = (int)dest1[i].getSecond();	//antigua
+		if ((int)dest1[i].getFirst() != -1) {		//se podria quitar mas codigo si se cumple esto...
+			bicisLibres[(int)dest1[i].getFirst()] -= nAnt;
+		}
 		int n = -bicisLibres[idEst];	//esta en negativo
 		
-		if (n < nAnt) {
-			System.out.println("rrrrrrrr   "+ nAnt + "    "  + n);
+		if (n < nAnt) { 
 			dest1[i] = new Pair(idEst, n);
 			bicisLibres[idEst] = 0;
 			if ((int)dest2[i].getFirst() != -1 && bicisLibres[(int)dest2[i].getFirst()] < 0) {	//existe dest2?
@@ -199,18 +201,15 @@ public class BicingBoard {
 		else {	//n > Ant
 			//dest1[i] = new Pair(idEst, n);
 			int r = bicisLibres[(int)origen[i].getFirst()];
-			System.out.println(r);
 
 			if (r > 0) {
-				System.out.println("bbbbbbb");
 				dest1[i] = new Pair(idEst, Math.min(nAnt + r, n));
-				bicisLibres[idEst] += Math.max(nAnt + r, n);
+				bicisLibres[idEst] += Math.min(nAnt + r, n);
 				
 				origen[i] = new Pair(origen[i].getFirst(), (int)origen[i].getSecond() + Math.min(n-nAnt, r)); // referencia?? error?
 				bicisLibres[(int)origen[i].getFirst()] -= Math.min(n-nAnt, r);
 			}
-			else if (r == 0){
-				System.out.println("aaaaaa");
+			else {
 
 				dest1[i] = new Pair(idEst, nAnt);
 				bicisLibres[idEst] += nAnt;
@@ -220,9 +219,45 @@ public class BicingBoard {
 	}
 				
 	//solo si existe dest1
-	public void changeDest2(int i, int id2) {		//cambiar numero bicis origen // es rentable?
-		Object n = dest2[i].getSecond();
-		dest2[i] = new Pair(id2, n);
+	public void changeDest2(int i, int idEst) {		//cambiar numero bicis origen // es rentable?
+		int nAnt = (int)dest2[i].getSecond();	//antigua
+		if ((int)dest2[i].getFirst() != -1) {
+			bicisLibres[(int)dest2[i].getFirst()] -= nAnt;
+		}
+		int n = -bicisLibres[idEst];	//esta en negativo
+		
+		if (n < nAnt) {
+			System.out.println("hola");
+			dest2[i] = new Pair(idEst, n);
+			bicisLibres[idEst] = 0;
+			
+			origen[i] = new Pair(origen[i].getFirst(), (int)origen[i].getSecond() - (nAnt-n ));
+			bicisLibres[(int)origen[i].getFirst()] += (nAnt-n);
+		}
+		
+		else {
+			System.out.println("adeu");
+			int r = bicisLibres[(int)origen[i].getFirst()];
+			System.out.println((int)origen[i].getFirst() + "     -> " + r);
+			int f = 17;
+			int d = 3;
+			System.out.println("uff" + Math.min(est.get(f).getNumBicicletasNoUsadas(), est.get(f).getNumBicicletasNext()- est.get(f).getDemanda()));
+			System.out.println("uff" + Math.min(est.get(d).getNumBicicletasNoUsadas(), est.get(d).getNumBicicletasNext()- est.get(d).getDemanda()));
+			if (r > 0) {
+				System.out.println("adeu.2222222");
+				dest2[i] = new Pair(idEst, Math.min(nAnt + r, n));
+				bicisLibres[idEst] += Math.min(nAnt + r, n);
+				
+				origen[i] = new Pair(origen[i].getFirst(), (int)origen[i].getSecond() + Math.min(n-nAnt, r)); // referencia?? error?
+				bicisLibres[(int)origen[i].getFirst()] -= Math.min(n-nAnt, r);
+			}
+			else {
+				System.out.println("mmmmmmmmmmmmm");
+				dest1[i] = new Pair(idEst, nAnt);
+				bicisLibres[idEst] += nAnt;
+				
+			}
+		}
 	}
 	
 	// Intercambia origen de furgo 1 con furgo 2

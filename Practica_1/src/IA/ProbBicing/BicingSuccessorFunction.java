@@ -34,16 +34,39 @@ public class BicingSuccessorFunction implements SuccessorFunction {
 				BicingBoard newBoard = new BicingBoard(board.getNFurgos(), origen, dest1, dest2, bicisLibres, esOrigen);
 				//newBoard.changeCargaOrigen(i, 100);
 				//newBoard.changeOrigen(i, j);
-				if (newBoard.getBicisLibres(j) < 0) newBoard.changeDest1(i, j);
+				if (newBoard.getBicisLibres(j) < 0) {
+					newBoard.changeDest1(i, j);
+					double v = bHeur.getHeuristicValue(newBoard);
+					String S = "Beneficio(" + v + ") ---> \n" + newBoard.toString();
+					retval.add(new Successor(S, newBoard));
+					System.out.println(S);
+				}
+				
+				origen = Arrays.copyOf(board.getOrigen(), board.getNFurgos());
+				dest1 = Arrays.copyOf(board.getDest1(), board.getNFurgos());
+				dest2 = Arrays.copyOf(board.getDest2(), board.getNFurgos());				
+				bicisLibres = Arrays.copyOf(board.getBicisLibres(), board.getNumEst());
+				esOrigen = Arrays.copyOf(board.getEsOrigen(), board.getNumEst());
+				
+				newBoard = new BicingBoard(board.getNFurgos(), origen, dest1, dest2, bicisLibres, esOrigen);
+				
+				
+				if (newBoard.getBicisLibres(j) < 0 && (int)newBoard.getFurgoDest1(i).getFirst() != -1) {
+					System.out.println("aquiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
+					newBoard.changeDest2(i, j);
+					double v = bHeur.getHeuristicValue(newBoard);
+					String S = "Beneficio(" + v + ") ---> \n" + newBoard.toString();
+					retval.add(new Successor(S, newBoard));
+					System.out.println(S);
+				}
 				//newBoard.changeDescargaDest1(i, 100);
 
 
-				double v = bHeur.getHeuristicValue(newBoard);
+				//double v = bHeur.getHeuristicValue(newBoard);
+				//String S = "Beneficio(" + v + ") ---> \n" + newBoard.toString();
+				//retval.add(new Successor(S, newBoard));
 				
-				String S = "Beneficio(" + v + ") ---> \n" + newBoard.toString();
 				
-				retval.add(new Successor(S, newBoard));
-				System.out.println(S);
 
 				//System.out.println(newBoard.toString() + "   " + v);
 				
