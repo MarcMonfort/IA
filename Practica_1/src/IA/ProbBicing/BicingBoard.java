@@ -1,6 +1,7 @@
 package IA.ProbBicing;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.lang.Math;
@@ -26,6 +27,9 @@ public class BicingBoard {
 	private Pair[] origen;
 	private Pair[] dest1;
 	private Pair[] dest2;
+	
+	int[] bicisLibres;
+	boolean[] esOrigen;
 
 	/* Constructor */
 	public BicingBoard(int f) {
@@ -34,22 +38,48 @@ public class BicingBoard {
 		dest1 = new Pair[f];
 		dest2 = new Pair[f];
 		nfurgos = f;
-
+		
+		
+		bicisLibres = new int[numEst];
+		esOrigen = new boolean[numEst];
+		
+		for (int i = 0; i < numEst; ++i) {
+			bicisLibres[i] = Math.min(est.get(i).getNumBicicletasNoUsadas(), est.get(i).getNumBicicletasNext()- est.get(i).getDemanda());
+		}
+		
+		int[] aux = Arrays.copyOf(bicisLibres, numEst);
+		
 		for (int i = 0; i < f; ++i) {
-			origen[i] = new Pair(-1, 0);
+			int max = 0;
+			int id = -1;
+			for (int j = 0; j < numEst; ++j) {
+				if (bicisLibres[j] > max && !esOrigen[j]) {
+					max = bicisLibres[j];
+					id = j;
+				}
+				
+			}
+			origen[i] = new Pair(id, 0);
+			esOrigen[id] = true;
+			//bicisLibres[id] = 0;
+			
 			dest1[i] = new Pair(-1, 0);
 			dest2[i] = new Pair(-1, 0);
 		}
+		
+		
 
 	}
 
-	public BicingBoard(int f, Pair[] origen, Pair[] dest1, Pair[] dest2) {
+	public BicingBoard(int f, Pair[] origen, Pair[] dest1, Pair[] dest2, int[] bicisLibres, boolean[] esOrigen) {
 		// Random myRandom=new Random();
 
 		this.origen = origen;
 		this.dest1 = dest1;
 		this.dest2 = dest2;
 		nfurgos = f;
+		this.bicisLibres = bicisLibres;
+		this.esOrigen = esOrigen;
 	}
 	
 	//ALGO RARO
@@ -75,7 +105,6 @@ public class BicingBoard {
 	}
 	
 	public int getNumEst() {
-		//System.out.println("bbb" + nest);
 		return (numEst);
 	}
 	
@@ -116,21 +145,81 @@ public class BicingBoard {
 		return (distEst[i][j]);
 	}
 	
+	public int[] getBicisLibres () {
+		return bicisLibres;
+	}
+	
+	public int getBicisLibres (int i) {
+		return bicisLibres[i];
+	}
+	
+	public boolean[] getEsOrigen () {
+		return esOrigen;
+	}
+	
 	
 	
 	
 	
 	
 	//FIN-GETERS
-	public void changeOrigen(int i, int id2) {		//nada//coger siempre el maximo de bicis n // se puede?
+	public void changeOrigen(int i, int idE) {		//nada//coger siempre el maximo de bicis n // se puede?
 		Object n = origen[i].getSecond();
-		origen[i] = new Pair(id2, n);
+		origen[i] = new Pair(idE, n);
 	}
-	public void changeDest1(int i, int id2) {		//cambiar numero bicis origen // es rentable?
-		Object n = dest1[i].getSecond();
-		dest1[i] = new Pair(id2, n);
+	//solo si existe origen // solo remplazar si hay bicis que poner // no es origen y diff de cero , vamos que si es negativo..
+	public void changeDest1(int i, int idEst) {		//cambiar numero bicis origen // es rentable?
+		int nAnt = (int)dest1[i].getSecond();	//antigua
+		int n = -bicisLibres[idEst];	//esta en negativo
+		
+		if (n < nAnt) {
+			System.out.println("rrrrrrrr   "+ nAnt + "    "  + n);
+			dest1[i] = new Pair(idEst, n);
+			bicisLibres[idEst] = 0;
+			if ((int)dest2[i].getFirst() != -1 && bicisLibres[(int)dest2[i].getFirst()] < 0) {	//existe dest2?
+				int p = bicisLibres[(int)dest2[i].getFirst()];
+				if (p > n-nAnt) {	//se puede poner al maximo y puede que sobren (pra origen)
+					dest2[i] = new Pair(dest2[i].getFirst(), (int)dest2[i].getSecond() + (-p));		//error??? se crea antes o despues???? o referencia
+					bicisLibres[(int)dest2[i].getFirst()] = 0;
+					origen[i] = new Pair(origen[i].getFirst(), (int)origen[i].getSecond() - (nAnt-n + p));
+					bicisLibres[(int)origen[i].getFirst()] += (nAnt-n+p);				
+				}
+				else {		//se ponen todas
+					dest2[i] = new Pair(dest2[i].getFirst(), (int)dest2[i].getSecond() + nAnt-n);
+					bicisLibres[(int)dest2[i].getFirst()] += (nAnt-n);
+					//el origen no lo tocamos
+				}
+			}
+			
+			else {	//no existe dest2! o no nos importa (p>0)
+				origen[i] = new Pair(origen[i].getFirst(), (int)origen[i].getSecond() - (nAnt-n));
+				bicisLibres[(int)origen[i].getFirst()] += (nAnt-n);
+			}
+		}
+		else {	//n > Ant
+			//dest1[i] = new Pair(idEst, n);
+			int r = bicisLibres[(int)origen[i].getFirst()];
+			System.out.println(r);
+
+			if (r > 0) {
+				System.out.println("bbbbbbb");
+				dest1[i] = new Pair(idEst, Math.min(nAnt + r, n));
+				bicisLibres[idEst] += Math.max(nAnt + r, n);
+				
+				origen[i] = new Pair(origen[i].getFirst(), (int)origen[i].getSecond() + Math.min(n-nAnt, r)); // referencia?? error?
+				bicisLibres[(int)origen[i].getFirst()] -= Math.min(n-nAnt, r);
+			}
+			else if (r == 0){
+				System.out.println("aaaaaa");
+
+				dest1[i] = new Pair(idEst, nAnt);
+				bicisLibres[idEst] += nAnt;
+				
+			}
+		}
 	}
-	
+				
+	//solo si existe dest1
 	public void changeDest2(int i, int id2) {		//cambiar numero bicis origen // es rentable?
 		Object n = dest2[i].getSecond();
 		dest2[i] = new Pair(id2, n);

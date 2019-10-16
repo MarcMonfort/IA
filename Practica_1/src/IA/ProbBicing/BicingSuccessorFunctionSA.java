@@ -22,7 +22,7 @@ public class BicingSuccessorFunctionSA implements SuccessorFunction{
         
         for (int i = 0; i < board.getNFurgos(); ++i) {
         	//ProbIA5Board newBoard= new ProbIA5Board(board.getConfiguration());
-        	BicingBoard newBoard= new BicingBoard(board.getNFurgos(), board.getOrigen(), board.getDest1(), board.getDest2());
+        	BicingBoard newBoard= new BicingBoard(board.getNFurgos(), board.getOrigen(), board.getDest1(), board.getDest2(), board.getBicisLibres(), board.getEsOrigen());
         	
             newBoard.changeOrigen(i, i+1);
             

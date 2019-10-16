@@ -28,12 +28,14 @@ public class BicingSuccessorFunction implements SuccessorFunction {
 				Pair[] origen = Arrays.copyOf(board.getOrigen(), board.getNFurgos());
 				Pair[] dest1 = Arrays.copyOf(board.getDest1(), board.getNFurgos());
 				Pair[] dest2 = Arrays.copyOf(board.getDest2(), board.getNFurgos());				
+				int[] bicisLibres = Arrays.copyOf(board.getBicisLibres(), board.getNumEst());
+				boolean[] esOrigen = Arrays.copyOf(board.getEsOrigen(), board.getNumEst());
 				
-				BicingBoard newBoard = new BicingBoard(board.getNFurgos(), origen, dest1, dest2);
+				BicingBoard newBoard = new BicingBoard(board.getNFurgos(), origen, dest1, dest2, bicisLibres, esOrigen);
 				//newBoard.changeCargaOrigen(i, 100);
-				newBoard.changeOrigen(i, j);
-				newBoard.changeDest1(i, j);
-				newBoard.changeDescargaDest1(i, 100);
+				//newBoard.changeOrigen(i, j);
+				if (newBoard.getBicisLibres(j) < 0) newBoard.changeDest1(i, j);
+				//newBoard.changeDescargaDest1(i, 100);
 
 
 				double v = bHeur.getHeuristicValue(newBoard);
@@ -41,7 +43,7 @@ public class BicingSuccessorFunction implements SuccessorFunction {
 				String S = "Beneficio(" + v + ") ---> \n" + newBoard.toString();
 				
 				retval.add(new Successor(S, newBoard));
-				//System.out.println(S);
+				System.out.println(S);
 
 				//System.out.println(newBoard.toString() + "   " + v);
 				
