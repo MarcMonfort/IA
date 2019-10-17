@@ -22,7 +22,7 @@ public class Main {
 
 
 	public static void main(String[] args) {
-		BicingBoard.setEstaciones(25, 1250, 0, 1);
+		BicingBoard.setEstaciones(25, 1250, 0, 1234);
 		BicingBoard BB = new BicingBoard(5);
 		BicingHillClimbingSearch(BB);
 		//BicingSimulatedAnnealingSearch(BB);

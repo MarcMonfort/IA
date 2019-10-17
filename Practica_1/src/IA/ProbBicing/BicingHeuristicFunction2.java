@@ -88,7 +88,6 @@ public class BicingHeuristicFunction2 implements HeuristicFunction {
 				Pair pD1 = board.getFurgoDest1(i);
 				if ((int)pD1.getFirst() != -1) {
 					double kms = (board.distEst((int)pO.getFirst(), (int)pD1.getFirst())/1000);
-					System.out.println("mmmmmmmmmmmmm   " + kms);
 					costs_transport += kms*((int)((nb+9)/10));
 					
 					Pair pD2 = board.getFurgoDest2(i);
@@ -101,7 +100,6 @@ public class BicingHeuristicFunction2 implements HeuristicFunction {
 				}
 			}
 		}
-		System.out.println("ccccc   " + costs_transport);
 		return (double) (benefit_demand + costs_transport);
 	}
 			

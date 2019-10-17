@@ -48,7 +48,7 @@ public class BicingBoard {
 		}
 
 		//int[] aux = Arrays.copyOf(bicisLibres, numEst);
-
+		
 		for (int i = 0; i < f; ++i) {
 			int max = 0;
 			int id = -1;
@@ -60,12 +60,28 @@ public class BicingBoard {
 
 			}
 			origen[i] = new Pair(id, 0);
-			esOrigen[id] = true;
-			// bicisLibres[id] = 0;
+			if (id != -1) esOrigen[id] = true;
 
 			dest1[i] = new Pair(-1, 0);
 			dest2[i] = new Pair(-1, 0);
 		}
+		//solucion todo cero
+		/*
+		for (int i = 0; i < f; ++i) {
+			boolean stop = false;
+			int id = -1;
+			for (int j = 0; j < numEst && !stop; ++j) {
+				if (bicisLibres[j] > 5 && !esOrigen[j]) {
+					id = j;
+					stop = true;
+				}
+
+			}
+			origen[i] = new Pair(id , 0);
+			if (id != -1) esOrigen[id] = true;
+			dest1[i] = new Pair(-1, 0);
+			dest2[i] = new Pair(-1, 0);
+		}*/
 
 	}
 
@@ -91,7 +107,6 @@ public class BicingBoard {
 			for (int j = i + 1; j < nest; ++j) {
 				distEst[i][j] = Math.abs(est.get(i).getCoordX() - est.get(j).getCoordX())+ Math.abs(est.get(i).getCoordY() - est.get(j).getCoordY());
 				distEst[j][i] = distEst[i][j];
-				//System.out.println("            " + distEst[i][j]);
 			}
 		}
 	}
@@ -153,11 +168,39 @@ public class BicingBoard {
 	public boolean[] getEsOrigen() {
 		return esOrigen;
 	}
+	public boolean getEsOrigen(int i) {
+		return esOrigen[i];
+	}
 
 	// FIN-GETERS
+	//solo si el origen idE no esta coigdo y tiene exceso
 	public void changeOrigen(int i, int idE) { // nada//habira que adaptar todo
-		Object n = origen[i].getSecond();
-		origen[i] = new Pair(idE, n);
+		
+		if (!esOrigen[idE]) {
+			if ((int)origen[i].getFirst() != -1) {
+				bicisLibres[(int)origen[i].getFirst()] += (int)origen[i].getSecond();
+				esOrigen[(int)origen[i].getFirst()] = false;
+				origen[i] = new Pair(idE, 0);
+				esOrigen[idE] = true;
+				
+				if ((int)dest1[i].getFirst() != -1 ) {
+					bicisLibres[(int)dest1[i].getFirst()] -= (int)dest1[i].getSecond();
+					int a = (int)dest1[i].getFirst();
+					dest1[i] = new Pair(-1, 0);
+					changeDest1(i, a);
+					
+					if ((int)dest2[i].getFirst() != -1 ) {
+						bicisLibres[(int)dest2[i].getFirst()] -= (int)dest2[i].getSecond();
+						a = (int)dest2[i].getFirst();
+						dest2[i] = new Pair(-1, 0);
+						changeDest2(i, a);
+					}
+				}
+			}
+			else {
+				origen[i] = new Pair(idE, 0);
+			}
+		}
 	}
 
 	// solo si existe origen // solo remplazar si hay bicis que poner // no es
@@ -222,7 +265,6 @@ public class BicingBoard {
 		int n = -bicisLibres[idEst]; // esta en negativo
 
 		if (n < nAnt) {
-			System.out.println("hola");
 			dest2[i] = new Pair(idEst, n);
 			bicisLibres[idEst] = 0;
 
@@ -232,14 +274,13 @@ public class BicingBoard {
 
 		else {
 			int r = bicisLibres[(int) origen[i].getFirst()];
-			int f = 17;
-			int d = 3;
+			//int f = 17;
+			//int d = 3;
 			/*System.out.println("uff" + Math.min(est.get(f).getNumBicicletasNoUsadas(),
 					est.get(f).getNumBicicletasNext() - est.get(f).getDemanda()));
 			System.out.println("uff" + Math.min(est.get(d).getNumBicicletasNoUsadas(),
 					est.get(d).getNumBicicletasNext() - est.get(d).getDemanda()));*/
 			if (r > 0) {
-				System.out.println("adeu.2222222");
 				dest2[i] = new Pair(idEst, Math.min(nAnt + r, n));
 				bicisLibres[idEst] += Math.min(nAnt + r, n);
 
@@ -247,7 +288,7 @@ public class BicingBoard {
 																													// error?
 				bicisLibres[(int) origen[i].getFirst()] -= Math.min(n - nAnt, r);
 			} else {
-				dest1[i] = new Pair(idEst, nAnt);
+				dest2[i] = new Pair(idEst, nAnt);
 				bicisLibres[idEst] += nAnt;
 
 			}
@@ -292,6 +333,27 @@ public class BicingBoard {
 		if (id1 != -1) changeDest1(j, id1);
 		
 		//actualizar dest"???
+		if ((int)dest2[i].getFirst() != -1 && bicisLibres[(int)origen[i].getFirst()] > 0 && bicisLibres[(int)dest2[i].getFirst()] < 0) {		//no entra nunca??
+			int a = Math.min(bicisLibres[(int)origen[i].getFirst()], -bicisLibres[(int)dest2[i].getFirst()]);
+			dest2[i] = new Pair(dest2[i].getFirst(), (int) dest2[i].getSecond() + a);
+			bicisLibres[(int)dest2[i].getFirst()] += a;
+			
+			origen[i] = new Pair(origen[i].getFirst(), (int) origen[i].getSecond() + a);
+			bicisLibres[(int) origen[i].getFirst()] -= a;
+			
+			
+		}
+		if ((int)dest2[j].getFirst() != -1 && bicisLibres[(int)origen[j].getFirst()] > 0 && bicisLibres[(int)dest2[j].getFirst()] < 0) {		//no entra nunca??
+			int a = Math.min(bicisLibres[(int)origen[j].getFirst()], -bicisLibres[(int)dest2[j].getFirst()]);
+			dest2[j] = new Pair(dest2[j].getFirst(), (int) dest2[j].getSecond() + a);
+			bicisLibres[(int)dest2[j].getFirst()] += a;
+			
+			origen[j] = new Pair(origen[j].getFirst(), (int) origen[j].getSecond() + a);
+			bicisLibres[(int) origen[j].getFirst()] -= a;
+			
+			
+		}
+		
 	}
 
 	// Intercambio dest1 (no el num de bicicletas dejadas)
@@ -300,44 +362,41 @@ public class BicingBoard {
 	// dest2[i] != origen[j] y != dest1[j]
 	// dest2[j] != origen[i] y != dest1[i]
 	public void swapDest2(int i, int j) { // poner n la mejor posible, adaptar origen
-		Object id1 = dest2[j].getFirst();
-		Object id2 = dest2[i].getFirst();
+		int id1 = (int) dest2[i].getFirst();
+		int id2 = (int) dest2[j].getFirst();
+		if (id1 != -1) {
+			bicisLibres[(int) origen[i].getFirst()] += (int) dest2[i].getSecond();
+			origen[i] = new Pair(origen[i].getFirst(), (int) origen[i].getSecond() - (int) dest2[i].getSecond());
+			bicisLibres[id1] -= (int) dest2[i].getSecond();
+			dest2[i] = new Pair(-1, 0);
+		}
+		if (id2 != -1) {
+			bicisLibres[(int) origen[j].getFirst()] += (int) dest2[j].getSecond();
+			origen[j] = new Pair(origen[j].getFirst(), (int) origen[j].getSecond() - (int) dest2[j].getSecond());
+			bicisLibres[id2] -= (int) dest2[j].getSecond();
+			dest2[j] = new Pair(-1, 0);
+		}
 
-		Object n = dest2[i].getSecond();
-		dest2[i] = new Pair(id1, n);
-
-		n = dest2[j].getSecond();
-		dest2[j] = new Pair(id2, n);
+		if (id2 != -1) changeDest2(i, id2);
+		if (id1 != -1) changeDest2(j, id1);
 	}
 
 	// Poda: dist origen -> Dest1 > origen -> Dest2
 	public void swapDest1Dest2(int i) { // tambien passar la n del primer al segun destino (msimo en dest)
 		Pair tmp;
-		tmp = dest1[i];
+		tmp = dest1[i];		//error referencia??
 		dest1[i] = dest2[i];
 		dest2[i] = tmp;
+		
+		//se deberia de modificar tambien las bicis que dejamos en cada lugar... pero mucho trabajo...
 	}
 
-	// n != origen[i].getSecond();
-	public void changeCargaOrigen(int i, int n) { // eliminamos
-		Object id = origen[i].getFirst();
-		origen[i] = new Pair(id, n);
-	}
+	
 
-	// n < origen[i].getSecond();
-	// if dest2[i].getFirst() == -1 --> n == origen[i].getSecond;
-	public void changeDescargaDest1(int i, int n) { // eliminamos //Restrccion no suficientes bicis // actualizar origen
-		Object id = dest1[i].getFirst();
-		dest1[i] = new Pair(id, n);
-	}
-
-	// n == origen[i].getSecond - dest1[i].getSecond
-	public void changeDescargaDest2(int i, int n) { // eliminamos //Restriccion no suficientes bicis // actualizar
-													// origen
-		Object id = dest2[i].getFirst();
-		dest2[i] = new Pair(id, n);
-	}
-
+	
+	//eliminar dest1 // dest2 //origen?
+	
+	
 	/* Heuristic function */
 
 	public String toString() {
