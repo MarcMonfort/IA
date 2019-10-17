@@ -30,7 +30,7 @@ public class BicingHeuristicFunction2 implements HeuristicFunction {
 		 * This method evaluates the cost of a solution only taking into account the
 		 * benefits and losses caused by modifying the number of bycicles of a station
 		 */
-		System.out.println("holallaaaaa");
+		//System.out.println("holallaaaaa");
 		BicingBoard board = (BicingBoard) state;
 		double sum = 0;
 
@@ -77,6 +77,39 @@ public class BicingHeuristicFunction2 implements HeuristicFunction {
 	public double getHeuristicValue(Object state) {
 		double benefit_demand = getHeuristicValue_xxx(state);
 		double costs_transport = 0;
+
+		BicingBoard board = (BicingBoard) state;
+
+		for (int i = 0; i < board.getNFurgos(); i++) {
+			Pair pO = board.getFurgoOrigen(i);
+			if ((int)pO.getFirst() != -1) {
+				int nb = (int) pO.getSecond();
+				
+				Pair pD1 = board.getFurgoDest1(i);
+				if ((int)pD1.getFirst() != -1) {
+					double kms = (board.distEst((int)pO.getFirst(), (int)pD1.getFirst())/1000);
+					System.out.println("mmmmmmmmmmmmm   " + kms);
+					costs_transport += kms*((int)((nb+9)/10));
+					
+					Pair pD2 = board.getFurgoDest2(i);
+					if ((int)pD2.getFirst() != -1) {
+						nb -= (int)pD1.getSecond();
+						kms = (board.distEst((int)pD1.getFirst(), (int)pD2.getFirst())/1000);
+						
+						costs_transport += kms*((int)((nb+9)/10));
+					}
+				}
+			}
+		}
+		System.out.println("ccccc   " + costs_transport);
+		return (double) (benefit_demand + costs_transport);
+	}
+			
+			
+	
+	/*public double getHeuristicValue(Object state) {
+		double benefit_demand = getHeuristicValue_xxx(state);
+		double costs_transport = 0;
 		System.out.println("----------" + benefit_demand);
 
 		BicingBoard board = (BicingBoard) state;
@@ -109,6 +142,6 @@ public class BicingHeuristicFunction2 implements HeuristicFunction {
 		System.out.println("++++++++++++" + benefit_demand);
 		System.out.println("++++++mm+++++" + costs_transport);
 		return (double) (benefit_demand - costs_transport);
-	}
+	}*/
 
 }

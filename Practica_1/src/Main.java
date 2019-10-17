@@ -14,7 +14,7 @@ import java.util.Properties;
 import IA.ProbBicing.BicingBoard;
 import IA.ProbBicing.BicingGoalTest;
 import IA.ProbBicing.BicingHeuristicFunction;
-//import IA.ProbBicing.BicingHeuristicFunction2;
+import IA.ProbBicing.BicingHeuristicFunction2;
 import IA.ProbBicing.BicingSuccessorFunction;
 import IA.ProbBicing.BicingSuccessorFunctionSA;
 
@@ -31,7 +31,7 @@ public class Main {
 	private static void BicingHillClimbingSearch(BicingBoard BB) {
 		System.out.println("\nTSP HillClimbing  -->");
 		try {
-			Problem problem = new Problem(BB, new BicingSuccessorFunction(), new BicingGoalTest(), new BicingHeuristicFunction());
+			Problem problem = new Problem(BB, new BicingSuccessorFunction(), new BicingGoalTest(), new BicingHeuristicFunction2());
 			
 			Search search = new HillClimbingSearch();
 			SearchAgent agent = new SearchAgent(problem, search);

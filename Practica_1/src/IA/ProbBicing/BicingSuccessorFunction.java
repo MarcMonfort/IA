@@ -13,6 +13,7 @@ import java.util.List;
 public class BicingSuccessorFunction implements SuccessorFunction {
 
 	public List getSuccessors(Object state) {
+		System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 		ArrayList retval = new ArrayList();
 		BicingBoard board = (BicingBoard) state;
 		BicingHeuristicFunction bHeur = new BicingHeuristicFunction();
@@ -32,12 +33,10 @@ public class BicingSuccessorFunction implements SuccessorFunction {
 				boolean[] esOrigen = Arrays.copyOf(board.getEsOrigen(), board.getNumEst());
 				
 				BicingBoard newBoard = new BicingBoard(board.getNFurgos(), origen, dest1, dest2, bicisLibres, esOrigen);
-				//newBoard.changeCargaOrigen(i, 100);
-				//newBoard.changeOrigen(i, j);
 				if (newBoard.getBicisLibres(j) < 0) {
 					newBoard.changeDest1(i, j);
 					double v = bHeur.getHeuristicValue(newBoard);
-					String S = "Beneficio(" + v + ") ---> \n" + newBoard.toString();
+					String S = "Beneficio(" + v + ")\n" + newBoard.toString();
 					retval.add(new Successor(S, newBoard));
 					System.out.println(S);
 				}
@@ -52,34 +51,36 @@ public class BicingSuccessorFunction implements SuccessorFunction {
 				
 				
 				if (newBoard.getBicisLibres(j) < 0 && (int)newBoard.getFurgoDest1(i).getFirst() != -1) {
-					System.out.println("aquiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
 					newBoard.changeDest2(i, j);
 					double v = bHeur.getHeuristicValue(newBoard);
-					String S = "Beneficio(" + v + ") ---> \n" + newBoard.toString();
+					String S = "Beneficio(" + v + ")\n" + newBoard.toString();
 					retval.add(new Successor(S, newBoard));
 					System.out.println(S);
 				}
-				//newBoard.changeDescargaDest1(i, 100);
-
-
-				//double v = bHeur.getHeuristicValue(newBoard);
-				//String S = "Beneficio(" + v + ") ---> \n" + newBoard.toString();
-				//retval.add(new Successor(S, newBoard));
-				
-				
-
-				//System.out.println(newBoard.toString() + "   " + v);
 				
 			}
-
-			/*for (int j = 0; j < 20; ++j) {
-
-			}*/
+			
+			
+			for (int z = i; z < board.getNFurgos(); ++z) {
+				Pair[] origen = Arrays.copyOf(board.getOrigen(), board.getNFurgos());
+				Pair[] dest1 = Arrays.copyOf(board.getDest1(), board.getNFurgos());
+				Pair[] dest2 = Arrays.copyOf(board.getDest2(), board.getNFurgos());				
+				int[] bicisLibres = Arrays.copyOf(board.getBicisLibres(), board.getNumEst());
+				boolean[] esOrigen = Arrays.copyOf(board.getEsOrigen(), board.getNumEst());
+				
+				BicingBoard newBoard = new BicingBoard(board.getNFurgos(), origen, dest1, dest2, bicisLibres, esOrigen);
+				
+				newBoard.swapDest1(i, z);
+				double v = bHeur.getHeuristicValue(newBoard);
+				String S = "blablablabalbal ----- > Beneficio(" + v + ")\n" + newBoard.toString();
+				retval.add(new Successor(S, newBoard));
+				System.out.println(S);
+			}
+			
+			
 
 		}
 
-		// System.out.println("\n");
-		//System.out.println("hola");
 		return retval;
 
 	}
