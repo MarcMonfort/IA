@@ -65,9 +65,9 @@ public class BicingBoard {
 			dest1[i] = new Pair(-1, 0);
 			dest2[i] = new Pair(-1, 0);
 		}
-		//solucion todo cero
-		/*
-		for (int i = 0; i < f; ++i) {
+		//solucion random
+		
+		/*for (int i = 0; i < f; ++i) {
 			boolean stop = false;
 			int id = -1;
 			for (int j = 0; j < numEst && !stop; ++j) {
@@ -82,7 +82,7 @@ public class BicingBoard {
 			dest1[i] = new Pair(-1, 0);
 			dest2[i] = new Pair(-1, 0);
 		}*/
-
+		
 	}
 
 	public BicingBoard(int f, Pair[] origen, Pair[] dest1, Pair[] dest2, int[] bicisLibres, boolean[] esOrigen) {

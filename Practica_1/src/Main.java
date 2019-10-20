@@ -6,11 +6,13 @@ import aima.search.informed.AStarSearch;
 import aima.search.informed.HillClimbingSearch;
 import aima.search.informed.IterativeDeepeningAStarSearch;
 import aima.search.informed.SimulatedAnnealingSearch;
+import aima.util.Pair;
 
 import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
+import IA.Bicing.Estaciones;
 import IA.ProbBicing.BicingBoard;
 import IA.ProbBicing.BicingGoalTest;
 import IA.ProbBicing.BicingHeuristicFunction;
@@ -22,9 +24,12 @@ public class Main {
 
 
 	public static void main(String[] args) {
-		BicingBoard.setEstaciones(25, 1250, 0, 1234);
+		long start = System.currentTimeMillis();;
+		BicingBoard.setEstaciones(25, 1250, Estaciones.EQUILIBRIUM, 1234);
 		BicingBoard BB = new BicingBoard(5);
 		BicingHillClimbingSearch(BB);
+		long end = System.currentTimeMillis();;
+		System.out.println((end - start) + " ms");
 		//BicingSimulatedAnnealingSearch(BB);
 	}
 
@@ -36,15 +41,47 @@ public class Main {
 			Search search = new HillClimbingSearch();
 			SearchAgent agent = new SearchAgent(problem, search);
 			
-			System.out.println("fohdofiwehfowehfpweah");
-			//System.out.println(search.getGoalState());
+			System.out.println();
+			
 			
 			printActions(agent.getActions());
 			printInstrumentation(agent.getInstrumentation());
 			
+			System.out.println();
+			System.out.println(getDistance(search.getGoalState()));
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	//borrar despues---
+	private static double getDistance(Object state) {
+		//double costs_transport = 0;
+		double kms = 0;
+		BicingBoard board = (BicingBoard) state;
+
+		for (int i = 0; i < board.getNFurgos(); i++) {
+			Pair pO = board.getFurgoOrigen(i);
+			if ((int)pO.getFirst() != -1) {
+				//int nb = (int) pO.getSecond();
+				
+				Pair pD1 = board.getFurgoDest1(i);
+				if ((int)pD1.getFirst() != -1) {
+					kms += (board.distEst((int)pO.getFirst(), (int)pD1.getFirst())/1000);
+					//costs_transport += kms*((int)((nb+9)/10));
+					
+					Pair pD2 = board.getFurgoDest2(i);
+					if ((int)pD2.getFirst() != -1) {
+						//nb -= (int)pD1.getSecond();
+						kms += (board.distEst((int)pD1.getFirst(), (int)pD2.getFirst())/1000);
+						
+						//costs_transport += kms*((int)((nb+9)/10));
+					}
+				}
+			}
+		}
+		return (double) (kms);
 	}
 
 	private static void BicingSimulatedAnnealingSearch(BicingBoard BB) {
