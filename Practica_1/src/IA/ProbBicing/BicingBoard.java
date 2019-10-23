@@ -48,7 +48,6 @@ public class BicingBoard {
 			bicisLibres[i] = Math.min(Math.min(est.get(i).getNumBicicletasNoUsadas(), est.get(i).getNumBicicletasNext() - est.get(i).getDemanda()),MAX_FURGO);
 		}
 
-		//int[] aux = Arrays.copyOf(bicisLibres, numEst);
 		
 		for (int i = 0; i < f; ++i) {
 			int max = 0;
@@ -303,12 +302,12 @@ public class BicingBoard {
 	// orgien[i] != dest1[j] y != dest2[j]
 	// origen[j] != dest1[i] y != dest2[i]
 
-	public void swapOrigen(int i, int j) { // eliminar //con restriccon de numero bicis //conservar n
+	/*public void swapOrigen(int i, int j) { // eliminar //con restriccon de numero bicis //conservar n
 		Pair tmp;
 		tmp = origen[i];
 		origen[i] = origen[j];
 		origen[j] = tmp;
-	}
+	}*/
 
 	// Intercambio dest1 (no el num de bicicletas dejadas)
 	// dest1[i].getFirst() != -1; dest1[j].getFirst() != -1;

@@ -20,7 +20,7 @@ public class BicingSuccessorFunctionSA implements SuccessorFunction {
 		BicingHeuristicFunction2 bHeur = new BicingHeuristicFunction2();
 
 		Random myRandom=new Random();
-        int i,x,j;
+        int i,x,j,z;
 		
         
         Pair[] origen = Arrays.copyOf(board.getOrigen(), board.getNFurgos());
@@ -32,16 +32,20 @@ public class BicingSuccessorFunctionSA implements SuccessorFunction {
 		BicingBoard newBoard = new BicingBoard(board.getNFurgos(), origen, dest1, dest2, bicisLibres,
 				esOrigen);
         
+		int nf = board.getNFurgos();
+	    int ne = board.getNumEst();
+		
+		
+        int PON = 3*(nf * ne) + 2*(nf * nf) + nf;
         
+        x = myRandom.nextInt(PON);
         
-        x = myRandom.nextInt(4);
-        //++x;
-        //System.out.println(x);
         int count = 0;
         int n = 3*board.getNumEst();
         boolean doit = true;
-		switch (x) {
-		case 0:	//changeOrigen      ---menos ramificacion
+        
+        
+		if (x < nf*ne) {	//changeOrigen      ---menos ramificacion
 			i = myRandom.nextInt(board.getNFurgos());
 			int f;
 			do {
@@ -49,18 +53,16 @@ public class BicingSuccessorFunctionSA implements SuccessorFunction {
 				++count;
 			} while ((board.getEsOrigen(f) || board.getBicisLibres(f) <= 0) && count < n);
 			if (count == n) {
-				System.out.println("1");
 				doit = false;
 			}
 			if(doit) newBoard.changeOrigen(i, f);
-			break;
-		case 1:	//changeDest1
+		}
+		else if (nf*ne <= x && x < 2*nf*ne) {	//changeDest1
 			do {
 				i = myRandom.nextInt(board.getNFurgos());
 				++count;
 			} while ((int) board.getFurgoOrigen(i).getFirst() == -1 && count < n);
 			if (count == n) {
-				System.out.println("7");
 				doit = false;
 			}
 			count = 0;
@@ -69,18 +71,16 @@ public class BicingSuccessorFunctionSA implements SuccessorFunction {
 				++count;
 			} while (board.getBicisLibres(j) >= 0 && count < n);
 			if (count == n) {
-				System.out.println("6");
 				doit = false;
 			}
 			if(doit) newBoard.changeDest1(i, j);
-			break;
-		case 2:	//changeDest2
+		}
+		else if (2*nf*ne <= x && x < 3*nf*ne) {	//changeDest2
 			do {
 				i = myRandom.nextInt(board.getNFurgos());
 				++count;
-			} while (((int) board.getFurgoOrigen(i).getFirst() == -1 || (int) board.getFurgoDest1(i).getFirst() == -1) && count < n);
+			} while ((int) board.getFurgoDest1(i).getFirst() == -1 && count < n);	//si teiene dest1 tiene origen
 			if (count == n) {
-				System.out.println("5");
 				doit = false;
 			}
 			count = 0;
@@ -90,20 +90,17 @@ public class BicingSuccessorFunctionSA implements SuccessorFunction {
 				++count;
 			} while (board.getBicisLibres(j) >= 0 && count < n);
 			if (count == n) {
-				System.out.println("4");
 				doit = false;
 			}
 			
 			if(doit) newBoard.changeDest2(i, j);
-			break;
-		case 3:	//swapDest1 -- se abre menos. ponerla menos veces
-			int z;
+		}
+		else if (3*nf*ne <= x && x < 3*nf*ne+nf*nf) {	//swapDest1 -- se abre menos. ponerla menos veces
 			do {
 				i = myRandom.nextInt(board.getNFurgos());
 				++count;
 			} while ((int) board.getFurgoOrigen(i).getFirst() == -1 && count < n);
 			if (count == n) {
-				System.out.println("3");
 				doit = false;
 			}
 			count = 0;
@@ -111,27 +108,43 @@ public class BicingSuccessorFunctionSA implements SuccessorFunction {
 			do {
 				z = myRandom.nextInt(board.getNFurgos());
 				++count;
-			} while ((int) board.getFurgoOrigen(z).getFirst() == -1 && count < n);
+			} while (((int) board.getFurgoOrigen(z).getFirst() == -1 || z == i) && count < n);
 			if (count == n) {
-				System.out.println("2");
 				doit = false;
 			}
 			if(doit) newBoard.swapDest1(i, z);
 			
-			break;
-		case 4://swapDest2
-			
-			break;
-		case 5:
-			
-			break;
-		case 6:
-			
-			break;
-		case 7:
-			
-			break;
 		}
+		else if (3*nf*ne+nf*nf <= x && x <3*nf*ne+2*nf*nf) {//swapDest2
+			do {
+				i = myRandom.nextInt(board.getNFurgos());
+				++count;
+			} while ((int) board.getFurgoDest1(i).getFirst() == -1 && count < n);
+			if (count == n) {
+				doit = false;
+			}
+			count = 0;
+			do {
+				z = myRandom.nextInt(board.getNFurgos());
+				++count;
+			} while (((int) board.getFurgoDest1(z).getFirst() == -1 || z == i )&& count < n);
+			if (count == n) {
+				doit = false;
+			}
+			if(doit) newBoard.swapDest2(i, z);
+		}
+		else if (3*nf*ne+2*nf*nf <= x) {	//swapDest1Dest2
+			do {
+				i = myRandom.nextInt(board.getNFurgos());
+				++count;
+			} while ((int) board.getFurgoDest2(i).getFirst() == -1 && count < n);
+			if (count == n) {
+				doit = false;
+			}
+			if(doit) newBoard.swapDest1Dest2(i);	
+
+		}
+		
 		double v = bHeur.getHeuristicValue(newBoard);
 		String S = "Beneficio("+ -v + ")\n" + newBoard.toString();
 		retval.add(new Successor(S, newBoard));

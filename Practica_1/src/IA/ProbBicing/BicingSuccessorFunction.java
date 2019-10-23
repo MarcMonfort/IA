@@ -13,7 +13,6 @@ import java.util.List;
 public class BicingSuccessorFunction implements SuccessorFunction {
 
 	public List getSuccessors(Object state) {
-		//System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 		ArrayList retval = new ArrayList();
 		BicingBoard board = (BicingBoard) state;
 		BicingHeuristicFunction2 bHeur = new BicingHeuristicFunction2();
@@ -22,7 +21,6 @@ public class BicingSuccessorFunction implements SuccessorFunction {
 			
 			for (int f = 0; f < board.getNumEst(); ++f) { // puede que sea estupido hacer nuevo for dependiendo de la solucion inicial //no influye
 				if (!board.getEsOrigen(f) && board.getBicisLibres(f) > 0) {
-					//System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 					Pair[] origen = Arrays.copyOf(board.getOrigen(), board.getNFurgos());
 					Pair[] dest1 = Arrays.copyOf(board.getDest1(), board.getNFurgos());
 					Pair[] dest2 = Arrays.copyOf(board.getDest2(), board.getNFurgos());
@@ -104,7 +102,7 @@ public class BicingSuccessorFunction implements SuccessorFunction {
 							// System.out.println(S);
 						}
 						//swapDest2 -- casi no se usa
-						if ((int) board.getFurgoDest2(i).getFirst() != -1 || (int) board.getFurgoDest2(z).getFirst() != -1) {
+						if (((int) board.getFurgoDest2(i).getFirst() != -1 || (int) board.getFurgoDest2(z).getFirst() != -1) && ((int) board.getFurgoDest1(i).getFirst() != -1 && (int) board.getFurgoDest1(z).getFirst() != -1)) {
 							Pair[] origen = Arrays.copyOf(board.getOrigen(), board.getNFurgos());
 							Pair[] dest1 = Arrays.copyOf(board.getDest1(), board.getNFurgos());
 							Pair[] dest2 = Arrays.copyOf(board.getDest2(), board.getNFurgos());
