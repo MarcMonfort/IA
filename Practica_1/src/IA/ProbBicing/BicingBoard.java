@@ -30,6 +30,8 @@ public class BicingBoard {
 
 	int[] bicisLibres;
 	boolean[] esOrigen;
+	
+	private static final int MAX_FURGO = 30;
 
 	/* Constructor */
 	public BicingBoard(int f) {
@@ -43,8 +45,7 @@ public class BicingBoard {
 		esOrigen = new boolean[numEst];
 
 		for (int i = 0; i < numEst; ++i) {
-			bicisLibres[i] = Math.min(est.get(i).getNumBicicletasNoUsadas(),
-					est.get(i).getNumBicicletasNext() - est.get(i).getDemanda());
+			bicisLibres[i] = Math.min(Math.min(est.get(i).getNumBicicletasNoUsadas(), est.get(i).getNumBicicletasNext() - est.get(i).getDemanda()),MAX_FURGO);
 		}
 
 		//int[] aux = Arrays.copyOf(bicisLibres, numEst);
@@ -52,10 +53,12 @@ public class BicingBoard {
 		for (int i = 0; i < f; ++i) {
 			int max = 0;
 			int id = -1;
-			for (int j = 0; j < numEst; ++j) {
+			boolean stop = false;
+			for (int j = 0; j < numEst && !stop; ++j) {
 				if (bicisLibres[j] > max && !esOrigen[j]) {
 					max = bicisLibres[j];
 					id = j;
+					if (max == MAX_FURGO) stop = true;
 				}
 
 			}

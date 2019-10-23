@@ -25,11 +25,11 @@ public class Main {
 
 	public static void main(String[] args) {
 		long start = System.currentTimeMillis();;
-		BicingBoard.setEstaciones(25, 1250, Estaciones.EQUILIBRIUM, 1234);
-		BicingBoard BB = new BicingBoard(5);
+		BicingBoard.setEstaciones(2500, 125000, Estaciones.EQUILIBRIUM, 1234);
+		BicingBoard BB = new BicingBoard(10);
 		BicingHillClimbingSearch(BB);
 		long end = System.currentTimeMillis();;
-		System.out.println((end - start) + " ms");
+		System.out.println("Time:  " + (end - start) + " ms");
 		//BicingSimulatedAnnealingSearch(BB);
 	}
 
@@ -48,7 +48,7 @@ public class Main {
 			printInstrumentation(agent.getInstrumentation());
 			
 			System.out.println();
-			System.out.println(getDistance(search.getGoalState()));
+			System.out.println("Dist:  " + getDistance(search.getGoalState()) + "km");
 			
 		} catch (Exception e) {
 			e.printStackTrace();

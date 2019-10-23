@@ -34,7 +34,7 @@ public class BicingSuccessorFunction implements SuccessorFunction {
 
 					newBoard.changeOrigen(i, f);
 					double v = bHeur.getHeuristicValue(newBoard);
-					String S = "Beneficio(" + v + ")\n" + newBoard.toString();
+					String S = "Beneficio("+ -v + ")\n" + newBoard.toString();
 					retval.add(new Successor(S, newBoard));
 					//System.out.println(S);
 				}
@@ -58,7 +58,7 @@ public class BicingSuccessorFunction implements SuccessorFunction {
 
 						newBoard.changeDest1(i, j);
 						double v = bHeur.getHeuristicValue(newBoard);
-						String S = "Beneficio(" + v + ")\n" + newBoard.toString();
+						String S = "Beneficio("+ -v + ")\n" + newBoard.toString();
 						retval.add(new Successor(S, newBoard));
 						//System.out.println(S);
 
@@ -75,7 +75,7 @@ public class BicingSuccessorFunction implements SuccessorFunction {
 						if ((int) newBoard.getFurgoDest1(i).getFirst() != -1) {
 							newBoard.changeDest2(i, j);
 							v = bHeur.getHeuristicValue(newBoard);
-							S = "Beneficio(" + v + ")\n" + newBoard.toString();
+							S = "Beneficio("+ -v + ")\n" + newBoard.toString();
 							retval.add(new Successor(S, newBoard));
 							//System.out.println(S);
 						}
@@ -99,7 +99,7 @@ public class BicingSuccessorFunction implements SuccessorFunction {
 
 							newBoard.swapDest1(i, z);
 							double v = bHeur.getHeuristicValue(newBoard);
-							String S = "Beneficio(" + v + ")\n" + newBoard.toString();
+							String S = "Beneficio("+ -v + ")\n" + newBoard.toString();
 							retval.add(new Successor(S, newBoard));
 							// System.out.println(S);
 						}
@@ -116,7 +116,7 @@ public class BicingSuccessorFunction implements SuccessorFunction {
 
 							newBoard.swapDest2(i, z);
 							double v = bHeur.getHeuristicValue(newBoard);
-							String S = "Beneficio(" + v + ")\n" + newBoard.toString();
+							String S = "Beneficio("+ -v + ")\n" + newBoard.toString();
 							retval.add(new Successor(S, newBoard));
 							// System.out.println(S);
 						}
@@ -136,7 +136,7 @@ public class BicingSuccessorFunction implements SuccessorFunction {
 
 					newBoard.swapDest1Dest2(i);
 					double v = bHeur.getHeuristicValue(newBoard);
-					String S = "Beneficio(" + v + ")\n" + newBoard.toString();
+					String S = "Beneficio("+ -v + ")\n" + newBoard.toString();
 					retval.add(new Successor(S, newBoard));
 					//System.out.println(S);
 				}
