@@ -25,12 +25,12 @@ public class Main {
 
 	public static void main(String[] args) {
 		long start = System.currentTimeMillis();;
-		BicingBoard.setEstaciones(2500, 125000, Estaciones.EQUILIBRIUM, 1234);
-		BicingBoard BB = new BicingBoard(10);
+		BicingBoard.setEstaciones(25, 1250, Estaciones.EQUILIBRIUM, 1234);
+		BicingBoard BB = new BicingBoard(5);
 		BicingHillClimbingSearch(BB);
 		long end = System.currentTimeMillis();;
 		System.out.println("Time:  " + (end - start) + " ms");
-		//BicingSimulatedAnnealingSearch(BB);
+		BicingSimulatedAnnealingSearch(BB);
 	}
 
 	private static void BicingHillClimbingSearch(BicingBoard BB) {
@@ -45,7 +45,7 @@ public class Main {
 			
 			
 			printActions(agent.getActions());
-			printInstrumentation(agent.getInstrumentation());
+			//printInstrumentation(agent.getInstrumentation());
 			
 			System.out.println();
 			System.out.println("Dist:  " + getDistance(search.getGoalState()) + "km");
@@ -88,14 +88,23 @@ public class Main {
 		System.out.println("\nTSP Simulated Annealing  -->");
 		try {
 			Problem problem = new Problem(BB, new BicingSuccessorFunctionSA(), new BicingGoalTest(),
-					new BicingHeuristicFunction());
+					new BicingHeuristicFunction2());
 			SimulatedAnnealingSearch search = new SimulatedAnnealingSearch(2000, 100, 5, 0.001);
 			// search.traceOn();
 			SearchAgent agent = new SearchAgent(problem, search);
 
 			System.out.println();
-			printActions(agent.getActions());
-			printInstrumentation(agent.getInstrumentation());
+			//printActions(agent.getActions());
+			//printInstrumentation(agent.getInstrumentation());
+			
+			BicingHeuristicFunction2 bHeur = new BicingHeuristicFunction2();
+			double v = bHeur.getHeuristicValue(search.getGoalState());
+			System.out.println("bene:  " + -v);
+			System.out.println(search.getGoalState());
+			
+			System.out.println("Dist:  " + getDistance(search.getGoalState()) + "km");
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
