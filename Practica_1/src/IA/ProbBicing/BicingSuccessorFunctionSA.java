@@ -34,31 +34,89 @@ public class BicingSuccessorFunctionSA implements SuccessorFunction {
         
         
         
-        x = myRandom.nextInt(2);
-        ++x;
+        x = myRandom.nextInt(4);
+        //++x;
         //System.out.println(x);
+        int count = 0;
+        int n = 3*board.getNumEst();
+        boolean doit = true;
 		switch (x) {
-		case 0:
+		case 0:	//changeOrigen      ---menos ramificacion
+			i = myRandom.nextInt(board.getNFurgos());
+			int f;
+			do {
+				f = myRandom.nextInt(board.getNumEst());
+				++count;
+			} while ((board.getEsOrigen(f) || board.getBicisLibres(f) <= 0) && count < n);
+			if (count == n) {
+				System.out.println("1");
+				doit = false;
+			}
+			if(doit) newBoard.changeOrigen(i, f);
 			break;
 		case 1:	//changeDest1
 			do {
 				i = myRandom.nextInt(board.getNFurgos());
-			} while ((int) board.getFurgoOrigen(i).getFirst() == -1);
+				++count;
+			} while ((int) board.getFurgoOrigen(i).getFirst() == -1 && count < n);
+			if (count == n) {
+				System.out.println("7");
+				doit = false;
+			}
+			count = 0;
 			do {
 				j = myRandom.nextInt(board.getNumEst());
-			} while (board.getBicisLibres(j) >= 0);
-			newBoard.changeDest1(i, j);
+				++count;
+			} while (board.getBicisLibres(j) >= 0 && count < n);
+			if (count == n) {
+				System.out.println("6");
+				doit = false;
+			}
+			if(doit) newBoard.changeDest1(i, j);
 			break;
 		case 2:	//changeDest2
 			do {
 				i = myRandom.nextInt(board.getNFurgos());
-			} while ((int) board.getFurgoOrigen(i).getFirst() == -1 && (int) board.getFurgoDest1(i).getFirst() != -1);
+				++count;
+			} while (((int) board.getFurgoOrigen(i).getFirst() == -1 || (int) board.getFurgoDest1(i).getFirst() == -1) && count < n);
+			if (count == n) {
+				System.out.println("5");
+				doit = false;
+			}
+			count = 0;
+			
 			do {
 				j = myRandom.nextInt(board.getNumEst());
-			} while (board.getBicisLibres(j) >= 0);
-			newBoard.changeDest2(i, j);
+				++count;
+			} while (board.getBicisLibres(j) >= 0 && count < n);
+			if (count == n) {
+				System.out.println("4");
+				doit = false;
+			}
+			
+			if(doit) newBoard.changeDest2(i, j);
 			break;
-		case 3:	//swapDest1
+		case 3:	//swapDest1 -- se abre menos. ponerla menos veces
+			int z;
+			do {
+				i = myRandom.nextInt(board.getNFurgos());
+				++count;
+			} while ((int) board.getFurgoOrigen(i).getFirst() == -1 && count < n);
+			if (count == n) {
+				System.out.println("3");
+				doit = false;
+			}
+			count = 0;
+			
+			do {
+				z = myRandom.nextInt(board.getNFurgos());
+				++count;
+			} while ((int) board.getFurgoOrigen(z).getFirst() == -1 && count < n);
+			if (count == n) {
+				System.out.println("2");
+				doit = false;
+			}
+			if(doit) newBoard.swapDest1(i, z);
 			
 			break;
 		case 4://swapDest2
@@ -166,7 +224,7 @@ public class BicingSuccessorFunctionSA implements SuccessorFunction {
 							retval.add(new Successor(S, newBoard));
 							// System.out.println(S);
 						}
-						//swapDest2 -- casi no se usa
+						//swapDest2 -- casi no se usa --- mal, puede que dest2 exita y dest1 no
 						if ((int) board.getFurgoDest2(i).getFirst() != -1 || (int) board.getFurgoDest2(z).getFirst() != -1) {
 							Pair[] origen = Arrays.copyOf(board.getOrigen(), board.getNFurgos());
 							Pair[] dest1 = Arrays.copyOf(board.getDest1(), board.getNFurgos());

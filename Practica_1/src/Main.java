@@ -45,7 +45,7 @@ public class Main {
 			
 			
 			printActions(agent.getActions());
-			//printInstrumentation(agent.getInstrumentation());
+			printInstrumentation(agent.getInstrumentation());
 			
 			System.out.println();
 			System.out.println("Dist:  " + getDistance(search.getGoalState()) + "km");
@@ -64,17 +64,17 @@ public class Main {
 		for (int i = 0; i < board.getNFurgos(); i++) {
 			Pair pO = board.getFurgoOrigen(i);
 			if ((int)pO.getFirst() != -1) {
-				//int nb = (int) pO.getSecond();
+				int nb = (int) pO.getSecond();
 				
 				Pair pD1 = board.getFurgoDest1(i);
 				if ((int)pD1.getFirst() != -1) {
-					kms += (board.distEst((int)pO.getFirst(), (int)pD1.getFirst())/1000);
+					if (nb != 0) kms += (board.distEst((int)pO.getFirst(), (int)pD1.getFirst())/1000);
 					//costs_transport += kms*((int)((nb+9)/10));
 					
 					Pair pD2 = board.getFurgoDest2(i);
 					if ((int)pD2.getFirst() != -1) {
-						//nb -= (int)pD1.getSecond();
-						kms += (board.distEst((int)pD1.getFirst(), (int)pD2.getFirst())/1000);
+						nb -= (int)pD1.getSecond();
+						if (nb != 0) kms += (board.distEst((int)pD1.getFirst(), (int)pD2.getFirst())/1000);
 						
 						//costs_transport += kms*((int)((nb+9)/10));
 					}
@@ -89,13 +89,13 @@ public class Main {
 		try {
 			Problem problem = new Problem(BB, new BicingSuccessorFunctionSA(), new BicingGoalTest(),
 					new BicingHeuristicFunction2());
-			SimulatedAnnealingSearch search = new SimulatedAnnealingSearch(2000, 100, 5, 0.001);
+			SimulatedAnnealingSearch search = new SimulatedAnnealingSearch(20000, 100, 5, 0.001);
 			// search.traceOn();
 			SearchAgent agent = new SearchAgent(problem, search);
 
 			System.out.println();
 			//printActions(agent.getActions());
-			//printInstrumentation(agent.getInstrumentation());
+			printInstrumentation(agent.getInstrumentation());
 			
 			BicingHeuristicFunction2 bHeur = new BicingHeuristicFunction2();
 			double v = bHeur.getHeuristicValue(search.getGoalState());

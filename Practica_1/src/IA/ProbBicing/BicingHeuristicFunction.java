@@ -74,7 +74,7 @@ public class BicingHeuristicFunction implements HeuristicFunction {
 	/* This second criteria is just a balance between between benefits obtained by making stations
 	being closer to their demand point, and resources we spend by moving those bikes */
 	
-	public double getMixedCriteria(Object state) {
+	/*public double getMixedCriteria(Object state) {
 		double benefit_demand = getHeuristicValue(state);
 		double costs_transport = 0;
 
@@ -106,6 +106,6 @@ public class BicingHeuristicFunction implements HeuristicFunction {
 			}
 		}
 		return (double) (benefit_demand - costs_transport);
-	}
+	}*/
 
 }
