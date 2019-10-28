@@ -33,6 +33,7 @@ public class Main {
 		int dem;
 		int seed;
 		
+		
 		Scanner in = new Scanner(System.in);
 		System.out.print("Numero de furgonetas: ");
         f = in.nextInt();
@@ -44,13 +45,15 @@ public class Main {
         dem = in.nextInt();
         System.out.print("Semilla : ");
         seed = in.nextInt();
+        
 		
 		/*
 		f = Integer.parseInt(args[0]);
 		nest = Integer.parseInt(args[1]);
 		nbic = Integer.parseInt(args[2]);
 		dem = Integer.parseInt(args[3]);
-		seed = Integer.parseInt(args[4]);*/
+		seed = Integer.parseInt(args[4]);
+		*/
 
 		//seed = myRandom.nextInt(9999);
 		
