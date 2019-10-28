@@ -1,10 +1,7 @@
-import aima.search.framework.GraphSearch;
 import aima.search.framework.Problem;
 import aima.search.framework.Search;
 import aima.search.framework.SearchAgent;
-import aima.search.informed.AStarSearch;
 import aima.search.informed.HillClimbingSearch;
-import aima.search.informed.IterativeDeepeningAStarSearch;
 import aima.search.informed.SimulatedAnnealingSearch;
 import aima.util.Pair;
 
@@ -20,6 +17,7 @@ import IA.ProbBicing.BicingHeuristicFunction;
 import IA.ProbBicing.BicingHeuristicFunction2;
 import IA.ProbBicing.BicingSuccessorFunction;
 import IA.ProbBicing.BicingSuccessorFunctionSA;
+import java.util.Scanner;
 
 public class Main {
 
@@ -29,14 +27,37 @@ public class Main {
 		
 		Random myRandom = new Random();
 		
-		int f = 5;
-		//int f = myRandom.nextInt(25);
-		int r = myRandom.nextInt(9999);
+		int f;
+		int nest;
+		int nbic;
+		int dem;
+		int seed;
 		
-		BicingBoard.setEstaciones(f * 5, f * 5 * 50, Estaciones.EQUILIBRIUM, r);
+		/*Scanner in = new Scanner(System.in);
+		System.out.print("NÃºmero de furgonetas: ");
+        f = in.nextInt();
+        System.out.print("NÃºmero de estaciones : ");
+        nest = in.nextInt();
+        System.out.print("NÃºmero de bicicletas : ");
+        nbic = in.nextInt();
+        System.out.print("Tipo de demanda (0 = Equilibrada; 1 = Hora Punta) ");
+        dem = in.nextInt();
+        System.out.print("Semilla : ");
+        seed = in.nextInt();*/
+		
+		f = Integer.parseInt(args[0]);
+		nest = Integer.parseInt(args[1]);
+		nbic = Integer.parseInt(args[2]);
+		dem = Integer.parseInt(args[3]);
+		seed = Integer.parseInt(args[4]);
+
+		//seed = myRandom.nextInt(9999);
+		
+		BicingBoard.setEstaciones(nest, nbic, dem, seed);
 		BicingBoard BB = new BicingBoard(f);
 		
 		BicingHillClimbingSearch(BB);
+		System.out.println();
 		BicingSimulatedAnnealingSearch(BB);
 		
 		//long end = System.currentTimeMillis();
@@ -60,7 +81,7 @@ public class Main {
 			BicingHeuristicFunction2 bHeur = new BicingHeuristicFunction2();
 			double v = bHeur.getHeuristicValue(search.getGoalState());
 			System.out.println(search.getGoalState());		//solucion final
-			System.out.println("Beneficio(€):   " + -v);
+			System.out.println("Beneficio(ï¿½):   " + -v);
 			System.out.println("Distancia(km):   " + getDistance(search.getGoalState()));
 			
 		} catch (Exception e) {
@@ -114,7 +135,7 @@ public class Main {
 			BicingHeuristicFunction2 bHeur = new BicingHeuristicFunction2();
 			double v = bHeur.getHeuristicValue(search.getGoalState());
 			System.out.println(search.getGoalState());		//solucion final
-			System.out.println("Beneficio(€):   " + -v);
+			System.out.println("Beneficio(ï¿½):   " + -v);
 			System.out.println("Distancia(km):   " + getDistance(search.getGoalState()));
 			
 			
