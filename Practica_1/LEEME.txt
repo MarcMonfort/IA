@@ -1,0 +1,16 @@
+Para ejecutar la practica:
+
+$~ java -jar BicingAI.jar nfur nest nbic dem seed
+
+
+donde:
+
+	nfur = Número de furgonetas.
+	nest = Número de estaciones a generar
+	nbic = Número de bicicletas en el sistema
+	dem = Tipo de demanda (0 = EQUILIBRIUM, 1 = RUSH_HOUR)
+	seed = Semilla para el generador de numeros aleatorios
+
+
+También es posible modificar y ejecutar la práctica desde cualquier IDE.
+Nuestro proyecto se ha realizado con ECLIPSE.
