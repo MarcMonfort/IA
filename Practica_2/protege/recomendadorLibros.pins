@@ -1,0 +1,77 @@
+; Thu Nov 21 00:10:08 CET 2019
+; 
+;+ (version "3.5")
+;+ (build "Build 663")
+
+([recomendadorLibros_Class0] of  Libro
+
+	(titulo "jorge miguel arias"))
+
+([recomendadorLibros_Class1] of  Libro
+
+	(de_autor [recomendadorLibros_Class2])
+	(de_epoca [recomendadorLibros_Class4])
+	(de_nacionalidad [recomendadorLibros_Class3])
+	(en_idioma_original [recomendadorLibros_Class10000])
+	(es_popular TRUE)
+	(num_paginas 1990)
+	(titulo "El conde de Montecristo"))
+
+([recomendadorLibros_Class10000] of  Idioma
+
+	(idioma "frances")
+	(idioma_libro [recomendadorLibros_Class1]))
+
+([recomendadorLibros_Class10001] of  Epoca
+
+	(epoca "modernista"))
+
+([recomendadorLibros_Class10002] of  Epoca
+
+	(epoca "vanguardista"))
+
+([recomendadorLibros_Class10003] of  Epoca
+
+	(epoca "neoclásica"))
+
+([recomendadorLibros_Class10004] of  Epoca
+
+	(epoca "barroca"))
+
+([recomendadorLibros_Class10005] of  Epoca
+
+	(epoca "renacentista"))
+
+([recomendadorLibros_Class10006] of  Epoca
+
+	(epoca "medieval"))
+
+([recomendadorLibros_Class10007] of  Epoca
+
+	(epoca "clásica"))
+
+([recomendadorLibros_Class10008] of  Epoca
+
+	(epoca "preclásica"))
+
+([recomendadorLibros_Class2] of  Autor
+
+	(autor "Alexandre Dumas")
+	(autor_libro [recomendadorLibros_Class1])
+	(de_epoca [recomendadorLibros_Class4])
+	(de_nacionalidad [recomendadorLibros_Class3])
+	(es_popular TRUE))
+
+([recomendadorLibros_Class3] of  Nacionalidad
+
+	(nacionalidad "francesa")
+	(nacionalidad_autor
+		[recomendadorLibros_Class2]
+		[recomendadorLibros_Class1]))
+
+([recomendadorLibros_Class4] of  Epoca
+
+	(epoca "romantica")
+	(epoca_libro_autor
+		[recomendadorLibros_Class2]
+		[recomendadorLibros_Class1]))
