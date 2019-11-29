@@ -1,0 +1,893 @@
+; Wed Nov 27 20:49:40 CET 2019
+; 
+;+ (version "3.5")
+;+ (build "Build 663")
+
+
+(defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
+	(is-a USER)
+	(role abstract)
+	(single-slot idioma
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot tematica
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot anyo
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot epoca_libro_autor
+		(type INSTANCE)
+;+		(allowed-classes Libro Autor)
+;+		(inverse-slot de_epoca)
+		(create-accessor read-write))
+	(multislot de_tematica
+		(type INSTANCE)
+;+		(allowed-classes Tematica)
+;+		(inverse-slot tematica_libro)
+		(create-accessor read-write))
+	(single-slot es_popular
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot de_autor
+		(type INSTANCE)
+;+		(allowed-classes Autor)
+;+		(cardinality 1 1)
+;+		(inverse-slot autor_libro)
+		(create-accessor read-write))
+	(single-slot de_epoca
+		(type INSTANCE)
+;+		(allowed-classes Epoca)
+;+		(cardinality 1 1)
+;+		(inverse-slot epoca_libro_autor)
+		(create-accessor read-write))
+	(single-slot puntuacion
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot titulo
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot autor_libro
+		(type INSTANCE)
+;+		(allowed-classes Libro)
+;+		(inverse-slot de_autor)
+		(create-accessor read-write))
+	(multislot de_genero
+		(type INSTANCE)
+;+		(allowed-classes Genero)
+;+		(inverse-slot genero_libro)
+		(create-accessor read-write))
+	(multislot de_nacionalidad
+		(type INSTANCE)
+;+		(allowed-classes Nacionalidad)
+		(cardinality 1 ?VARIABLE)
+;+		(inverse-slot nacionalidad_autor)
+		(create-accessor read-write))
+	(single-slot epoca
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot tematica_libro
+		(type INSTANCE)
+;+		(allowed-classes Libro)
+;+		(inverse-slot de_tematica)
+		(create-accessor read-write))
+	(single-slot autor
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot en_idioma_original
+		(type INSTANCE)
+;+		(allowed-classes Idioma)
+;+		(cardinality 1 1)
+;+		(inverse-slot idioma_libro)
+		(create-accessor read-write))
+	(single-slot genero
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot nivel_lenguaje
+		(type SYMBOL)
+		(allowed-values bajo medio alto)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot nacionalidad_autor
+		(type INSTANCE)
+;+		(allowed-classes Autor)
+;+		(inverse-slot de_nacionalidad)
+		(create-accessor read-write))
+	(single-slot nacionalidad
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot num_paginas
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot idioma_libro
+		(type INSTANCE)
+;+		(allowed-classes Libro)
+;+		(inverse-slot en_idioma_original)
+		(create-accessor read-write))
+	(single-slot genero_libro
+		(type INSTANCE)
+;+		(allowed-classes Libro)
+;+		(cardinality 0 1)
+;+		(inverse-slot de_genero)
+		(create-accessor read-write)))
+
+(defclass Libro
+	(is-a USER)
+	(role concrete)
+	(multislot de_genero
+		(type INSTANCE)
+;+		(allowed-classes Genero)
+		(create-accessor read-write))
+	(single-slot anyo
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot num_paginas
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot es_popular
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot en_idioma_original
+		(type INSTANCE)
+;+		(allowed-classes Idioma)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot de_autor
+		(type INSTANCE)
+;+		(allowed-classes Autor)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot nivel_lenguaje
+		(type SYMBOL)
+		(allowed-values bajo medio alto)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot de_epoca
+		(type INSTANCE)
+;+		(allowed-classes Epoca)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot de_tematica
+		(type INSTANCE)
+;+		(allowed-classes Tematica)
+		(create-accessor read-write))
+	(single-slot puntuacion
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot titulo
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass Autor
+	(is-a USER)
+	(role concrete)
+	(single-slot es_popular
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot de_epoca
+		(type INSTANCE)
+;+		(allowed-classes Epoca)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot de_nacionalidad
+		(type INSTANCE)
+;+		(allowed-classes Nacionalidad)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(single-slot autor
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot autor_libro
+		(type INSTANCE)
+;+		(allowed-classes Libro)
+		(create-accessor read-write)))
+
+(defclass Genero
+	(is-a USER)
+	(role concrete)
+	(single-slot genero_libro
+		(type INSTANCE)
+;+		(allowed-classes Libro)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot genero
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass Nacionalidad
+	(is-a USER)
+	(role concrete)
+	(single-slot nacionalidad
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot nacionalidad_autor
+		(type INSTANCE)
+;+		(allowed-classes Autor)
+		(create-accessor read-write)))
+
+(defclass Idioma
+	(is-a USER)
+	(role concrete)
+	(single-slot idioma
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot idioma_libro
+		(type INSTANCE)
+;+		(allowed-classes Libro)
+		(create-accessor read-write)))
+
+(defclass Tematica
+	(is-a USER)
+	(role concrete)
+	(single-slot tematica
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot tematica_libro
+		(type INSTANCE)
+;+		(allowed-classes Libro)
+		(create-accessor read-write)))
+
+(defclass Epoca
+	(is-a USER)
+	(role concrete)
+	(single-slot epoca
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot epoca_libro_autor
+		(type INSTANCE)
+;+		(allowed-classes Libro Autor)
+		(create-accessor read-write)))
+
+
+
+
+
+
+
+(definstances instancies
+
+
+; Wed Nov 27 20:49:40 CET 2019
+; 
+;+ (version "3.5")
+;+ (build "Build 663")
+
+([recomendadorLibros_Class0] of  Genero
+
+	(genero "aventuras")
+	(genero_libro [recomendadorLibros_Class1]))
+
+([recomendadorLibros_Class1] of  Libro
+
+	(anyo 1844)
+	(de_autor [recomendadorLibros_Class2])
+	(de_epoca [recomendadorLibros_Class4])
+	(de_genero
+		[recomendadorLibros_Class0]
+		[recomendadorLibros_Class20001])
+	(en_idioma_original [recomendadorLibros_Class10000])
+	(es_popular TRUE)
+	(nivel_lenguaje alto)
+	(num_paginas 1990)
+	(puntuacion 10)
+	(titulo "El conde de Montecristo"))
+
+([recomendadorLibros_Class10000] of  Idioma
+
+	(idioma "frances")
+	(idioma_libro [recomendadorLibros_Class1]))
+
+([recomendadorLibros_Class10001] of  Epoca
+
+	(epoca "modernista"))
+
+([recomendadorLibros_Class10002] of  Epoca
+
+	(epoca "vanguardista"))
+
+([recomendadorLibros_Class10003] of  Epoca
+
+	(epoca "neoclásica"))
+
+([recomendadorLibros_Class10004] of  Epoca
+
+	(epoca "barroca"))
+
+([recomendadorLibros_Class10005] of  Epoca
+
+	(epoca "renacentista"))
+
+([recomendadorLibros_Class10006] of  Epoca
+
+	(epoca "medieval"))
+
+([recomendadorLibros_Class10007] of  Epoca
+
+	(epoca "clásica"))
+
+([recomendadorLibros_Class10008] of  Epoca
+
+	(epoca "preclásica"))
+
+([recomendadorLibros_Class2] of  Autor
+
+	(autor "Alexandre Dumas")
+	(autor_libro [recomendadorLibros_Class1])
+	(de_epoca [recomendadorLibros_Class4])
+	(de_nacionalidad [recomendadorLibros_Class3])
+	(es_popular TRUE))
+
+([recomendadorLibros_Class20001] of  Genero
+
+	(genero "romantica")
+	(genero_libro [recomendadorLibros_Class1]))
+
+([recomendadorLibros_Class20003] of  Libro
+
+	(anyo 1868)
+	(de_autor [recomendadorLibros_Class20004])
+	(de_epoca [recomendadorLibros_Class4])
+	(de_genero [recomendadorLibros_Class20007])
+	(en_idioma_original [recomendadorLibros_Class20006])
+	(nivel_lenguaje alto)
+	(num_paginas 2000)
+	(puntuacion 9)
+	(titulo "El Idiota"))
+
+([recomendadorLibros_Class20004] of  Autor
+
+	(autor "Fiodor Dostoyevski")
+	(autor_libro [recomendadorLibros_Class20003])
+	(de_epoca [recomendadorLibros_Class4])
+	(de_nacionalidad [recomendadorLibros_Class20005]))
+
+([recomendadorLibros_Class20005] of  Nacionalidad
+
+	(nacionalidad "rusa")
+	(nacionalidad_autor [recomendadorLibros_Class20004]))
+
+([recomendadorLibros_Class20006] of  Idioma
+
+	(idioma "ruso")
+	(idioma_libro [recomendadorLibros_Class20003]))
+
+([recomendadorLibros_Class20007] of  Genero
+
+	(genero "filosofica")
+	(genero_libro [recomendadorLibros_Class20003]))
+
+([recomendadorLibros_Class3] of  Nacionalidad
+
+	(nacionalidad "francesa")
+	(nacionalidad_autor
+		[recomendadorLibros_Class2]
+		[recomendadorLibros_Class1]))
+
+([recomendadorLibros_Class4] of  Epoca
+
+	(epoca "romantica")
+	(epoca_libro_autor
+		[recomendadorLibros_Class2]
+		[recomendadorLibros_Class1]
+		[recomendadorLibros_Class20004]
+		[recomendadorLibros_Class20003]))
+
+
+
+)
+
+
+
+
+
+
+(defclass Recomendacion 
+	(is-a USER)
+	(role concrete)
+	(slot contenido
+		(type INSTANCE)
+		(create-accessor read-write))
+	(slot puntuacion
+		(type INTEGER)
+		(create-accessor read-write))
+	(multislot justificaciones
+		(type STRING)
+		(create-accessor read-write))
+)
+
+(defmodule MAIN (export ?ALL))
+
+;;; Modulo de recopilacion de los datos del usuario
+(defmodule recopilacion-usuario
+	(import MAIN ?ALL)
+	(export ?ALL)
+)
+
+(defmodule recopilacion-prefs
+	(import MAIN ?ALL)
+	(import recopilacion-usuario deftemplate ?ALL)
+	(export ?ALL)
+)
+
+;;; Modulo de filtrado y procesado del contenido adequado al usuario
+(defmodule procesado
+	(import MAIN ?ALL)
+	(import recopilacion-usuario deftemplate ?ALL)
+	(import recopilacion-prefs deftemplate ?ALL)
+	(export ?ALL)
+)
+
+
+;;;  ----------------TEMPLATES---------------------
+;;;  ----------------------------------------------
+;;;  ----------------------------------------------
+
+
+(deftemplate MAIN::Usuario
+	(slot nombre (type STRING))
+	(slot sexo (type SYMBOL) (default desconocido))
+	(slot edad (type INTEGER) (default -1))
+)
+
+;;; Template para las preferencias del usuario
+(deftemplate MAIN::preferencias
+	(multislot generos-favoritos (type INSTANCE))
+	(multislot tematicas-favoritas (type INSTANCE))
+	(multislot nacionalidades (type INSTANCE))
+	(multislot idiomas (type INSTANCE))
+	(slot momento_lectura (type STRING))
+	
+	;Esto es provisional, podrian anyadirse/quitarse varios slots
+)
+
+
+;;;  ----------------PREGUNTAS---------------------
+;;;  ----------------------------------------------
+;;;  ----------------------------------------------
+
+
+
+;;; Funcion para hacer una pregunta con respuesta cualquiera
+(deffunction MAIN::pregunta-general (?pregunta)
+    (format t "%s " ?pregunta)
+	(bind ?respuesta (read))
+	(while (not (lexemep ?respuesta)) do
+		(format t "%s " ?pregunta)
+		(bind ?respuesta (read))
+    )
+	?respuesta
+)
+
+;;; Funcion para hacer una pregunta general con una serie de respuestas admitidas
+(deffunction MAIN::pregunta-opciones (?question $?allowed-values)
+   (format t "%s "?question)
+   (progn$ (?curr-value $?allowed-values)
+		(format t "[%s]" ?curr-value)
+	)
+   (printout t ": ")
+   (bind ?answer (read))
+   (if (lexemep ?answer) 
+       then (bind ?answer (lowcase ?answer)))
+   (while (not (member ?answer ?allowed-values)) do
+      (format t "%s "?question)
+	  (progn$ (?curr-value $?allowed-values)
+		(format t "[%s]" ?curr-value)
+	  )
+	  (printout t ": ")
+      (bind ?answer (read))
+      (if (lexemep ?answer) 
+          then (bind ?answer (lowcase ?answer))))
+   ?answer
+)
+
+;;; Funcion para hacer una pregunta de tipo si/no
+(deffunction MAIN::pregunta-si-no (?question)
+   (bind ?response (pregunta-opciones ?question si no))
+   (if (or (eq ?response si) (eq ?response s))
+       then TRUE 
+       else FALSE)
+)
+
+;;; Funcion para hacer una pregunta con respuesta numerica unica
+(deffunction MAIN::pregunta-numerica (?pregunta ?rangini ?rangfi)
+	(format t "%s [%d, %d] " ?pregunta ?rangini ?rangfi)
+	(bind ?respuesta (read))
+	(while (not(and(>= ?respuesta ?rangini)(<= ?respuesta ?rangfi))) do
+		(format t "%s [%d, %d] " ?pregunta ?rangini ?rangfi)
+		(bind ?respuesta (read))
+	)
+	?respuesta
+)
+
+;;; Funcion para hacer pregunta con indice de respuestas posibles
+(deffunction MAIN::pregunta-indice (?pregunta $?valores-posibles)
+    (bind ?linea (format nil "%s" ?pregunta))
+    (printout t ?linea crlf)
+    (progn$ (?var ?valores-posibles) 
+            (bind ?linea (format nil "  %d. %s" ?var-index ?var))
+            (printout t ?linea crlf)
+    )
+    (bind ?respuesta (pregunta-numerica "Escoge una opci�n:" 1 (length$ ?valores-posibles)))
+	?respuesta
+)
+
+;;; Funcion para hacer una pregunta multi-respuesta con indices
+(deffunction MAIN::pregunta-multi (?pregunta $?valores-posibles)
+    (bind ?linea (format nil "%s" ?pregunta))
+    (printout t ?linea crlf)
+    (progn$ (?var ?valores-posibles) 
+            (bind ?linea (format nil "  %d. %s" ?var-index ?var))
+            (printout t ?linea crlf)
+    )
+    (format t "%s" "Indica los n�meros separados por un espacio: ")
+    (bind ?resp (readline))
+    (bind ?numeros (str-explode ?resp))
+    (bind $?lista (create$ ))
+    (progn$ (?var ?numeros) 
+        (if (and (integerp ?var) (and (>= ?var 1) (<= ?var (length$ ?valores-posibles))))
+            then 
+                (if (not (member$ ?var ?lista))
+                    then (bind ?lista (insert$ ?lista (+ (length$ ?lista) 1) ?var))
+                )
+        ) 
+    )
+    ?lista
+)
+
+
+;;;  ----------------------------------------------
+;;;  ----------------------------------------------
+;;;  ----------------------------------------------
+
+
+
+
+(defrule MAIN::initialRule "Regla inicial"
+	(declare (salience 10))
+	=>
+	(printout t "====================================================================" crlf)
+  	(printout t "=        			            DMA Books Recomendator				            =" crlf)
+	(printout t "====================================================================" crlf)
+  	(printout t crlf)  	
+	(printout t "Que sepas que DMA Books va a usar tus datos para vendérselos al gobierno chino, pringao." crlf)
+	(printout t crlf)
+    ;(focus recopilacion-usuario)
+    (focus recopilacion-prefs)
+)
+
+;;;  ----------------------------------------------
+;;;  ----------------------------------------------
+;;;  ----------------------------------------------
+
+
+(defrule recopilacion-usuario::establecer-nombre "Establece el nombre de usuario, es la primera pregunta"
+	(not (Usuario))
+	=>
+	(bind ?nombre (pregunta-general "Nombre: "))
+	(assert (Usuario (nombre ?nombre)))
+)
+
+(defrule recopilacion-usuario::establecer-edad "Establece la edad del usuario"
+	?u <- (Usuario (edad ?edad))
+	(test (< ?edad 0))
+	=>
+	(bind ?e (pregunta-numerica "Edad: " 1 110))
+	(modify ?u (edad ?e))
+)
+
+(defrule recopilacion-usuario::establecer-sexo "Establece el sexo del usuario"
+	?u <- (Usuario (sexo desconocido))
+	=>
+	(bind ?s (pregunta-opciones "Sexo: " hombre mujer))
+	(modify ?u (sexo ?s))
+)
+
+(defrule recopilacion-usuario::pasar-a-preferencias "Pasa a la recopilacion de preferencias"
+	(declare (salience -10))
+	?u <- (Usuario (edad ?e) (sexo ~desconocido))
+	(test (> ?e 0))
+	=>
+    (printout t "HAIL" crlf)
+	(focus recopilacion-prefs)
+)
+
+;;;  ----------------------------------------------
+;;;  ----------------------------------------------
+;;;  ----------------------------------------------
+
+(deffacts recopilacion-prefs::hechos-iniciales "Establece hechos para poder recopilar informacion"
+	(genero-favorito ask)
+	(tematica-favorita ask)
+	(nacionalidad ask)
+	(vo ask)
+	(aclamado-critica ask)
+	(clasicos ask)
+    (habito-lectura ask)
+	(preferencias )
+)
+
+;;;  ----------------------------------------------
+
+(defrule recopilacion-prefs::preguntar-genero-favorito "Pregunta al usuario si tiene algun genero favorito"
+	?hecho <- (genero-favorito ask)
+	;(vo ~ask)
+	;(idioma ~ask)
+	(nacionalidad ~ask&~choose)
+	=>
+	(bind ?respuesta (pregunta-si-no "�Tiene preferencias en cuanto a los g�neros? "))
+	(retract ?hecho)
+	(if (eq ?respuesta TRUE)
+		then (assert (genero-favorito choose))
+		else 
+		(assert (genero-favorito FALSE))
+	)
+)
+
+(defrule recopilacion-prefs::establecer-genero-favorito "Establece el genero favorito del usuario"
+	?hecho <- (genero-favorito choose)
+	?pref <- (preferencias)
+	=>
+	(bind $?obj-generos (find-all-instances ((?inst Genero)) TRUE))
+	(bind $?nom-generos (create$ ))
+	(loop-for-count (?i 1 (length$ $?obj-generos)) do
+		(bind ?curr-obj (nth$ ?i ?obj-generos))
+		(bind ?curr-nom (send ?curr-obj get-genero))
+		(bind $?nom-generos(insert$ $?nom-generos (+ (length$ $?nom-generos) 1) ?curr-nom))
+	)
+	(bind ?escogido (pregunta-multi "Escoja sus g�neros favoritos: " $?nom-generos))
+	
+	(bind $?respuesta (create$ ))
+	(loop-for-count (?i 1 (length$ ?escogido)) do
+		(bind ?curr-index (nth$ ?i ?escogido))
+		(bind ?curr-gen (nth$ ?curr-index ?obj-generos))
+		(bind $?respuesta(insert$ $?respuesta (+ (length$ $?respuesta) 1) ?curr-gen))
+	)
+	
+	(retract ?hecho)
+	(assert (genero-favorito TRUE))
+	(modify ?pref (generos-favoritos $?respuesta))
+)
+
+;;;  ----------------------------------------------
+
+(defrule recopilacion-prefs::preguntar-nacionalidad "Pregunta si se tiene una nacionalidad para el contenido favorita"
+	;(formatos ~ask)
+	;(idioma ~ask)
+	;(vo ~ask)
+	?hecho <- (nacionalidad ask)
+	=>
+	(bind ?respuesta (pregunta-si-no "Tiene preferencias en cuanto a la nacionalidad de los contenidos?"))
+	(retract ?hecho)
+	(if (eq ?respuesta TRUE)
+		then (assert (nacionalidad choose))
+		else (assert (nacionalidad FALSE))
+	)
+)
+
+(defrule recopilacion-prefs::establecer-nacionalidad "Establece las nacionalidades favoritas del usuario"
+	?hecho <- (nacionalidad choose)
+	?pref <- (preferencias)
+	=>
+	(bind $?obj-nacion (find-all-instances ((?inst Nacionalidad)) TRUE))
+	(bind $?nom-nacion (create$ ))
+	(loop-for-count (?i 1 (length$ $?obj-nacion)) do
+		(bind ?curr-obj (nth$ ?i ?obj-nacion))
+		(bind ?curr-nom (send ?curr-obj get-nacionalidad))
+		(bind $?nom-nacion (insert$ $?nom-nacion (+ (length$ $?nom-nacion) 1) ?curr-nom))
+	)
+	(bind ?escogido (pregunta-multi "Escoja las nacionalidades que prefiera: " $?nom-nacion))
+	
+	(bind $?respuesta (create$ ))
+	(loop-for-count (?i 1 (length$ ?escogido)) do
+		(bind ?curr-index (nth$ ?i ?escogido))
+		(bind ?curr-gen (nth$ ?curr-index ?obj-nacion))
+		(bind $?respuesta(insert$ $?respuesta (+ (length$ $?respuesta) 1) ?curr-gen))
+	)
+	
+	(retract ?hecho)
+	(assert (nacionalidad TRUE))
+	(modify ?pref (nacionalidades $?respuesta))
+)
+
+; si el idioma original es el mismo que el de la nacionalidad, tambien aumentamos algunos puntos
+
+;;;  ----------------------------------------------
+
+(defrule recopilacion-prefs::aclamado-critica "Establece si al usuario tiene un gusto como el de la cr�tica"
+	?hecho <- (aclamado-critica ask)
+	(nacionalidad TRUE|FALSE)
+	=>
+	(bind ?respuesta (pregunta-si-no "Sueles leer BestSellers?"))
+	(retract ?hecho)
+	(if (eq ?respuesta TRUE)
+		then (assert (aclamado-critica TRUE))
+		else (assert (aclamado-critica FALSE))
+	)
+)
+
+;;;  ----------------------------------------------
+
+(defrule recopilacion-prefs::clasicos "Establece si el usuario tiene predilecci�n por los cl�sicos"
+	?hecho <- (clasicos ask)
+	(nacionalidad TRUE|FALSE)
+	=>
+	(bind ?respuesta (pregunta-si-no "�Le gustan los contenidos cl�sicos?"))
+	(retract ?hecho)
+	(if (eq ?respuesta TRUE)
+		then (assert (clasicos TRUE))
+		else (assert (clasicos FALSE))
+	)
+)
+
+;;;  ----------------------------------------------
+
+(defrule recopilacion-prefs::version-original "Establece version-original"
+	?hecho <- (vo ask)
+	(nacionalidad TRUE|FALSE)
+	=>
+	(bind ?respuesta (pregunta-si-no "Sueles leer libros en version original?"))
+	(retract ?hecho)
+	(if (eq ?respuesta TRUE)
+		then (assert (vo choose))
+		else (assert (vo FALSE))
+	)
+)
+
+
+(defrule recopilacion-prefs::establecer-idiomas "Establece las nacionalidades favoritas del usuario"
+	?hecho <- (vo choose)
+	?pref <- (preferencias)
+	=>
+	(bind $?obj-idioma (find-all-instances ((?inst Idioma)) TRUE))
+	(bind $?nom-idioma (create$ ))
+	(loop-for-count (?i 1 (length$ $?obj-idioma)) do
+		(bind ?curr-obj (nth$ ?i ?obj-idioma))
+		(bind ?curr-nom (send ?curr-obj get-idioma))
+		(bind $?nom-idioma(insert$ $?nom-idioma (+ (length$ $?nom-idioma) 1) ?curr-nom))
+	)
+	(bind ?escogido (pregunta-multi "Que idiomas entiendes? : " $?nom-idioma))
+	
+	(bind $?respuesta (create$ ))
+	(loop-for-count (?i 1 (length$ ?escogido)) do
+		(bind ?curr-index (nth$ ?i ?escogido))
+		(bind ?curr-gen (nth$ ?curr-index ?obj-idioma))
+		(bind $?respuesta(insert$ $?respuesta (+ (length$ $?respuesta) 1) ?curr-gen))
+	)
+	
+	(retract ?hecho)
+    (assert vo TRUE)
+	;(assert (idioma TRUE))
+	(modify ?pref (idiomas $?respuesta))
+)
+
+;;;  ---------------------------------------------- 
+
+(defrule recopilacion-prefs::preguntar-tematica-favorita "Pregunta al usuario si tiene alguna tematica favorita"
+	?hecho <- (tematica-favorita ask)
+	(nacionalidad ~ask&~choose)
+	=>
+	(bind ?respuesta (pregunta-si-no "Prefieres alguna tematica particular? "))
+	(retract ?hecho)
+	(if (eq ?respuesta TRUE)
+		then (assert (tematica-favorita choose))
+		else 
+		(assert (tematica-favorita FALSE))
+	)
+)
+		
+
+(defrule recopilacion-prefs::establecer-tematica-favorita "Establece la tematica favorita del usuario"
+	?hecho <- (tematica-favorita choose)
+	?pref <- (preferencias)
+	=>
+	(bind $?obj-tem (find-all-instances ((?inst Tematica)) TRUE))
+	(bind $?nom-tem (create$ ))
+	(loop-for-count (?i 1 (length$ $?obj-tem)) do
+		(bind ?curr-obj (nth$ ?i ?obj-tem))
+		(bind ?curr-nom (send ?curr-obj get-tematica))
+		(bind $?nom-tem(insert$ $?nom-tem (+ (length$ $?nom-tem) 1) ?curr-nom))
+	)
+	(bind ?escogido (pregunta-multi "Escoja sus tematicas favoritas: " $?nom-tem))
+	
+	(bind $?respuesta (create$ ))
+	(loop-for-count (?i 1 (length$ ?escogido)) do
+		(bind ?curr-index (nth$ ?i ?escogido))
+		(bind ?curr-gen (nth$ ?curr-index ?obj-tem))
+		(bind $?respuesta(insert$ $?respuesta (+ (length$ $?respuesta) 1) ?curr-gen))
+	)
+	
+	(retract ?hecho)
+	(assert (tematica-favorita TRUE))
+	(modify ?pref (tematicas-favoritas $?respuesta))
+)
+
+;;;  ---------------------------------------------- 
+
+(defrule recopilacion-prefs::habito-lectura "Pregunta al usuario si habito lectura"
+	?hecho <- (habito-lectura ask)
+	(nacionalidad ~ask&~choose)
+	=>
+	(bind ?respuesta (pregunta-si-no "Tienes un habito de lectura? "))
+	(retract ?hecho)
+	(if (eq ?respuesta TRUE)
+		then (assert (habito-lectura choose))
+		else 
+		(assert (habito-lectura FALSE))
+	)
+)
+
+(defrule recopilacion-prefs::dias-horas-semana "Pregunta al usuario si habito lectura"
+	?hecho <- (habito-lectura choose)
+	=>
+	(bind ?d (pregunta-numerica "Cuantos dias a la semana sueles leer?: " 1 7))
+    (bind ?h (pregunta-numerica "Cuantas horas dedicas a leer en esos dias?: " 1 24))
+
+	(retract ?hecho)
+	(assert (habito-lectura TRUE))
+    (assert (horas-semana (* ?d ?h)))
+)
+
+;;;  ---------------------------------------------- 
+
+
+(defrule recopilacion-prefs::pasar_modulo_procesado "Pasa al modulo de procesado de datos"
+	(declare (salience -10))
+	?h1 <- (genero-favorito TRUE|FALSE)
+	?h3 <- (tematica-favorita TRUE|FALSE)
+	?h6 <- (nacionalidad TRUE|FALSE)
+	(vo TRUE|FALSE)
+	=>
+	(printout t "Procesando datos..." crlf)
+	(focus procesado)
+)
+
+
+;;;  ----------------------------------------------
+;;;  ----------------------------------------------
+;;;  ----------------------------------------------
+
+
+
+
+
+
+
+
+;;;  ----------------------------------------------
+;;;  ----------------------------------------------
+;;;  ----------------------------------------------
+(defrule MAIN::initialRule2 "Regla inicial"
+	(not (puto_tt ok))
+	=>
+	
+	(printout t "Puta vida tt." crlf)
+	(printout t crlf)
+    (assert (puto_tt ok))
+    (printout t (pregunta-general "como se llama?") crlf)
+)
