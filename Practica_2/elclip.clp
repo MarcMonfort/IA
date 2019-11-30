@@ -443,6 +443,48 @@
 	(export ?ALL)
 )
 
+;;; Modulo de generacion de soluciones
+(defmodule generacion
+	(import MAIN ?ALL)
+	(export ?ALL)
+)
+
+
+;;; Modulo de presentacion de resultados
+(defmodule presentacion
+	(import MAIN ?ALL)
+	(export ?ALL)
+)
+
+
+;;;  ----------------message---------------------
+;;;  ----------------------------------------------
+;;;  ----------------------------------------------
+
+
+;; Imprime los datos de un contenido
+(defmessage-handler MAIN::Libro imprimir ()
+	(format t "Titulo: %s %n" ?self:titulo)
+	(printout t crlf)
+	(format t "Anyo: %d" ?self:anyo)
+	(printout t crlf)
+)
+
+(defmessage-handler MAIN::Recomendacion imprimir ()
+	(printout t "-----------------------------------" crlf)
+	(printout t (send ?self:contenido imprimir))
+	(printout t crlf)
+	(format t "Nivel de recomendaci�n: %d %n" ?self:puntuacion)
+	(printout t "Justificaci�n: " crlf)
+	(progn$ (?curr-just ?self:justificaciones)
+		(printout t ?curr-just crlf)
+	)
+	(printout t crlf)
+	(printout t "-----------------------------------" crlf)
+)
+
+
+
 
 ;;;  ----------------TEMPLATES---------------------
 ;;;  ----------------------------------------------
@@ -466,12 +508,35 @@
 	;Esto es provisional, podrian anyadirse/quitarse varios slots
 )
 
+;;; Template para una lista de recomendaciones sin orden
+(deftemplate MAIN::lista-rec-desordenada
+	(multislot recomendaciones (type INSTANCE))
+)
+
+;;; Template para una lista de recomendaciones con orden
+(deftemplate MAIN::lista-rec-ordenada
+	(multislot recomendaciones (type INSTANCE))
+)
 
 ;;;  ----------------PREGUNTAS---------------------
 ;;;  ----------------------------------------------
 ;;;  ----------------------------------------------
 
-
+;;; Funcion que retorna el elemento con puntuacion maxima
+(deffunction maximo-puntuacion ($?lista)
+	(bind ?maximo -1)
+	(bind ?elemento nil)
+	(progn$ (?curr-rec $?lista)
+		(bind ?curr-cont (send ?curr-rec get-contenido))
+		(bind ?curr-punt (send ?curr-rec get-puntuacion))
+		(if (> ?curr-punt ?maximo)
+			then 
+			(bind ?maximo ?curr-punt)
+			(bind ?elemento ?curr-rec)
+		)
+	)
+	?elemento
+)
 
 ;;; Funcion para hacer una pregunta con respuesta cualquiera
 (deffunction MAIN::pregunta-general (?pregunta)
@@ -577,8 +642,8 @@
   	(printout t crlf)  	
 	(printout t "Que sepas que DMA Books va a usar tus datos para vendérselos al gobierno chino, pringao." crlf)
 	(printout t crlf)
-    ;(focus recopilacion-usuario)
-    (focus recopilacion-prefs)
+    (focus recopilacion-usuario)
+    ;(focus recopilacion-prefs)
 )
 
 ;;;  ----------------------------------------------
@@ -751,7 +816,7 @@
 	?hecho <- (vo ask)
 	(nacionalidad TRUE|FALSE)
 	=>
-	(bind ?respuesta (pregunta-si-no "Sueles leer libros en version original?"))
+	(bind ?respuesta (pregunta-si-no "Prefieres leer libros en version original?"))
 	(retract ?hecho)
 	(if (eq ?respuesta TRUE)
 		then (assert (vo choose))
@@ -781,7 +846,7 @@
 	)
 	
 	(retract ?hecho)
-    (assert vo TRUE)
+    (assert (vo TRUE))
 	;(assert (idioma TRUE))
 	(modify ?pref (idiomas $?respuesta))
 )
@@ -873,15 +938,141 @@
 ;;;  ----------------------------------------------
 
 
+(defrule procesado::anadir-libros "Se a�ade todas los libros, luego se filtran"
+	=>
+	(bind $?lista (find-all-instances ((?inst Libro)) TRUE))
+	(progn$ (?curr-con ?lista)
+		(make-instance (gensym) of Recomendacion (contenido ?curr-con) (puntuacion (send ?curr-con get-puntuacion)))
+		(printout t "-->" ?curr-con "<--" crlf)
+	)	
+)
+
+;;;  ----------------------------------------------
+
+(defrule procesado::aux-genero "Crea hechos para poder procesar los generos favoritos"
+	(preferencias (generos-favoritos $?gen))
+	?hecho <- (genero-favorito ?aux)
+	(test (or (eq ?aux TRUE) (eq ?aux FALSE)))
+	=>
+	(retract ?hecho)
+	(if (eq ?aux TRUE)then 
+		(progn$ (?curr-gen $?gen)
+			(assert (genero-favorito ?curr-gen))
+		)
+	)
+)
 
 
+(defrule procesado::valorar-genero-favorito-peliculas "Se mejora la puntuacion de las peliculas de genero favorito"
+	?hecho <- (genero-favorito ?gen)
+	?cont <-(object (is-a Libro) (de_genero $?generos))
+	(test (member$ ?gen $?generos))
+	?rec <- (object (is-a Recomendacion) (contenido ?conta) (puntuacion ?p) (justificaciones $?just))
+	(test (eq (instance-name ?cont) (instance-name ?conta)))
+	;?rec <- (object (is-a Recomendacion) (contenido ?cont) (puntuacion ?p) (justificaciones $?just)) ;;;no es lo mismo??
+	(not (valorado-genero-favorito ?cont ?gen))
+	=>
+	(bind ?p (+ ?p 75))
+	(send ?rec put-puntuacion ?p)
+	(bind ?text (str-cat "Pertenece al g�nero favorito " (send ?gen get-genero) " -> +75"))
+	(bind $?just (insert$ $?just (+ (length$ $?just) 1) ?text))
+	(send ?rec put-justificaciones $?just)
+	(assert (valorado-genero-favorito ?cont ?gen))
+)
+
+;;;  ----------------------------------------------
+
+(defrule procesado::aux-tematica "Crea hechos para poder procesar las tematicas favoritas"
+	(preferencias (tematicas-favoritas $?tem))
+	?hecho <- (tematica-favorita ?aux)
+	(test (or (eq ?aux TRUE) (eq ?aux FALSE)))
+	=>
+	(retract ?hecho)
+	(if (eq ?aux TRUE)then 
+		(progn$ (?curr-tem $?tem)
+			(assert (tematica ?curr-tem))
+		)
+	)
+)
+
+;;;  ----------------------------------------------
 
 
+;;;  ----------------------------------------------
 
+
+;;;  ----------------------------------------------
+
+(defrule procesado::pasar-a-generacion "Pasa al modulo de generacion de respuestas"
+	(declare(salience -10))
+	=>
+	(printout t "Generando respuesta..." crlf)
+	(focus generacion)
+)
 
 ;;;  ----------------------------------------------
 ;;;  ----------------------------------------------
 ;;;  ----------------------------------------------
+
+(defrule generacion::crea-lista-recomendaciones "Se crea una lista de recomendaciones para ordenarlas"
+	(not (lista-rec-desordenada))
+	=>
+	(assert (lista-rec-desordenada))
+)
+
+(defrule generacion::anyadir-recomendacion "Anyade una recomendacion a la lista de recomendaciones"
+	(declare (salience 10))
+	?rec <- (object (is-a Recomendacion))
+	?hecho <- (lista-rec-desordenada (recomendaciones $?lista))
+	(test (not (member$ ?rec $?lista)))
+	=>
+	(bind $?lista (insert$ $?lista (+ (length$ $?lista) 1) ?rec))
+	(modify ?hecho (recomendaciones $?lista))
+)
+
+(defrule generacion::crea-lista-ordenada "Se crea una lista ordenada de contenido"
+	(not (lista-rec-ordenada))
+	(lista-rec-desordenada (recomendaciones $?lista))
+	=>
+	;;; Hacemos una ordenacion buscando maximo a cada paso (lento per simple de implementar)
+	(bind $?resultado (create$ ))
+	(while (and (not (eq (length$ $?lista) 0)) (< (length$ $?resultado) 3))  do
+		(bind ?curr-rec (maximo-puntuacion $?lista))
+		(bind $?lista (delete-member$ $?lista ?curr-rec))
+		(bind $?resultado (insert$ $?resultado (+ (length$ $?resultado) 1) ?curr-rec))
+	)
+	(assert (lista-rec-ordenada (recomendaciones $?resultado)))
+)
+
+
+(defrule generacion::pasar-a-presentacion "Se pasa al modulo de presentacion"
+	(lista-rec-ordenada)
+	=>
+	(focus presentacion)
+)
+
+;;;  ----------------------------------------------
+;;;  ----------------------------------------------
+;;;  ----------------------------------------------
+
+
+;;; Modulo de presentacion de resultados ----------------------------------------------------
+
+(defrule presentacion::mostrar-respuesta "Muestra el contenido escogido"
+	(lista-rec-ordenada (recomendaciones $?resultado))
+	(Usuario (nombre ?nombre))
+	(not (final))
+	=>
+	(printout t crlf)
+	(format t "%s, esta es nuestra recomendacion para usted. Esperamos que la disfrute!" ?nombre)
+	(printout t crlf)
+	(progn$ (?curr-dia $?resultado)
+		(printout t (send ?curr-dia imprimir))
+	)
+	(assert (final))
+)
+
+
 (defrule MAIN::initialRule2 "Regla inicial"
 	(not (puto_tt ok))
 	=>

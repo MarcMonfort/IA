@@ -1,4 +1,4 @@
-; Wed Nov 27 20:49:40 CET 2019
+; Sat Nov 30 13:54:22 CET 2019
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -20,16 +20,16 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[recomendadorLibros_ProjectKB_Class10195]
-		[recomendadorLibros_ProjectKB_Class10196]
-		[recomendadorLibros_ProjectKB_Class10197]
-		[recomendadorLibros_ProjectKB_Class10198]
-		[recomendadorLibros_ProjectKB_Class10199]
-		[recomendadorLibros_ProjectKB_Class10200]
-		[recomendadorLibros_ProjectKB_Class10201]
-		[recomendadorLibros_ProjectKB_Class10202]
-		[recomendadorLibros_ProjectKB_Class10203]
-		[recomendadorLibros_ProjectKB_Class10204]))
+		[recomendadorLibros_ProjectKB_Class10123]
+		[recomendadorLibros_ProjectKB_Class10124]
+		[recomendadorLibros_ProjectKB_Class10125]
+		[recomendadorLibros_ProjectKB_Class10126]
+		[recomendadorLibros_ProjectKB_Class10127]
+		[recomendadorLibros_ProjectKB_Class10128]
+		[recomendadorLibros_ProjectKB_Class10129]
+		[recomendadorLibros_ProjectKB_Class10130]
+		[recomendadorLibros_ProjectKB_Class10131]
+		[recomendadorLibros_ProjectKB_Class10132]))
 
 ([CLSES_TAB] of  Widget
 
@@ -69,6 +69,9 @@
 ([INSTANCES_TAB] of  Widget
 
 	(widget_class_name "edu.stanford.smi.protege.widget.InstancesTab"))
+
+([KB_083257_Class0] of  Map
+)
 
 ([KB_141433_Class0] of  String
 
@@ -170,9 +173,6 @@
 	(name "classes_file_name")
 	(string_value "recomendadorLibros.pont"))
 
-([KB_674740_Class0] of  Map
-)
-
 ([LAYOUT_PROPERTIES] of  Property_List
 
 	(name "layout properties")
@@ -256,8 +256,8 @@
 	(browser_slot_names [BROWSER_SLOT_NAMES])
 	(customized_instance_widgets
 		[INSTANCE_ANNOTATION_FORM_WIDGET]
-		[STANDARD_SLOT_FORM_WIDGET]
 		[STANDARD_FACET_FORM_WIDGET]
+		[STANDARD_SLOT_FORM_WIDGET]
 		[PAL_FORM_WIDGET]
 		[STANDARD_CLASS_FORM_WIDGET]
 		[recomendadorLibros_ProjectKB_Class20112])
@@ -294,19 +294,55 @@
 
 	(name "SearchTab_Query"))
 
-([recomendadorLibros_ProjectKB_Class10125] of  Widget
+([recomendadorLibros_ProjectKB_Class10123] of  String
 
-	(height 60)
-	(is_hidden FALSE)
-	(name "nivel_lenguaje")
-	(property_list [recomendadorLibros_ProjectKB_Class10126])
-	(widget_class_name "edu.stanford.smi.protege.widget.TextFieldWidget")
-	(width 200)
-	(x 0)
-	(y 370))
+	(name ":INSTANCE-ANNOTATION")
+	(string_value "%3AANNOTATION-TEXT"))
 
-([recomendadorLibros_ProjectKB_Class10126] of  Property_List
-)
+([recomendadorLibros_ProjectKB_Class10124] of  String
+
+	(name "Autor")
+	(string_value "autor"))
+
+([recomendadorLibros_ProjectKB_Class10125] of  String
+
+	(name "Genero")
+	(string_value "genero"))
+
+([recomendadorLibros_ProjectKB_Class10126] of  String
+
+	(name "Epoca")
+	(string_value "epoca"))
+
+([recomendadorLibros_ProjectKB_Class10127] of  String
+
+	(name ":PAL-CONSTRAINT")
+	(string_value "%3APAL-NAME"))
+
+([recomendadorLibros_ProjectKB_Class10128] of  String
+
+	(name ":META-CLASS")
+	(string_value "%3ANAME"))
+
+([recomendadorLibros_ProjectKB_Class10129] of  String
+
+	(name "Idioma")
+	(string_value "idioma"))
+
+([recomendadorLibros_ProjectKB_Class10130] of  String
+
+	(name "Tematica")
+	(string_value "tematica"))
+
+([recomendadorLibros_ProjectKB_Class10131] of  String
+
+	(name "Libro")
+	(string_value "titulo"))
+
+([recomendadorLibros_ProjectKB_Class10132] of  String
+
+	(name "Nacionalidad")
+	(string_value "nacionalidad"))
 
 ([recomendadorLibros_ProjectKB_Class10136] of  Widget
 
@@ -321,56 +357,6 @@
 
 ([recomendadorLibros_ProjectKB_Class10137] of  Property_List
 )
-
-([recomendadorLibros_ProjectKB_Class10195] of  String
-
-	(name ":INSTANCE-ANNOTATION")
-	(string_value "%3AANNOTATION-TEXT"))
-
-([recomendadorLibros_ProjectKB_Class10196] of  String
-
-	(name "Autor")
-	(string_value "autor"))
-
-([recomendadorLibros_ProjectKB_Class10197] of  String
-
-	(name "Epoca")
-	(string_value "epoca"))
-
-([recomendadorLibros_ProjectKB_Class10198] of  String
-
-	(name "Genero")
-	(string_value "genero"))
-
-([recomendadorLibros_ProjectKB_Class10199] of  String
-
-	(name ":META-CLASS")
-	(string_value "%3ANAME"))
-
-([recomendadorLibros_ProjectKB_Class10200] of  String
-
-	(name ":PAL-CONSTRAINT")
-	(string_value "%3APAL-NAME"))
-
-([recomendadorLibros_ProjectKB_Class10201] of  String
-
-	(name "Idioma")
-	(string_value "idioma"))
-
-([recomendadorLibros_ProjectKB_Class10202] of  String
-
-	(name "Tematica")
-	(string_value "tematica"))
-
-([recomendadorLibros_ProjectKB_Class10203] of  String
-
-	(name "Libro")
-	(string_value "titulo"))
-
-([recomendadorLibros_ProjectKB_Class10204] of  String
-
-	(name "Nacionalidad")
-	(string_value "nacionalidad"))
 
 ([recomendadorLibros_ProjectKB_Class11] of  Widget
 
@@ -570,20 +556,6 @@
 	(boolean_value FALSE)
 	(name "ButtonDisplayed-Delete Instance"))
 
-([recomendadorLibros_ProjectKB_Class20133] of  Widget
-
-	(height 60)
-	(is_hidden FALSE)
-	(name "nivel_lenguaje")
-	(property_list [recomendadorLibros_ProjectKB_Class20134])
-	(widget_class_name "edu.stanford.smi.protege.widget.TextFieldWidget")
-	(width 200)
-	(x 390)
-	(y 310))
-
-([recomendadorLibros_ProjectKB_Class20134] of  Property_List
-)
-
 ([recomendadorLibros_ProjectKB_Class20135] of  Widget
 
 	(height 60)
@@ -634,33 +606,6 @@
 	(name "ButtonDisplayed-View References to Value"))
 
 ([recomendadorLibros_ProjectKB_Class20142] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-Delete Instance"))
-
-([recomendadorLibros_ProjectKB_Class20143] of  Widget
-
-	(height 120)
-	(is_hidden FALSE)
-	(name "de_nacionalidad")
-	(property_list [recomendadorLibros_ProjectKB_Class20144])
-	(widget_class_name "edu.stanford.smi.protege.widget.InstanceListWidget")
-	(width 200)
-	(x 400)
-	(y 0))
-
-([recomendadorLibros_ProjectKB_Class20144] of  Property_List
-
-	(properties
-		[recomendadorLibros_ProjectKB_Class20145]
-		[recomendadorLibros_ProjectKB_Class20146]))
-
-([recomendadorLibros_ProjectKB_Class20145] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-View References to Value"))
-
-([recomendadorLibros_ProjectKB_Class20146] of  Boolean
 
 	(boolean_value FALSE)
 	(name "ButtonDisplayed-Delete Instance"))
