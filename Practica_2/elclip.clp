@@ -482,8 +482,8 @@
 	(printout t "-----------------------------------" crlf)
 	(printout t (send ?self:contenido imprimir))
 	(printout t crlf)
-	(format t "Nivel de recomendaci�n: %d %n" ?self:puntuacion)
-	(printout t "Justificaci�n: " crlf)
+	(format t "Nivel de recomendacion: %d %n" ?self:puntuacion)
+	(printout t "Justificacion: " crlf)
 	(progn$ (?curr-just ?self:justificaciones)
 		(printout t ?curr-just crlf)
 	)
@@ -618,7 +618,7 @@
             (bind ?linea (format nil "  %d. %s" ?var-index ?var))
             (printout t ?linea crlf)
     )
-    (format t "%s" "Indica los n�meros separados por un espacio: ")
+    (format t "%s" "Indica los numeros separados por un espacio: ")
     (bind ?resp (readline))
     (bind ?numeros (str-explode ?resp))
     (bind $?lista (create$ ))
@@ -713,7 +713,7 @@
 	;(idioma ~ask)
 	(nacionalidad ~ask&~choose)
 	=>
-	(bind ?respuesta (pregunta-si-no "�Tiene preferencias en cuanto a los g�neros? "))
+	(bind ?respuesta (pregunta-si-no "Tiene preferencias en cuanto a los generos? "))
 	(retract ?hecho)
 	(if (eq ?respuesta TRUE)
 		then (assert (genero-favorito choose))
@@ -755,7 +755,7 @@
 	;(vo ~ask)
 	?hecho <- (nacionalidad ask)
 	=>
-	(bind ?respuesta (pregunta-si-no "Tiene preferencias en cuanto a la nacionalidad de los contenidos?"))
+	(bind ?respuesta (pregunta-si-no "Tiene preferencias en cuanto a la nacionalidad de los libros?"))
 	(retract ?hecho)
 	(if (eq ?respuesta TRUE)
 		then (assert (nacionalidad choose))
@@ -806,11 +806,11 @@
 
 ;;;  ----------------------------------------------
 
-(defrule recopilacion-prefs::clasicos "Establece si el usuario tiene predilecci�n por los cl�sicos"
+(defrule recopilacion-prefs::clasicos "Establece si el usuario tiene predileccion por los clasicos"
 	?hecho <- (clasicos ask)
 	(nacionalidad TRUE|FALSE)
 	=>
-	(bind ?respuesta (pregunta-si-no "�Le gustan los contenidos cl�sicos?"))
+	(bind ?respuesta (pregunta-si-no "Le gustan los libros clasicos?"))
 	(retract ?hecho)
 	(if (eq ?respuesta TRUE)
 		then (assert (clasicos TRUE))
@@ -971,7 +971,7 @@
 )
 
 
-(defrule procesado::valorar-genero-favorito-peliculas "Se mejora la puntuacion de las peliculas de genero favorito"
+(defrule procesado::valorar-genero-favorito-libros "Se mejora la puntuacion de los libros de genero favorito"
 	?hecho <- (genero-favorito ?gen)
 	?cont <-(object (is-a Libro) (de_genero $?generos))
 	(test (member$ ?gen $?generos))
@@ -1080,13 +1080,3 @@
 	(assert (final))
 )
 
-
-(defrule MAIN::initialRule2 "Regla inicial"
-	(not (puto_tt ok))
-	=>
-	
-	(printout t "Puta vida tt." crlf)
-	(printout t crlf)
-    (assert (puto_tt ok))
-    (printout t (pregunta-general "como se llama?") crlf)
-)
