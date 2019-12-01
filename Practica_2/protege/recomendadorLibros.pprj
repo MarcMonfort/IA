@@ -1,4 +1,4 @@
-; Sat Nov 30 13:54:22 CET 2019
+; Sun Dec 01 20:21:01 CET 2019
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -20,16 +20,16 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[recomendadorLibros_ProjectKB_Class10123]
-		[recomendadorLibros_ProjectKB_Class10124]
-		[recomendadorLibros_ProjectKB_Class10125]
-		[recomendadorLibros_ProjectKB_Class10126]
-		[recomendadorLibros_ProjectKB_Class10127]
-		[recomendadorLibros_ProjectKB_Class10128]
-		[recomendadorLibros_ProjectKB_Class10129]
-		[recomendadorLibros_ProjectKB_Class10130]
-		[recomendadorLibros_ProjectKB_Class10131]
-		[recomendadorLibros_ProjectKB_Class10132]))
+		[recomendadorLibros_ProjectKB_Class85]
+		[recomendadorLibros_ProjectKB_Class86]
+		[recomendadorLibros_ProjectKB_Class87]
+		[recomendadorLibros_ProjectKB_Class88]
+		[recomendadorLibros_ProjectKB_Class89]
+		[recomendadorLibros_ProjectKB_Class90]
+		[recomendadorLibros_ProjectKB_Class91]
+		[recomendadorLibros_ProjectKB_Class92]
+		[recomendadorLibros_ProjectKB_Class93]
+		[recomendadorLibros_ProjectKB_Class94]))
 
 ([CLSES_TAB] of  Widget
 
@@ -69,9 +69,6 @@
 ([INSTANCES_TAB] of  Widget
 
 	(widget_class_name "edu.stanford.smi.protege.widget.InstancesTab"))
-
-([KB_083257_Class0] of  Map
-)
 
 ([KB_141433_Class0] of  String
 
@@ -173,6 +170,9 @@
 	(name "classes_file_name")
 	(string_value "recomendadorLibros.pont"))
 
+([KB_984036_Class0] of  Map
+)
+
 ([LAYOUT_PROPERTIES] of  Property_List
 
 	(name "layout properties")
@@ -256,8 +256,8 @@
 	(browser_slot_names [BROWSER_SLOT_NAMES])
 	(customized_instance_widgets
 		[INSTANCE_ANNOTATION_FORM_WIDGET]
-		[STANDARD_FACET_FORM_WIDGET]
 		[STANDARD_SLOT_FORM_WIDGET]
+		[STANDARD_FACET_FORM_WIDGET]
 		[PAL_FORM_WIDGET]
 		[STANDARD_CLASS_FORM_WIDGET]
 		[recomendadorLibros_ProjectKB_Class20112])
@@ -293,56 +293,6 @@
 ([recomendadorLibros_ProjectKB_Class101] of  String
 
 	(name "SearchTab_Query"))
-
-([recomendadorLibros_ProjectKB_Class10123] of  String
-
-	(name ":INSTANCE-ANNOTATION")
-	(string_value "%3AANNOTATION-TEXT"))
-
-([recomendadorLibros_ProjectKB_Class10124] of  String
-
-	(name "Autor")
-	(string_value "autor"))
-
-([recomendadorLibros_ProjectKB_Class10125] of  String
-
-	(name "Genero")
-	(string_value "genero"))
-
-([recomendadorLibros_ProjectKB_Class10126] of  String
-
-	(name "Epoca")
-	(string_value "epoca"))
-
-([recomendadorLibros_ProjectKB_Class10127] of  String
-
-	(name ":PAL-CONSTRAINT")
-	(string_value "%3APAL-NAME"))
-
-([recomendadorLibros_ProjectKB_Class10128] of  String
-
-	(name ":META-CLASS")
-	(string_value "%3ANAME"))
-
-([recomendadorLibros_ProjectKB_Class10129] of  String
-
-	(name "Idioma")
-	(string_value "idioma"))
-
-([recomendadorLibros_ProjectKB_Class10130] of  String
-
-	(name "Tematica")
-	(string_value "tematica"))
-
-([recomendadorLibros_ProjectKB_Class10131] of  String
-
-	(name "Libro")
-	(string_value "titulo"))
-
-([recomendadorLibros_ProjectKB_Class10132] of  String
-
-	(name "Nacionalidad")
-	(string_value "nacionalidad"))
 
 ([recomendadorLibros_ProjectKB_Class10136] of  Widget
 
@@ -908,11 +858,61 @@
 ([recomendadorLibros_ProjectKB_Class8] of  Property_List
 )
 
+([recomendadorLibros_ProjectKB_Class85] of  String
+
+	(name ":INSTANCE-ANNOTATION")
+	(string_value "%3AANNOTATION-TEXT"))
+
+([recomendadorLibros_ProjectKB_Class86] of  String
+
+	(name "Autor")
+	(string_value "autor"))
+
+([recomendadorLibros_ProjectKB_Class87] of  String
+
+	(name "Epoca")
+	(string_value "epoca"))
+
+([recomendadorLibros_ProjectKB_Class88] of  String
+
+	(name "Genero")
+	(string_value "genero"))
+
+([recomendadorLibros_ProjectKB_Class89] of  String
+
+	(name ":META-CLASS")
+	(string_value "%3ANAME"))
+
 ([recomendadorLibros_ProjectKB_Class9] of  Widget
 
 	(is_hidden TRUE)
 	(property_list [recomendadorLibros_ProjectKB_Class10])
 	(widget_class_name "uk.ac.man.cs.mig.coode.debugger.test.DebuggerTestTab"))
+
+([recomendadorLibros_ProjectKB_Class90] of  String
+
+	(name ":PAL-CONSTRAINT")
+	(string_value "%3APAL-NAME"))
+
+([recomendadorLibros_ProjectKB_Class91] of  String
+
+	(name "Idioma")
+	(string_value "idioma"))
+
+([recomendadorLibros_ProjectKB_Class92] of  String
+
+	(name "Tematica")
+	(string_value "tematica"))
+
+([recomendadorLibros_ProjectKB_Class93] of  String
+
+	(name "Libro")
+	(string_value "titulo"))
+
+([recomendadorLibros_ProjectKB_Class94] of  String
+
+	(name "Nacionalidad")
+	(string_value "nacionalidad"))
 
 ([SLOTS_TAB] of  Widget
 

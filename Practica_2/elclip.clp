@@ -1,4 +1,4 @@
-; Wed Nov 27 20:49:40 CET 2019
+; Sun Dec 01 20:15:26 CET 2019
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -46,12 +46,12 @@
 ;+		(cardinality 1 1)
 ;+		(inverse-slot epoca_libro_autor)
 		(create-accessor read-write))
-	(single-slot puntuacion
-		(type INTEGER)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot titulo
 		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot puntuacion
+		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(multislot autor_libro
@@ -105,7 +105,7 @@
 		(create-accessor read-write))
 	(single-slot nacionalidad
 		(type STRING)
-;+		(cardinality 0 1)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot num_paginas
 		(type INTEGER)
@@ -116,23 +116,22 @@
 ;+		(allowed-classes Libro)
 ;+		(inverse-slot en_idioma_original)
 		(create-accessor read-write))
-	(single-slot genero_libro
+	(multislot genero_libro
 		(type INSTANCE)
 ;+		(allowed-classes Libro)
-;+		(cardinality 0 1)
 ;+		(inverse-slot de_genero)
 		(create-accessor read-write)))
 
 (defclass Libro
 	(is-a USER)
 	(role concrete)
-	(multislot de_genero
-		(type INSTANCE)
-;+		(allowed-classes Genero)
-		(create-accessor read-write))
 	(single-slot anyo
 		(type INTEGER)
 ;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot de_genero
+		(type INSTANCE)
+;+		(allowed-classes Genero)
 		(create-accessor read-write))
 	(single-slot num_paginas
 		(type INTEGER)
@@ -167,12 +166,12 @@
 		(type INSTANCE)
 ;+		(allowed-classes Tematica)
 		(create-accessor read-write))
-	(single-slot puntuacion
-		(type INTEGER)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot titulo
 		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot puntuacion
+		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
@@ -189,14 +188,14 @@
 ;+		(allowed-classes Epoca)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
+	(single-slot autor
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(multislot de_nacionalidad
 		(type INSTANCE)
 ;+		(allowed-classes Nacionalidad)
 		(cardinality 1 ?VARIABLE)
-		(create-accessor read-write))
-	(single-slot autor
-		(type STRING)
-;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(multislot autor_libro
 		(type INSTANCE)
@@ -206,10 +205,9 @@
 (defclass Genero
 	(is-a USER)
 	(role concrete)
-	(single-slot genero_libro
+	(multislot genero_libro
 		(type INSTANCE)
 ;+		(allowed-classes Libro)
-;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot genero
 		(type STRING)
@@ -221,7 +219,7 @@
 	(role concrete)
 	(single-slot nacionalidad
 		(type STRING)
-;+		(cardinality 0 1)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(multislot nacionalidad_autor
 		(type INSTANCE)
@@ -265,15 +263,17 @@
 		(create-accessor read-write)))
 
 
-
-
+;;;  ----------------------------------------------
+;;;  ----------------------------------------------
+;;;  ----------------instancias---------------------
+;;;  ----------------------------------------------
+;;;  ----------------------------------------------
 
 
 
 (definstances instancies
 
-
-; Wed Nov 27 20:49:40 CET 2019
+; Sun Dec 01 20:21:01 CET 2019
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -281,7 +281,11 @@
 ([recomendadorLibros_Class0] of  Genero
 
 	(genero "aventuras")
-	(genero_libro [recomendadorLibros_Class1]))
+	(genero_libro
+		[recomendadorLibros_Class30002]
+		[recomendadorLibros_Class20000]
+		[recomendadorLibros_Class30000]
+		[recomendadorLibros_Class1]))
 
 ([recomendadorLibros_Class1] of  Libro
 
@@ -291,6 +295,9 @@
 	(de_genero
 		[recomendadorLibros_Class0]
 		[recomendadorLibros_Class20001])
+	(de_tematica
+		[recomendadorLibros_Class40000]
+		[recomendadorLibros_Class40001])
 	(en_idioma_original [recomendadorLibros_Class10000])
 	(es_popular TRUE)
 	(nivel_lenguaje alto)
@@ -301,7 +308,9 @@
 ([recomendadorLibros_Class10000] of  Idioma
 
 	(idioma "frances")
-	(idioma_libro [recomendadorLibros_Class1]))
+	(idioma_libro
+		[recomendadorLibros_Class1]
+		[recomendadorLibros_Class20000]))
 
 ([recomendadorLibros_Class10001] of  Epoca
 
@@ -317,7 +326,10 @@
 
 ([recomendadorLibros_Class10004] of  Epoca
 
-	(epoca "barroca"))
+	(epoca "barroca")
+	(epoca_libro_autor
+		[recomendadorLibros_Class30001]
+		[recomendadorLibros_Class30000]))
 
 ([recomendadorLibros_Class10005] of  Epoca
 
@@ -337,11 +349,24 @@
 
 ([recomendadorLibros_Class2] of  Autor
 
-	(autor "Alexandre Dumas")
-	(autor_libro [recomendadorLibros_Class1])
+	(autor "Alexandre Dumas (Padre)")
+	(autor_libro
+		[recomendadorLibros_Class1]
+		[recomendadorLibros_Class20000])
 	(de_epoca [recomendadorLibros_Class4])
 	(de_nacionalidad [recomendadorLibros_Class3])
 	(es_popular TRUE))
+
+([recomendadorLibros_Class20000] of  Libro
+
+	(anyo 1845)
+	(de_autor [recomendadorLibros_Class2])
+	(de_epoca [recomendadorLibros_Class4])
+	(de_genero [recomendadorLibros_Class0])
+	(de_tematica [recomendadorLibros_Class40004])
+	(en_idioma_original [recomendadorLibros_Class10000])
+	(puntuacion 8)
+	(titulo "Los tres Mosqueteros"))
 
 ([recomendadorLibros_Class20001] of  Genero
 
@@ -389,6 +414,64 @@
 		[recomendadorLibros_Class2]
 		[recomendadorLibros_Class1]))
 
+([recomendadorLibros_Class30000] of  Libro
+
+	(anyo 1605)
+	(de_autor [recomendadorLibros_Class30001])
+	(de_epoca [recomendadorLibros_Class10004])
+	(de_genero [recomendadorLibros_Class0])
+	(de_tematica
+		[recomendadorLibros_Class40002]
+		[recomendadorLibros_Class40003])
+	(en_idioma_original [recomendadorLibros_Class30006])
+	(puntuacion 10)
+	(titulo "El ingenioso hidalgo Don Quijote de la Mancha"))
+
+([recomendadorLibros_Class30001] of  Autor
+
+	(autor "Miguel de Cervantes")
+	(autor_libro [recomendadorLibros_Class30000])
+	(de_epoca [recomendadorLibros_Class10004])
+	(de_nacionalidad [recomendadorLibros_Class30005]))
+
+([recomendadorLibros_Class30002] of  Libro
+
+	(anyo 1994)
+	(de_autor [recomendadorLibros_Class30003])
+	(de_epoca [recomendadorLibros_Class30004])
+	(de_genero [recomendadorLibros_Class0])
+	(en_idioma_original [recomendadorLibros_Class30006])
+	(puntuacion 6)
+	(titulo "El capitan Alatriste"))
+
+([recomendadorLibros_Class30003] of  Autor
+
+	(autor "Arturo Perez-Reverte")
+	(autor_libro [recomendadorLibros_Class30002])
+	(de_epoca [recomendadorLibros_Class30004])
+	(de_nacionalidad [recomendadorLibros_Class30005]))
+
+([recomendadorLibros_Class30004] of  Epoca
+
+	(epoca "contemporanea")
+	(epoca_libro_autor
+		[recomendadorLibros_Class30003]
+		[recomendadorLibros_Class30002]))
+
+([recomendadorLibros_Class30005] of  Nacionalidad
+
+	(nacionalidad "espanyola")
+	(nacionalidad_autor
+		[recomendadorLibros_Class30003]
+		[recomendadorLibros_Class30001]))
+
+([recomendadorLibros_Class30006] of  Idioma
+
+	(idioma "castellano")
+	(idioma_libro
+		[recomendadorLibros_Class30002]
+		[recomendadorLibros_Class30000]))
+
 ([recomendadorLibros_Class4] of  Epoca
 
 	(epoca "romantica")
@@ -396,7 +479,33 @@
 		[recomendadorLibros_Class2]
 		[recomendadorLibros_Class1]
 		[recomendadorLibros_Class20004]
-		[recomendadorLibros_Class20003]))
+		[recomendadorLibros_Class20003]
+		[recomendadorLibros_Class20000]))
+
+([recomendadorLibros_Class40000] of  Tematica
+
+	(tematica "venganza")
+	(tematica_libro [recomendadorLibros_Class1]))
+
+([recomendadorLibros_Class40001] of  Tematica
+
+	(tematica "Dios")
+	(tematica_libro [recomendadorLibros_Class1]))
+
+([recomendadorLibros_Class40002] of  Tematica
+
+	(tematica "caballerias")
+	(tematica_libro [recomendadorLibros_Class30000]))
+
+([recomendadorLibros_Class40003] of  Tematica
+
+	(tematica "realista")
+	(tematica_libro [recomendadorLibros_Class30000]))
+
+([recomendadorLibros_Class40004] of  Tematica
+
+	(tematica "lealtad")
+	(tematica_libro [recomendadorLibros_Class20000]))
 
 
 
@@ -606,7 +715,7 @@
             (bind ?linea (format nil "  %d. %s" ?var-index ?var))
             (printout t ?linea crlf)
     )
-    (bind ?respuesta (pregunta-numerica "Escoge una opci�n:" 1 (length$ ?valores-posibles)))
+    (bind ?respuesta (pregunta-numerica "Escoge una opcion:" 1 (length$ ?valores-posibles)))
 	?respuesta
 )
 
@@ -733,7 +842,7 @@
 		(bind ?curr-nom (send ?curr-obj get-genero))
 		(bind $?nom-generos(insert$ $?nom-generos (+ (length$ $?nom-generos) 1) ?curr-nom))
 	)
-	(bind ?escogido (pregunta-multi "Escoja sus g�neros favoritos: " $?nom-generos))
+	(bind ?escogido (pregunta-multi "Escoja sus generos favoritos: " $?nom-generos))
 	
 	(bind $?respuesta (create$ ))
 	(loop-for-count (?i 1 (length$ ?escogido)) do
@@ -792,7 +901,7 @@
 
 ;;;  ----------------------------------------------
 
-(defrule recopilacion-prefs::aclamado-critica "Establece si al usuario tiene un gusto como el de la cr�tica"
+(defrule recopilacion-prefs::aclamado-critica "Establece si al usuario tiene un gusto como el de la critica"
 	?hecho <- (aclamado-critica ask)
 	(nacionalidad TRUE|FALSE)
 	=>
@@ -946,7 +1055,7 @@
 ;;;  ----------------------------------------------
 
 
-(defrule procesado::anadir-libros "Se a�ade todas los libros, luego se filtran"
+(defrule procesado::anadir-libros "Se anyade todas los libros, luego se filtran"
 	=>
 	(bind $?lista (find-all-instances ((?inst Libro)) TRUE))
 	(progn$ (?curr-con ?lista)
@@ -980,9 +1089,9 @@
 	;?rec <- (object (is-a Recomendacion) (contenido ?cont) (puntuacion ?p) (justificaciones $?just)) ;;;no es lo mismo??
 	(not (valorado-genero-favorito ?cont ?gen))
 	=>
-	(bind ?p (+ ?p 75))
+	(bind ?p (+ ?p 5))
 	(send ?rec put-puntuacion ?p)
-	(bind ?text (str-cat "Pertenece al g�nero favorito " (send ?gen get-genero) " -> +75"))
+	(bind ?text (str-cat "Pertenece al genero favorito " (send ?gen get-genero) " -> +5"))
 	(bind $?just (insert$ $?just (+ (length$ $?just) 1) ?text))
 	(send ?rec put-justificaciones $?just)
 	(assert (valorado-genero-favorito ?cont ?gen))

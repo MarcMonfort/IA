@@ -1,4 +1,4 @@
-; Sat Nov 30 13:54:22 CET 2019
+; Sun Dec 01 20:21:01 CET 2019
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -46,13 +46,13 @@
 ;+		(cardinality 1 1)
 ;+		(inverse-slot epoca_libro_autor)
 		(create-accessor read-write))
+	(single-slot puntuacion
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot titulo
 		(type STRING)
 ;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot puntuacion
-		(type INTEGER)
-;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(multislot autor_libro
 		(type INSTANCE)
@@ -105,7 +105,7 @@
 		(create-accessor read-write))
 	(single-slot nacionalidad
 		(type STRING)
-;+		(cardinality 0 1)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot num_paginas
 		(type INTEGER)
@@ -116,23 +116,22 @@
 ;+		(allowed-classes Libro)
 ;+		(inverse-slot en_idioma_original)
 		(create-accessor read-write))
-	(single-slot genero_libro
+	(multislot genero_libro
 		(type INSTANCE)
 ;+		(allowed-classes Libro)
-;+		(cardinality 0 1)
 ;+		(inverse-slot de_genero)
 		(create-accessor read-write)))
 
 (defclass Libro
 	(is-a USER)
 	(role concrete)
-	(single-slot anyo
-		(type INTEGER)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(multislot de_genero
 		(type INSTANCE)
 ;+		(allowed-classes Genero)
+		(create-accessor read-write))
+	(single-slot anyo
+		(type INTEGER)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot num_paginas
 		(type INTEGER)
@@ -167,13 +166,13 @@
 		(type INSTANCE)
 ;+		(allowed-classes Tematica)
 		(create-accessor read-write))
+	(single-slot puntuacion
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot titulo
 		(type STRING)
 ;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot puntuacion
-		(type INTEGER)
-;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
 (defclass Autor
@@ -189,14 +188,14 @@
 ;+		(allowed-classes Epoca)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot autor
-		(type STRING)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(multislot de_nacionalidad
 		(type INSTANCE)
 ;+		(allowed-classes Nacionalidad)
 		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(single-slot autor
+		(type STRING)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(multislot autor_libro
 		(type INSTANCE)
@@ -206,10 +205,9 @@
 (defclass Genero
 	(is-a USER)
 	(role concrete)
-	(single-slot genero_libro
+	(multislot genero_libro
 		(type INSTANCE)
 ;+		(allowed-classes Libro)
-;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot genero
 		(type STRING)
@@ -221,7 +219,7 @@
 	(role concrete)
 	(single-slot nacionalidad
 		(type STRING)
-;+		(cardinality 0 1)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(multislot nacionalidad_autor
 		(type INSTANCE)
