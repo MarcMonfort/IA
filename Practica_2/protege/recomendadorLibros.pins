@@ -1,3 +1,8 @@
+; Wed Dec 04 18:26:05 CET 2019
+; 
+;+ (version "3.5")
+;+ (build "Build 660")
+
 ([recomendadorLibros_Class0] of  Genero
 
 	(genero "aventuras")
@@ -22,7 +27,7 @@
 		[recomendadorLibros_Class40001])
 	(en_idioma_original [recomendadorLibros_Class10000])
 	(es_popular TRUE)
-	(nivel_lenguaje alto)
+	(nivel_lenguaje medio)
 	(num_paginas 1990)
 	(puntuacion 10)
 	(titulo "El conde de Montecristo"))
@@ -41,7 +46,8 @@
 
 ([recomendadorLibros_Class10002] of  Epoca
 
-	(epoca "vanguardista"))
+	(epoca "vanguardista")
+	(epoca_libro_autor [recomendadorLibros_Class50008]))
 
 ([recomendadorLibros_Class10003] of  Epoca
 
@@ -64,7 +70,7 @@
 
 ([recomendadorLibros_Class10007] of  Epoca
 
-	(epoca "clásica"))
+	(epoca "clasica"))
 
 ([recomendadorLibros_Class10008] of  Epoca
 
@@ -88,6 +94,7 @@
 	(de_genero [recomendadorLibros_Class0])
 	(de_tematica [recomendadorLibros_Class50006])
 	(en_idioma_original [recomendadorLibros_Class10000])
+	(nivel_lenguaje medio)
 	(puntuacion 8)
 	(titulo "Los tres Mosqueteros"))
 
@@ -151,6 +158,7 @@
 		[recomendadorLibros_Class40002]
 		[recomendadorLibros_Class40003])
 	(en_idioma_original [recomendadorLibros_Class30006])
+	(nivel_lenguaje alto)
 	(puntuacion 10)
 	(titulo "El ingenioso hidalgo Don Quijote de la Mancha"))
 
@@ -168,6 +176,7 @@
 	(de_epoca [recomendadorLibros_Class30004])
 	(de_genero [recomendadorLibros_Class0])
 	(en_idioma_original [recomendadorLibros_Class30006])
+	(nivel_lenguaje bajo)
 	(puntuacion 6)
 	(titulo "El capitan Alatriste"))
 
@@ -253,8 +262,9 @@
 	(de_tematica [recomendadorLibros_Class50006])
 	(en_idioma_original [recomendadorLibros_Class50003])
 	(es_popular TRUE)
+	(nivel_lenguaje bajo)
 	(puntuacion 9)
-	(titulo "El Señor de los Anillos"))
+	(titulo "El Senyor de los Anillos"))
 
 ([recomendadorLibros_Class50002] of  Autor
 
@@ -262,7 +272,9 @@
 	(autor_libro
 		[recomendadorLibros_Class50000]
 		[recomendadorLibros_Class50007])
-	(de_epoca [recomendadorLibros_Class30004]))
+	(de_epoca [recomendadorLibros_Class30004])
+	(de_nacionalidad [recomendadorLibros_Class60000])
+	(es_popular TRUE))
 
 ([recomendadorLibros_Class50003] of  Idioma
 
@@ -290,6 +302,7 @@
 	(de_tematica [recomendadorLibros_Class50006])
 	(en_idioma_original [recomendadorLibros_Class50003])
 	(es_popular TRUE)
+	(nivel_lenguaje bajo)
 	(puntuacion 9)
 	(titulo "El Hobbit"))
 
@@ -297,11 +310,13 @@
 
 	(anyo 1957)
 	(de_autor [recomendadorLibros_Class50010])
+	(de_epoca [recomendadorLibros_Class10002])
 	(de_genero [recomendadorLibros_Class50011])
 	(de_tematica
 		[recomendadorLibros_Class50013]
 		[recomendadorLibros_Class50012])
 	(en_idioma_original [recomendadorLibros_Class50003])
+	(nivel_lenguaje bajo)
 	(puntuacion 7)
 	(titulo "En el camino"))
 
@@ -309,7 +324,8 @@
 
 	(autor "Jack Kerouac")
 	(autor_libro [recomendadorLibros_Class50008])
-	(de_epoca [recomendadorLibros_Class30004]))
+	(de_epoca [recomendadorLibros_Class30004])
+	(de_nacionalidad [recomendadorLibros_Class60001]))
 
 ([recomendadorLibros_Class50011] of  Genero
 
@@ -336,6 +352,7 @@
 	(de_genero [recomendadorLibros_Class50017])
 	(de_tematica [recomendadorLibros_Class40003])
 	(en_idioma_original [recomendadorLibros_Class50003])
+	(nivel_lenguaje bajo)
 	(puntuacion 6)
 	(titulo "La maquina de follar"))
 
@@ -349,7 +366,9 @@
 ([recomendadorLibros_Class50016] of  Nacionalidad
 
 	(nacionalidad "alemana")
-	(nacionalidad_autor [recomendadorLibros_Class50015]))
+	(nacionalidad_autor
+		[recomendadorLibros_Class50015]
+		[recomendadorLibros_Class50019]))
 
 ([recomendadorLibros_Class50017] of  Genero
 
@@ -364,6 +383,7 @@
 	(de_genero [recomendadorLibros_Class20007])
 	(de_tematica [recomendadorLibros_Class40001])
 	(en_idioma_original [recomendadorLibros_Class50021])
+	(nivel_lenguaje alto)
 	(puntuacion 10)
 	(titulo "Asi hablo Zaratustra"))
 
@@ -371,7 +391,8 @@
 
 	(autor "Friedrich Nietzsche")
 	(autor_libro [recomendadorLibros_Class50018])
-	(de_epoca [recomendadorLibros_Class50020]))
+	(de_epoca [recomendadorLibros_Class50020])
+	(de_nacionalidad [recomendadorLibros_Class50016]))
 
 ([recomendadorLibros_Class50020] of  Epoca
 
@@ -397,6 +418,7 @@
 		[recomendadorLibros_Class50013]
 		[recomendadorLibros_Class40003])
 	(en_idioma_original [recomendadorLibros_Class10000])
+	(nivel_lenguaje medio)
 	(puntuacion 10)
 	(titulo "El Ser y la Nada"))
 
@@ -406,3 +428,13 @@
 	(autor_libro [recomendadorLibros_Class50022])
 	(de_epoca [recomendadorLibros_Class50020])
 	(de_nacionalidad [recomendadorLibros_Class3]))
+
+([recomendadorLibros_Class60000] of  Nacionalidad
+
+	(nacionalidad "sudafricana")
+	(nacionalidad_autor [recomendadorLibros_Class50002]))
+
+([recomendadorLibros_Class60001] of  Nacionalidad
+
+	(nacionalidad "estadounidense")
+	(nacionalidad_autor [recomendadorLibros_Class50010]))

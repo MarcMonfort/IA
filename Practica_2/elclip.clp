@@ -801,6 +801,7 @@
 	(multislot tematicas-favoritas (type INSTANCE))
 	(multislot nacionalidades (type INSTANCE))
 	(multislot idiomas (type INSTANCE))
+	(multislot epocas-favoritas (type INSTANCE))
 	(slot momento_lectura (type STRING))
 	
 	;Esto es provisional, podrian anyadirse/quitarse varios slots
@@ -992,6 +993,7 @@
 	(aclamado-critica ask)
 	(clasicos ask)
     (habito-lectura ask)
+	(epoca-favorita ask)
 	(preferencias )
 )
 
@@ -1219,6 +1221,49 @@
 ;;;  ---------------------------------------------- 
 
 
+(defrule recopilacion-prefs::preguntar-epoca-favorita "Pregunta al usuario si tiene alguna epoca favorita"
+	?hecho <- (epoca-favorita ask)
+	(nacionalidad ~ask&~choose)
+	=>
+	(bind ?respuesta (pregunta-si-no "Prefieres alguna epoca literaria en particular? "))
+	(retract ?hecho)
+	(if (eq ?respuesta TRUE)
+		then (assert (epoca-favorita choose))
+		else 
+		(assert (epoca-favorita FALSE))
+	)
+)
+		
+
+(defrule recopilacion-prefs::establecer-epoca-favorita "Establece la epoca favorita del usuario"
+	?hecho <- (epoca-favorita choose)
+	?pref <- (preferencias)
+	=>
+	(bind $?obj-epc (find-all-instances ((?inst Epoca)) TRUE))
+	(bind $?nom-epc (create$ ))
+	(loop-for-count (?i 1 (length$ $?obj-epc)) do
+		(bind ?curr-obj (nth$ ?i ?obj-epc))
+		(bind ?curr-nom (send ?curr-obj get-epoca))
+		(bind $?nom-epc(insert$ $?nom-epc (+ (length$ $?nom-epc) 1) ?curr-nom))
+	)
+	(bind ?escogido (pregunta-multi "Escoja sus epocas favoritas: " $?nom-epc))
+	
+	(bind $?respuesta (create$ ))
+	(loop-for-count (?i 1 (length$ ?escogido)) do
+		(bind ?curr-index (nth$ ?i ?escogido))
+		(bind ?curr-epc (nth$ ?curr-index ?obj-epc))
+		(bind $?respuesta(insert$ $?respuesta (+ (length$ $?respuesta) 1) ?curr-epc))
+	)
+	
+	(retract ?hecho)
+	(assert (epoca-favorita TRUE))
+	(modify ?pref (epocas-favoritas $?respuesta))
+)
+
+
+;;;  ---------------------------------------------- 
+
+
 (defrule recopilacion-prefs::pasar_modulo_procesado "Pasa al modulo de procesado de datos"
 	(declare (salience -10))
 	?h1 <- (genero-favorito TRUE|FALSE)
@@ -1288,15 +1333,127 @@
 	(retract ?hecho)
 	(if (eq ?aux TRUE)then 
 		(progn$ (?curr-tem $?tem)
-			(assert (tematica ?curr-tem))
+			(assert (tematica-favorita ?curr-tem))
 		)
 	)
 )
 
+(defrule procesado::valorar-tematica-favorito-libros "Se mejora la puntuacion de los libros de tematica favorito"
+	?hecho <- (tematica-favorita ?tem)
+	?cont <-(object (is-a Libro) (de_tematica $?tematicas))
+	(test (member$ ?tem $?tematicas))
+	?rec <- (object (is-a Recomendacion) (contenido ?conta) (puntuacion ?p) (justificaciones $?just))
+	(test (eq (instance-name ?cont) (instance-name ?conta)))
+	;?rec <- (object (is-a Recomendacion) (contenido ?cont) (puntuacion ?p) (justificaciones $?just)) ;;;no es lo mismo??
+	(not (valorado-tematica-favorita ?cont ?tem))
+	=>
+	(bind ?p (+ ?p 10))
+	(send ?rec put-puntuacion ?p)
+	(bind ?text (str-cat "Pertenece a la tematica favorita " (send ?tem get-tematica) " -> +10"))
+	(bind $?just (insert$ $?just (+ (length$ $?just) 1) ?text))
+	(send ?rec put-justificaciones $?just)
+	(assert (valorado-tematica-favorita ?cont ?tem))
+)
+
 ;;;  ----------------------------------------------
+
+(defrule procesado::aux-nacionalidad "Crea hechos para poder procesar las nacionalidades favoritas"
+	(preferencias (nacionalidades $?nac))
+	?hecho <- (nacionalidad ?aux)
+	(test (or (eq ?aux TRUE) (eq ?aux FALSE)))
+	=>
+	(retract ?hecho)
+	(if (eq ?aux TRUE)then 
+		(progn$ (?curr-nac $?nac)
+			(assert (nacionalidad ?curr-nac))
+		)
+	)
+)
+
+(defrule procesado::valorar-nacionalidad "Se mejora la puntuacion de los libros de nacionalidades favoritas"
+	?hecho <- (nacionalidad ?nac)
+	?autor <-(object (is-a Autor) (de_nacionalidad $?nacionalidades))
+	(test (member$ ?nac $?nacionalidades))
+	?cont <-(object (is-a Libro) (de_autor ?autor))
+	?rec <- (object (is-a Recomendacion) (contenido ?conta) (puntuacion ?p) (justificaciones $?just))
+	(test (eq (instance-name ?cont) (instance-name ?conta)))
+	;?rec <- (object (is-a Recomendacion) (contenido ?cont) (puntuacion ?p) (justificaciones $?just)) ;;;no es lo mismo??
+	(not (valorado-nacionalidad-favorita ?cont ?nac))
+	=>
+	(printout t "-->" "aaaaaaaaaaaaaaaaaaaaaaa" "<--" crlf)
+
+	(bind ?p (+ ?p 2))
+	(send ?rec put-puntuacion ?p)
+	(bind ?text (str-cat "Pertenece a la nacionalidad favorita " (send ?nac get-nacionalidad) " -> +2"))
+	(bind $?just (insert$ $?just (+ (length$ $?just) 1) ?text))
+	(send ?rec put-justificaciones $?just)
+	(assert (valorado-nacionalidad-favorita ?cont ?nac))
+)
+
+;;;  ----------------------------------------------
+
+(defrule procesado::aux-idiomas "Crea hechos para poder procesar los idiomas originales"
+	(preferencias (idiomas $?idi))
+	?hecho <- (vo ?aux)
+	(test (or (eq ?aux TRUE) (eq ?aux FALSE)))
+	=>
+	(retract ?hecho)
+	(if (eq ?aux TRUE)then 
+		(progn$ (?curr-idi $?idi)
+			(assert (idioma ?curr-idi))
+		)
+	)
+)
+
+(defrule procesado::valorar-idioma-favorito-libros "Se mejora la puntuacion de los libros en idioma original"
+	?hecho <- (idioma ?idi)
+	?cont <-(object (is-a Libro) (en_idioma_original ?idi))
+	?rec <- (object (is-a Recomendacion) (contenido ?conta) (puntuacion ?p) (justificaciones $?just))
+	(test (eq (instance-name ?cont) (instance-name ?conta)))
+	;?rec <- (object (is-a Recomendacion) (contenido ?cont) (puntuacion ?p) (justificaciones $?just)) ;;;no es lo mismo??
+	(not (valorado-idioma ?cont))
+	=>
+	(bind ?p (+ ?p 3))
+	(send ?rec put-puntuacion ?p)
+	(bind ?text (str-cat "En idioma original " (send ?idi get-idioma) " -> +3"))
+	(bind $?just (insert$ $?just (+ (length$ $?just) 1) ?text))
+	(send ?rec put-justificaciones $?just)
+	(assert (valorado-idioma ?cont))
+)
 
 
 ;;;  ----------------------------------------------
+
+(defrule procesado::aux-epoca "Crea hechos para poder procesar las epocas favoritas"
+	(preferencias (epocas-favoritas $?epc))
+	?hecho <- (epoca-favorita ?aux)
+	(test (or (eq ?aux TRUE) (eq ?aux FALSE)))
+	=>
+	(retract ?hecho)
+	(if (eq ?aux TRUE)then 
+		(progn$ (?curr-epc $?epc)
+			(assert (epoca-favorita ?curr-epc))
+		)
+	)
+)
+
+
+(defrule procesado::valorar-epocas-favoritas-libros "Se mejora la puntuacion de las epocas favoritas"
+	?hecho <- (epoca-favorita ?epc)
+	?cont <-(object (is-a Libro) (de_epoca ?epc))
+	?rec <- (object (is-a Recomendacion) (contenido ?conta) (puntuacion ?p) (justificaciones $?just))
+	(test (eq (instance-name ?cont) (instance-name ?conta)))
+	;?rec <- (object (is-a Recomendacion) (contenido ?cont) (puntuacion ?p) (justificaciones $?just)) ;;;no es lo mismo??
+	(not (valorado-epoca-favorita ?cont))
+	=>
+	(bind ?p (+ ?p 5))
+	(send ?rec put-puntuacion ?p)
+	(bind ?text (str-cat "Pertenece a la epoca favorita " (send ?epc get-epoca) " -> +5"))
+	(bind $?just (insert$ $?just (+ (length$ $?just) 1) ?text))
+	(send ?rec put-justificaciones $?just)
+	(assert (valorado-epoca-favorita ?cont))
+)
+
 
 
 ;;;  ----------------------------------------------
