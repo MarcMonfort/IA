@@ -1,7 +1,7 @@
-; Wed Dec 04 18:26:05 CET 2019
+; Fri Dec 06 19:21:53 CET 2019
 ; 
 ;+ (version "3.5")
-;+ (build "Build 660")
+;+ (build "Build 663")
 
 ([recomendadorLibros_Class0] of  Genero
 
@@ -26,6 +26,7 @@
 		[recomendadorLibros_Class40000]
 		[recomendadorLibros_Class40001])
 	(en_idioma_original [recomendadorLibros_Class10000])
+	(es_clasico TRUE)
 	(es_popular TRUE)
 	(nivel_lenguaje medio)
 	(num_paginas 1990)
@@ -94,6 +95,7 @@
 	(de_genero [recomendadorLibros_Class0])
 	(de_tematica [recomendadorLibros_Class50006])
 	(en_idioma_original [recomendadorLibros_Class10000])
+	(es_clasico TRUE)
 	(nivel_lenguaje medio)
 	(puntuacion 8)
 	(titulo "Los tres Mosqueteros"))
@@ -134,7 +136,7 @@
 
 ([recomendadorLibros_Class20007] of  Genero
 
-	(genero "filosofica")
+	(genero "filosofia")
 	(genero_libro
 		[recomendadorLibros_Class20003]
 		[recomendadorLibros_Class50018]
@@ -158,6 +160,7 @@
 		[recomendadorLibros_Class40002]
 		[recomendadorLibros_Class40003])
 	(en_idioma_original [recomendadorLibros_Class30006])
+	(es_clasico TRUE)
 	(nivel_lenguaje alto)
 	(puntuacion 10)
 	(titulo "El ingenioso hidalgo Don Quijote de la Mancha"))
@@ -383,6 +386,7 @@
 	(de_genero [recomendadorLibros_Class20007])
 	(de_tematica [recomendadorLibros_Class40001])
 	(en_idioma_original [recomendadorLibros_Class50021])
+	(es_clasico FALSE)
 	(nivel_lenguaje alto)
 	(puntuacion 10)
 	(titulo "Asi hablo Zaratustra"))

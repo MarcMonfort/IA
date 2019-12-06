@@ -1,7 +1,7 @@
-; Wed Dec 04 18:26:05 CET 2019
+; Fri Dec 06 19:21:53 CET 2019
 ; 
 ;+ (version "3.5")
-;+ (build "Build 660")
+;+ (build "Build 663")
 
 ([ANNOTATED_INSTANCE_WIDGET] of  Widget
 
@@ -20,16 +20,16 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[recomendadorLibros_ProjectKB_Class30429]
-		[recomendadorLibros_ProjectKB_Class30430]
-		[recomendadorLibros_ProjectKB_Class30431]
-		[recomendadorLibros_ProjectKB_Class30432]
-		[recomendadorLibros_ProjectKB_Class30433]
-		[recomendadorLibros_ProjectKB_Class30434]
-		[recomendadorLibros_ProjectKB_Class30435]
-		[recomendadorLibros_ProjectKB_Class30436]
-		[recomendadorLibros_ProjectKB_Class30437]
-		[recomendadorLibros_ProjectKB_Class30438]))
+		[recomendadorLibros_ProjectKB_Class30229]
+		[recomendadorLibros_ProjectKB_Class30230]
+		[recomendadorLibros_ProjectKB_Class30231]
+		[recomendadorLibros_ProjectKB_Class30232]
+		[recomendadorLibros_ProjectKB_Class30233]
+		[recomendadorLibros_ProjectKB_Class30234]
+		[recomendadorLibros_ProjectKB_Class30235]
+		[recomendadorLibros_ProjectKB_Class30236]
+		[recomendadorLibros_ProjectKB_Class30237]
+		[recomendadorLibros_ProjectKB_Class30238]))
 
 ([CLSES_TAB] of  Widget
 
@@ -69,9 +69,6 @@
 ([INSTANCES_TAB] of  Widget
 
 	(widget_class_name "edu.stanford.smi.protege.widget.InstancesTab"))
-
-([KB_126345_Class0] of  Map
-)
 
 ([KB_141433_Class0] of  String
 
@@ -173,6 +170,9 @@
 	(name "classes_file_name")
 	(string_value "recomendadorLibros.pont"))
 
+([KB_632641_Class0] of  Map
+)
+
 ([LAYOUT_PROPERTIES] of  Property_List
 
 	(name "layout properties")
@@ -256,10 +256,10 @@
 	(browser_slot_names [BROWSER_SLOT_NAMES])
 	(customized_instance_widgets
 		[INSTANCE_ANNOTATION_FORM_WIDGET]
-		[STANDARD_CLASS_FORM_WIDGET]
 		[STANDARD_SLOT_FORM_WIDGET]
 		[STANDARD_FACET_FORM_WIDGET]
 		[PAL_FORM_WIDGET]
+		[STANDARD_CLASS_FORM_WIDGET]
 		[recomendadorLibros_ProjectKB_Class20112])
 	(default_cls_metaclass ":STANDARD-CLASS")
 	(default_facet_metaclass ":STANDARD-FACET")
@@ -285,7 +285,7 @@
 
 	(is_hidden TRUE)
 	(property_list [recomendadorLibros_ProjectKB_Class2])
-	(widget_class_name "edu.stanford.smi.protegex.owl.ui.widget.OWLFormsTab"))
+	(widget_class_name "se.liu.ida.JessTab.JessTab"))
 
 ([recomendadorLibros_ProjectKB_Class10] of  Property_List
 )
@@ -312,7 +312,7 @@
 
 	(is_hidden TRUE)
 	(property_list [recomendadorLibros_ProjectKB_Class12])
-	(widget_class_name "edu.stanford.smi.protegex.owl.ui.cls.OWLClassesTab"))
+	(widget_class_name "ezpal.EZPalTab"))
 
 ([recomendadorLibros_ProjectKB_Class12] of  Property_List
 )
@@ -330,7 +330,7 @@
 
 	(is_hidden TRUE)
 	(property_list [recomendadorLibros_ProjectKB_Class16])
-	(widget_class_name "edu.stanford.smi.protege.query.LuceneQueryPlugin"))
+	(widget_class_name "ca.uvic.csr.shrimp.jambalaya.JambalayaTab"))
 
 ([recomendadorLibros_ProjectKB_Class16] of  Property_List
 )
@@ -339,7 +339,7 @@
 
 	(is_hidden TRUE)
 	(property_list [recomendadorLibros_ProjectKB_Class18])
-	(widget_class_name "edu.stanford.smi.protege.widget.ClsesAndInstancesTab"))
+	(widget_class_name "edu.stanford.smi.protege.widget.instance_tree.InstanceTreeTab"))
 
 ([recomendadorLibros_ProjectKB_Class18] of  Property_List
 )
@@ -348,7 +348,7 @@
 
 	(is_hidden TRUE)
 	(property_list [recomendadorLibros_ProjectKB_Class20])
-	(widget_class_name "edu.stanford.smi.protege.widget.KAToolTab"))
+	(widget_class_name "edu.stanford.smi.protegex.widget.pal.PalConstraintsTab"))
 
 ([recomendadorLibros_ProjectKB_Class2] of  Property_List
 )
@@ -377,7 +377,8 @@
 		[recomendadorLibros_ProjectKB_Class20139]
 		[recomendadorLibros_ProjectKB_Class20147]
 		[recomendadorLibros_ProjectKB_Class20149]
-		[recomendadorLibros_ProjectKB_Class10136]))
+		[recomendadorLibros_ProjectKB_Class10136]
+		[recomendadorLibros_ProjectKB_Class77]))
 
 ([recomendadorLibros_ProjectKB_Class20114] of  Property_List
 
@@ -445,7 +446,7 @@
 	(name "es_popular")
 	(property_list [recomendadorLibros_ProjectKB_Class20124])
 	(widget_class_name "edu.stanford.smi.protege.widget.CheckBoxWidget")
-	(width 200)
+	(width 90)
 	(x 0)
 	(y 60))
 
@@ -592,7 +593,7 @@
 
 	(is_hidden TRUE)
 	(property_list [recomendadorLibros_ProjectKB_Class22])
-	(widget_class_name "edu.stanford.smi.protege.widget.instance_tree.KnowledgeTreeTab"))
+	(widget_class_name "uk.ac.man.ac.mig.coode.individuals.ui.OWLDLIndividualsTab"))
 
 ([recomendadorLibros_ProjectKB_Class22] of  Property_List
 )
@@ -601,7 +602,7 @@
 
 	(is_hidden TRUE)
 	(property_list [recomendadorLibros_ProjectKB_Class24])
-	(widget_class_name "edu.stanford.smi.protege.keywordsearch.StringSearch"))
+	(widget_class_name "edu.stanford.smi.protege.widget.ClsesAndInstancesTab"))
 
 ([recomendadorLibros_ProjectKB_Class24] of  Property_List
 )
@@ -610,7 +611,7 @@
 
 	(is_hidden TRUE)
 	(property_list [recomendadorLibros_ProjectKB_Class26])
-	(widget_class_name "edu.stanford.smi.protegex.prompt.PromptTab"))
+	(widget_class_name "edu.stanford.smi.protegex.evaluation.MetaAnalysis"))
 
 ([recomendadorLibros_ProjectKB_Class26] of  Property_List
 )
@@ -619,7 +620,7 @@
 
 	(is_hidden TRUE)
 	(property_list [recomendadorLibros_ProjectKB_Class28])
-	(widget_class_name "edu.stanford.smi.protegex.widget.pal.PalConstraintsTab"))
+	(widget_class_name "uk.ac.man.cs.mig.coode.owlviz.ui.OWLVizTab"))
 
 ([recomendadorLibros_ProjectKB_Class28] of  Property_List
 )
@@ -628,72 +629,72 @@
 
 	(is_hidden TRUE)
 	(property_list [recomendadorLibros_ProjectKB_Class30])
-	(widget_class_name "edu.stanford.smi.protegex.owl.ui.metadatatab.OWLMetadataTab"))
+	(widget_class_name "edu.stanford.smi.protege.query.LuceneQueryPlugin"))
 
 ([recomendadorLibros_ProjectKB_Class3] of  Widget
 
 	(is_hidden TRUE)
 	(property_list [recomendadorLibros_ProjectKB_Class4])
-	(widget_class_name "org.protege.owl.mm.portability.protege3.MappingMasterTab"))
+	(widget_class_name "edu.stanford.smi.protegex.owl.ui.metadatatab.OWLMetadataTab"))
 
 ([recomendadorLibros_ProjectKB_Class30] of  Property_List
 )
 
-([recomendadorLibros_ProjectKB_Class30429] of  String
+([recomendadorLibros_ProjectKB_Class30229] of  String
 
 	(name ":INSTANCE-ANNOTATION")
 	(string_value "%3AANNOTATION-TEXT"))
 
-([recomendadorLibros_ProjectKB_Class30430] of  String
-
-	(name "Nacionalidad")
-	(string_value "nacionalidad"))
-
-([recomendadorLibros_ProjectKB_Class30431] of  String
-
-	(name "Genero")
-	(string_value "genero"))
-
-([recomendadorLibros_ProjectKB_Class30432] of  String
+([recomendadorLibros_ProjectKB_Class30230] of  String
 
 	(name "Autor")
 	(string_value "autor"))
 
-([recomendadorLibros_ProjectKB_Class30433] of  String
+([recomendadorLibros_ProjectKB_Class30231] of  String
 
-	(name "Tematica")
-	(string_value "tematica"))
+	(name "Genero")
+	(string_value "genero"))
 
-([recomendadorLibros_ProjectKB_Class30434] of  String
-
-	(name ":PAL-CONSTRAINT")
-	(string_value "%3APAL-NAME"))
-
-([recomendadorLibros_ProjectKB_Class30435] of  String
-
-	(name ":META-CLASS")
-	(string_value "%3ANAME"))
-
-([recomendadorLibros_ProjectKB_Class30436] of  String
-
-	(name "Idioma")
-	(string_value "idioma"))
-
-([recomendadorLibros_ProjectKB_Class30437] of  String
+([recomendadorLibros_ProjectKB_Class30232] of  String
 
 	(name "Epoca")
 	(string_value "epoca"))
 
-([recomendadorLibros_ProjectKB_Class30438] of  String
+([recomendadorLibros_ProjectKB_Class30233] of  String
+
+	(name ":PAL-CONSTRAINT")
+	(string_value "%3APAL-NAME"))
+
+([recomendadorLibros_ProjectKB_Class30234] of  String
+
+	(name ":META-CLASS")
+	(string_value "%3ANAME"))
+
+([recomendadorLibros_ProjectKB_Class30235] of  String
+
+	(name "Idioma")
+	(string_value "idioma"))
+
+([recomendadorLibros_ProjectKB_Class30236] of  String
+
+	(name "Tematica")
+	(string_value "tematica"))
+
+([recomendadorLibros_ProjectKB_Class30237] of  String
 
 	(name "Libro")
 	(string_value "titulo"))
+
+([recomendadorLibros_ProjectKB_Class30238] of  String
+
+	(name "Nacionalidad")
+	(string_value "nacionalidad"))
 
 ([recomendadorLibros_ProjectKB_Class31] of  Widget
 
 	(is_hidden TRUE)
 	(property_list [recomendadorLibros_ProjectKB_Class32])
-	(widget_class_name "edu.stanford.smi.protegex.owl.swrl.ui.tab.SWRLTab"))
+	(widget_class_name "edu.stanford.smi.protegex.owl.ui.cls.OWLClassesTab"))
 
 ([recomendadorLibros_ProjectKB_Class32] of  Property_List
 )
@@ -711,7 +712,7 @@
 
 	(is_hidden TRUE)
 	(property_list [recomendadorLibros_ProjectKB_Class36])
-	(widget_class_name "uk.ac.man.cs.mig.coode.debugger.test.DebuggerTestTab"))
+	(widget_class_name "org.protege.owl.mm.portability.protege3.MappingMasterTab"))
 
 ([recomendadorLibros_ProjectKB_Class36] of  Property_List
 )
@@ -720,7 +721,7 @@
 
 	(is_hidden TRUE)
 	(property_list [recomendadorLibros_ProjectKB_Class38])
-	(widget_class_name "ca.uvic.csr.shrimp.jambalaya.JambalayaTab"))
+	(widget_class_name "edu.stanford.smi.protegex.changeanalysis.ChangeAnalysisTab"))
 
 ([recomendadorLibros_ProjectKB_Class38] of  Property_List
 )
@@ -729,7 +730,7 @@
 
 	(is_hidden TRUE)
 	(property_list [recomendadorLibros_ProjectKB_Class40])
-	(widget_class_name "edu.stanford.smi.protegex.changes.ChangesTab"))
+	(widget_class_name "TGViztab.TGVizTab"))
 
 ([recomendadorLibros_ProjectKB_Class4] of  Property_List
 )
@@ -741,7 +742,7 @@
 
 	(is_hidden TRUE)
 	(property_list [recomendadorLibros_ProjectKB_Class42])
-	(widget_class_name "org.protege.owl.axiome.ui.AxiomeTab"))
+	(widget_class_name "edu.stanford.smi.protegex.changes.changesKBViewTab.ChangesKBViewTab"))
 
 ([recomendadorLibros_ProjectKB_Class42] of  Property_List
 )
@@ -750,7 +751,7 @@
 
 	(is_hidden TRUE)
 	(property_list [recomendadorLibros_ProjectKB_Class44])
-	(widget_class_name "TGViztab.TGVizTab"))
+	(widget_class_name "edu.stanford.smi.protege.widget.KAToolTab"))
 
 ([recomendadorLibros_ProjectKB_Class44] of  Property_List
 )
@@ -759,7 +760,7 @@
 
 	(is_hidden TRUE)
 	(property_list [recomendadorLibros_ProjectKB_Class46])
-	(widget_class_name "edu.stanford.smi.protegex.owl.ui.properties.OWLPropertiesTab"))
+	(widget_class_name "edu.stanford.smi.protegex.xml.tab.XMLTab"))
 
 ([recomendadorLibros_ProjectKB_Class46] of  Property_List
 )
@@ -768,7 +769,7 @@
 
 	(is_hidden TRUE)
 	(property_list [recomendadorLibros_ProjectKB_Class48])
-	(widget_class_name "uk.ac.man.ac.mig.coode.individuals.ui.OWLDLIndividualsTab"))
+	(widget_class_name "edu.stanford.smi.protegex.widget.pal.PalQueriesTab"))
 
 ([recomendadorLibros_ProjectKB_Class48] of  Property_List
 )
@@ -777,13 +778,13 @@
 
 	(is_hidden TRUE)
 	(property_list [recomendadorLibros_ProjectKB_Class50])
-	(widget_class_name "edu.stanford.smi.protege.widget.instance_tree.InstanceTreeTab"))
+	(widget_class_name "edu.stanford.smi.protegex.chatPlugin.ChatTab"))
 
 ([recomendadorLibros_ProjectKB_Class5] of  Widget
 
 	(is_hidden TRUE)
 	(property_list [recomendadorLibros_ProjectKB_Class6])
-	(widget_class_name "edu.stanford.smi.protege.widget.ProtegePropertiesTab"))
+	(widget_class_name "edu.stanford.smi.protegex.owl.ui.properties.OWLPropertiesTab"))
 
 ([recomendadorLibros_ProjectKB_Class50] of  Property_List
 )
@@ -792,7 +793,7 @@
 
 	(is_hidden TRUE)
 	(property_list [recomendadorLibros_ProjectKB_Class52])
-	(widget_class_name "edu.stanford.smi.protegex.evaluation.MetaAnalysis"))
+	(widget_class_name "org.protege.owl.axiome.ui.AxiomeTab"))
 
 ([recomendadorLibros_ProjectKB_Class52] of  Property_List
 )
@@ -801,7 +802,7 @@
 
 	(is_hidden TRUE)
 	(property_list [recomendadorLibros_ProjectKB_Class54])
-	(widget_class_name "edu.stanford.smi.protegex.changes.changesKBViewTab.ChangesKBViewTab"))
+	(widget_class_name "edu.stanford.smi.protege.keywordsearch.StringSearch"))
 
 ([recomendadorLibros_ProjectKB_Class54] of  Property_List
 )
@@ -810,7 +811,7 @@
 
 	(is_hidden TRUE)
 	(property_list [recomendadorLibros_ProjectKB_Class56])
-	(widget_class_name "se.liu.ida.JessTab.JessTab"))
+	(widget_class_name "edu.stanford.smi.protegex.owl.ui.widget.OWLFormsTab"))
 
 ([recomendadorLibros_ProjectKB_Class56] of  Property_List
 )
@@ -819,7 +820,7 @@
 
 	(is_hidden TRUE)
 	(property_list [recomendadorLibros_ProjectKB_Class58])
-	(widget_class_name "edu.stanford.smi.protegex.changeanalysis.ChangeAnalysisTab"))
+	(widget_class_name "script.ProtegeScriptTab"))
 
 ([recomendadorLibros_ProjectKB_Class58] of  Property_List
 )
@@ -828,7 +829,7 @@
 
 	(is_hidden TRUE)
 	(property_list [recomendadorLibros_ProjectKB_Class60])
-	(widget_class_name "uk.ac.man.cs.mig.coode.owlviz.ui.OWLVizTab"))
+	(widget_class_name "edu.stanford.smi.protegex.changes.ChangesTab"))
 
 ([recomendadorLibros_ProjectKB_Class6] of  Property_List
 )
@@ -840,7 +841,7 @@
 
 	(is_hidden TRUE)
 	(property_list [recomendadorLibros_ProjectKB_Class62])
-	(widget_class_name "edu.stanford.smi.protegex.changes.stats.ChangeStatisticsTab"))
+	(widget_class_name "edu.stanford.smi.protegex.owl.swrl.ui.tab.SWRLTab"))
 
 ([recomendadorLibros_ProjectKB_Class62] of  Property_List
 )
@@ -849,7 +850,7 @@
 
 	(is_hidden TRUE)
 	(property_list [recomendadorLibros_ProjectKB_Class64])
-	(widget_class_name "script.ProtegeScriptTab"))
+	(widget_class_name "edu.stanford.smi.protegex.fctab.FacetConstraintsTab"))
 
 ([recomendadorLibros_ProjectKB_Class64] of  Property_List
 )
@@ -858,7 +859,7 @@
 
 	(is_hidden TRUE)
 	(property_list [recomendadorLibros_ProjectKB_Class66])
-	(widget_class_name "edu.stanford.smi.protegex.chatPlugin.ChatTab"))
+	(widget_class_name "edu.stanford.smi.protege.widget.instance_tree.KnowledgeTreeTab"))
 
 ([recomendadorLibros_ProjectKB_Class66] of  Property_List
 )
@@ -867,7 +868,7 @@
 
 	(is_hidden TRUE)
 	(property_list [recomendadorLibros_ProjectKB_Class68])
-	(widget_class_name "edu.stanford.smi.protegex.fctab.FacetConstraintsTab"))
+	(widget_class_name "edu.stanford.smi.protegex.datamaster.DataMasterTab"))
 
 ([recomendadorLibros_ProjectKB_Class68] of  Property_List
 )
@@ -876,13 +877,13 @@
 
 	(is_hidden TRUE)
 	(property_list [recomendadorLibros_ProjectKB_Class70])
-	(widget_class_name "edu.stanford.smi.protegex.xml.tab.XMLTab"))
+	(widget_class_name "dfki.protege.ontoviz_tab.OntovizTab"))
 
 ([recomendadorLibros_ProjectKB_Class7] of  Widget
 
 	(is_hidden TRUE)
 	(property_list [recomendadorLibros_ProjectKB_Class8])
-	(widget_class_name "edu.stanford.smi.protegex.widget.pal.PalQueriesTab"))
+	(widget_class_name "edu.stanford.smi.protege.widget.ProtegePropertiesTab"))
 
 ([recomendadorLibros_ProjectKB_Class70] of  Property_List
 )
@@ -891,7 +892,7 @@
 
 	(is_hidden TRUE)
 	(property_list [recomendadorLibros_ProjectKB_Class72])
-	(widget_class_name "edu.stanford.smi.protegex.datamaster.DataMasterTab"))
+	(widget_class_name "edu.stanford.smi.protegex.changes.stats.ChangeStatisticsTab"))
 
 ([recomendadorLibros_ProjectKB_Class72] of  Property_List
 )
@@ -900,9 +901,37 @@
 
 	(is_hidden TRUE)
 	(property_list [recomendadorLibros_ProjectKB_Class74])
-	(widget_class_name "ezpal.EZPalTab"))
+	(widget_class_name "edu.stanford.smi.protegex.prompt.PromptTab"))
 
 ([recomendadorLibros_ProjectKB_Class74] of  Property_List
+)
+
+([recomendadorLibros_ProjectKB_Class75] of  Widget
+
+	(height 60)
+	(is_hidden FALSE)
+	(name "es_clasico")
+	(property_list [recomendadorLibros_ProjectKB_Class76])
+	(widget_class_name "edu.stanford.smi.protege.widget.TextFieldWidget")
+	(width 200)
+	(x 0)
+	(y 380))
+
+([recomendadorLibros_ProjectKB_Class76] of  Property_List
+)
+
+([recomendadorLibros_ProjectKB_Class77] of  Widget
+
+	(height 60)
+	(is_hidden FALSE)
+	(name "es_clasico")
+	(property_list [recomendadorLibros_ProjectKB_Class78])
+	(widget_class_name "edu.stanford.smi.protege.widget.CheckBoxWidget")
+	(width 90)
+	(x 110)
+	(y 60))
+
+([recomendadorLibros_ProjectKB_Class78] of  Property_List
 )
 
 ([recomendadorLibros_ProjectKB_Class8] of  Property_List
@@ -912,7 +941,7 @@
 
 	(is_hidden TRUE)
 	(property_list [recomendadorLibros_ProjectKB_Class10])
-	(widget_class_name "dfki.protege.ontoviz_tab.OntovizTab"))
+	(widget_class_name "uk.ac.man.cs.mig.coode.debugger.test.DebuggerTestTab"))
 
 ([SLOTS_TAB] of  Widget
 

@@ -1,4 +1,4 @@
-; Sun Dec 01 20:15:26 CET 2019
+; Fri Dec 06 19:21:53 CET 2019
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -64,6 +64,11 @@
 ;+		(allowed-classes Genero)
 ;+		(inverse-slot genero_libro)
 		(create-accessor read-write))
+	(single-slot es_clasico
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(multislot de_nacionalidad
 		(type INSTANCE)
 ;+		(allowed-classes Nacionalidad)
@@ -125,27 +130,10 @@
 (defclass Libro
 	(is-a USER)
 	(role concrete)
-	(single-slot anyo
-		(type INTEGER)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(multislot de_genero
-		(type INSTANCE)
-;+		(allowed-classes Genero)
-		(create-accessor read-write))
-	(single-slot num_paginas
-		(type INTEGER)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot es_popular
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot en_idioma_original
-		(type INSTANCE)
-;+		(allowed-classes Idioma)
-;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot de_autor
 		(type INSTANCE)
@@ -162,10 +150,6 @@
 ;+		(allowed-classes Epoca)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(multislot de_tematica
-		(type INSTANCE)
-;+		(allowed-classes Tematica)
-		(create-accessor read-write))
 	(single-slot titulo
 		(type STRING)
 ;+		(cardinality 1 1)
@@ -173,6 +157,32 @@
 	(single-slot puntuacion
 		(type INTEGER)
 ;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot anyo
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot de_genero
+		(type INSTANCE)
+;+		(allowed-classes Genero)
+		(create-accessor read-write))
+	(single-slot num_paginas
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot es_clasico
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot en_idioma_original
+		(type INSTANCE)
+;+		(allowed-classes Idioma)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot de_tematica
+		(type INSTANCE)
+;+		(allowed-classes Tematica)
 		(create-accessor read-write)))
 
 (defclass Autor
@@ -273,7 +283,7 @@
 
 (definstances instancies
 
-; Sun Dec 01 20:21:01 CET 2019
+; Fri Dec 06 19:21:53 CET 2019
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -301,8 +311,9 @@
 		[recomendadorLibros_Class40000]
 		[recomendadorLibros_Class40001])
 	(en_idioma_original [recomendadorLibros_Class10000])
+	(es_clasico TRUE)
 	(es_popular TRUE)
-	(nivel_lenguaje alto)
+	(nivel_lenguaje medio)
 	(num_paginas 1990)
 	(puntuacion 10)
 	(titulo "El conde de Montecristo"))
@@ -321,7 +332,8 @@
 
 ([recomendadorLibros_Class10002] of  Epoca
 
-	(epoca "vanguardista"))
+	(epoca "vanguardista")
+	(epoca_libro_autor [recomendadorLibros_Class50008]))
 
 ([recomendadorLibros_Class10003] of  Epoca
 
@@ -344,7 +356,7 @@
 
 ([recomendadorLibros_Class10007] of  Epoca
 
-	(epoca "clásica"))
+	(epoca "clasica"))
 
 ([recomendadorLibros_Class10008] of  Epoca
 
@@ -368,6 +380,8 @@
 	(de_genero [recomendadorLibros_Class0])
 	(de_tematica [recomendadorLibros_Class50006])
 	(en_idioma_original [recomendadorLibros_Class10000])
+	(es_clasico TRUE)
+	(nivel_lenguaje medio)
 	(puntuacion 8)
 	(titulo "Los tres Mosqueteros"))
 
@@ -407,7 +421,7 @@
 
 ([recomendadorLibros_Class20007] of  Genero
 
-	(genero "filosofica")
+	(genero "filosofia")
 	(genero_libro
 		[recomendadorLibros_Class20003]
 		[recomendadorLibros_Class50018]
@@ -431,6 +445,8 @@
 		[recomendadorLibros_Class40002]
 		[recomendadorLibros_Class40003])
 	(en_idioma_original [recomendadorLibros_Class30006])
+	(es_clasico TRUE)
+	(nivel_lenguaje alto)
 	(puntuacion 10)
 	(titulo "El ingenioso hidalgo Don Quijote de la Mancha"))
 
@@ -448,6 +464,7 @@
 	(de_epoca [recomendadorLibros_Class30004])
 	(de_genero [recomendadorLibros_Class0])
 	(en_idioma_original [recomendadorLibros_Class30006])
+	(nivel_lenguaje bajo)
 	(puntuacion 6)
 	(titulo "El capitan Alatriste"))
 
@@ -533,8 +550,9 @@
 	(de_tematica [recomendadorLibros_Class50006])
 	(en_idioma_original [recomendadorLibros_Class50003])
 	(es_popular TRUE)
+	(nivel_lenguaje bajo)
 	(puntuacion 9)
-	(titulo "El Señor de los Anillos"))
+	(titulo "El Senyor de los Anillos"))
 
 ([recomendadorLibros_Class50002] of  Autor
 
@@ -542,7 +560,9 @@
 	(autor_libro
 		[recomendadorLibros_Class50000]
 		[recomendadorLibros_Class50007])
-	(de_epoca [recomendadorLibros_Class30004]))
+	(de_epoca [recomendadorLibros_Class30004])
+	(de_nacionalidad [recomendadorLibros_Class60000])
+	(es_popular TRUE))
 
 ([recomendadorLibros_Class50003] of  Idioma
 
@@ -570,6 +590,7 @@
 	(de_tematica [recomendadorLibros_Class50006])
 	(en_idioma_original [recomendadorLibros_Class50003])
 	(es_popular TRUE)
+	(nivel_lenguaje bajo)
 	(puntuacion 9)
 	(titulo "El Hobbit"))
 
@@ -577,11 +598,13 @@
 
 	(anyo 1957)
 	(de_autor [recomendadorLibros_Class50010])
+	(de_epoca [recomendadorLibros_Class10002])
 	(de_genero [recomendadorLibros_Class50011])
 	(de_tematica
 		[recomendadorLibros_Class50013]
 		[recomendadorLibros_Class50012])
 	(en_idioma_original [recomendadorLibros_Class50003])
+	(nivel_lenguaje bajo)
 	(puntuacion 7)
 	(titulo "En el camino"))
 
@@ -589,7 +612,8 @@
 
 	(autor "Jack Kerouac")
 	(autor_libro [recomendadorLibros_Class50008])
-	(de_epoca [recomendadorLibros_Class30004]))
+	(de_epoca [recomendadorLibros_Class30004])
+	(de_nacionalidad [recomendadorLibros_Class60001]))
 
 ([recomendadorLibros_Class50011] of  Genero
 
@@ -616,6 +640,7 @@
 	(de_genero [recomendadorLibros_Class50017])
 	(de_tematica [recomendadorLibros_Class40003])
 	(en_idioma_original [recomendadorLibros_Class50003])
+	(nivel_lenguaje bajo)
 	(puntuacion 6)
 	(titulo "La maquina de follar"))
 
@@ -629,7 +654,9 @@
 ([recomendadorLibros_Class50016] of  Nacionalidad
 
 	(nacionalidad "alemana")
-	(nacionalidad_autor [recomendadorLibros_Class50015]))
+	(nacionalidad_autor
+		[recomendadorLibros_Class50015]
+		[recomendadorLibros_Class50019]))
 
 ([recomendadorLibros_Class50017] of  Genero
 
@@ -644,6 +671,8 @@
 	(de_genero [recomendadorLibros_Class20007])
 	(de_tematica [recomendadorLibros_Class40001])
 	(en_idioma_original [recomendadorLibros_Class50021])
+	(es_clasico FALSE)
+	(nivel_lenguaje alto)
 	(puntuacion 10)
 	(titulo "Asi hablo Zaratustra"))
 
@@ -651,7 +680,8 @@
 
 	(autor "Friedrich Nietzsche")
 	(autor_libro [recomendadorLibros_Class50018])
-	(de_epoca [recomendadorLibros_Class50020]))
+	(de_epoca [recomendadorLibros_Class50020])
+	(de_nacionalidad [recomendadorLibros_Class50016]))
 
 ([recomendadorLibros_Class50020] of  Epoca
 
@@ -677,6 +707,7 @@
 		[recomendadorLibros_Class50013]
 		[recomendadorLibros_Class40003])
 	(en_idioma_original [recomendadorLibros_Class10000])
+	(nivel_lenguaje medio)
 	(puntuacion 10)
 	(titulo "El Ser y la Nada"))
 
@@ -686,6 +717,16 @@
 	(autor_libro [recomendadorLibros_Class50022])
 	(de_epoca [recomendadorLibros_Class50020])
 	(de_nacionalidad [recomendadorLibros_Class3]))
+
+([recomendadorLibros_Class60000] of  Nacionalidad
+
+	(nacionalidad "sudafricana")
+	(nacionalidad_autor [recomendadorLibros_Class50002]))
+
+([recomendadorLibros_Class60001] of  Nacionalidad
+
+	(nacionalidad "estadounidense")
+	(nacionalidad_autor [recomendadorLibros_Class50010]))
 
 
 
@@ -1216,6 +1257,21 @@
 	(retract ?hecho)
 	(assert (habito-lectura TRUE))
     (assert (horas-semana (* ?d ?h)))
+	(if (> (* ?d ?h) 10 )
+		then (assert (nivel-lectura alto))
+		else (assert (nivel-lectura medio))
+	)
+)
+
+(defrule recopilacion-prefs::nivel-lenguaje "Pregunta al usuario si tiene alto nivel lenguaje"
+	?hecho <- (habito-lectura FALSE)
+	=>
+	(bind ?respuesta (pregunta-si-no "Tienes un buen nivel de lectura? "))
+	(if (eq ?respuesta TRUE)
+		then (assert (nivel-lectura medio))
+		else 
+		(assert (nivel-lectura bajo))
+	)
 )
 
 ;;;  ---------------------------------------------- 
@@ -1286,7 +1342,7 @@
 	(bind $?lista (find-all-instances ((?inst Libro)) TRUE))
 	(progn$ (?curr-con ?lista)
 		(make-instance (gensym) of Recomendacion (contenido ?curr-con) (puntuacion (send ?curr-con get-puntuacion)))
-		(printout t "-->" ?curr-con "<--" crlf)
+		;(printout t "-->" ?curr-con "<--" crlf)
 	)	
 )
 
@@ -1457,6 +1513,73 @@
 
 
 ;;;  ----------------------------------------------
+
+(defrule procesado::valorarar-populares "Se mejora la puntuacion de los libros populares"
+	?hecho <- (aclamado-critica TRUE)
+	?cont <- (object (is-a Libro) (es_popular TRUE))
+	;?rec <- (object (is-a Recomendacion) (contenido ?cont) (puntuacion ?p) (justificaciones $?just))	;no funciona, porque???
+	?rec <- (object (is-a Recomendacion) (contenido ?conta) (puntuacion ?p) (justificaciones $?just))
+	(test (eq (instance-name ?cont) (instance-name ?conta)))
+	(not (valorado-popular ?cont))
+
+	=>
+
+	(bind ?p (+ ?p 5))
+	(send ?rec put-puntuacion ?p)
+	(bind ?text (str-cat "Es un BestSeller " " -> + 5"))
+	(bind $?just (insert$ $?just (+ (length$ $?just) 1) ?text))
+	(send ?rec put-justificaciones $?just)
+	(assert (valorado-popular ?cont))
+
+)
+
+;;;  ----------------------------------------------
+
+(defrule procesado::valorarar-clasicos "Se mejora la puntuacion de los libros clasicos"
+	?hecho <- (clasicos TRUE)
+	?cont <- (object (is-a Libro) (es_clasico TRUE))
+	;?rec <- (object (is-a Recomendacion) (contenido ?cont) (puntuacion ?p) (justificaciones $?just))	;no funciona, porque???
+	?rec <- (object (is-a Recomendacion) (contenido ?conta) (puntuacion ?p) (justificaciones $?just))
+	(test (eq (instance-name ?cont) (instance-name ?conta)))
+	(not (valorado-clasico ?cont))
+
+	=>
+
+	(bind ?p (+ ?p 5))
+	(send ?rec put-puntuacion ?p)
+	(bind ?text (str-cat "Es un clasico " " -> + 5"))
+	(bind $?just (insert$ $?just (+ (length$ $?just) 1) ?text))
+	(send ?rec put-justificaciones $?just)
+	(assert (valorado-clasico ?cont))
+
+)
+
+;;;  ----------------------------------------------
+
+
+(defrule procesado::valorarar-nivel-lectura "Se mejora la puntuacion de los libros adecuados segun habito lectura"
+	?hecho <- (nivel-lectura ?lvl)
+
+	?cont <- (object (is-a Libro) (nivel_lenguaje ?lvl))
+	?rec <- (object (is-a Recomendacion) (contenido ?conta) (puntuacion ?p) (justificaciones $?just))
+	(test (eq (instance-name ?cont) (instance-name ?conta)))
+	;?rec <- (object (is-a Recomendacion) (contenido ?cont) (puntuacion ?p) (justificaciones $?just))	;no funciona, porque???
+
+	(not (valorado-nivel ?cont))
+
+	=>
+
+	(bind ?p (+ ?p 20))
+	(send ?rec put-puntuacion ?p)
+	(bind ?text (str-cat "Nivel lectura adecuado " ?lvl " -> + 20"))
+	(bind $?just (insert$ $?just (+ (length$ $?just) 1) ?text))
+	(send ?rec put-justificaciones $?just)
+	(assert (valorado-nivel ?cont))
+
+)
+
+;;;  ----------------------------------------------
+
 
 (defrule procesado::pasar-a-generacion "Pasa al modulo de generacion de respuestas"
 	(declare(salience -10))
