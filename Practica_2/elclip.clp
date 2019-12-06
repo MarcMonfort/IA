@@ -1430,17 +1430,16 @@
 	?hecho <- (nacionalidad ?nac)
 	?autor <-(object (is-a Autor) (de_nacionalidad $?nacionalidades))
 	(test (member$ ?nac $?nacionalidades))
-	?cont <-(object (is-a Libro) (de_autor ?autor))
+	?cont <-(object (is-a Libro) (de_autor ?autor2))
+	(test (eq (instance-name ?autor) (instance-name ?autor2)))
 	?rec <- (object (is-a Recomendacion) (contenido ?conta) (puntuacion ?p) (justificaciones $?just))
 	(test (eq (instance-name ?cont) (instance-name ?conta)))
-	;?rec <- (object (is-a Recomendacion) (contenido ?cont) (puntuacion ?p) (justificaciones $?just)) ;;;no es lo mismo??
 	(not (valorado-nacionalidad-favorita ?cont ?nac))
 	=>
-	(printout t "-->" "aaaaaaaaaaaaaaaaaaaaaaa" "<--" crlf)
 
-	(bind ?p (+ ?p 2))
+	(bind ?p (+ ?p 20))
 	(send ?rec put-puntuacion ?p)
-	(bind ?text (str-cat "Pertenece a la nacionalidad favorita " (send ?nac get-nacionalidad) " -> +2"))
+	(bind ?text (str-cat "Pertenece a la nacionalidad favorita " (send ?nac get-nacionalidad) " -> +20"))
 	(bind $?just (insert$ $?just (+ (length$ $?just) 1) ?text))
 	(send ?rec put-justificaciones $?just)
 	(assert (valorado-nacionalidad-favorita ?cont ?nac))
@@ -1569,9 +1568,9 @@
 
 	=>
 
-	(bind ?p (+ ?p 20))
+	(bind ?p (+ ?p 3))
 	(send ?rec put-puntuacion ?p)
-	(bind ?text (str-cat "Nivel lectura adecuado " ?lvl " -> + 20"))
+	(bind ?text (str-cat "Nivel lectura adecuado " ?lvl " -> + 3"))
 	(bind $?just (insert$ $?just (+ (length$ $?just) 1) ?text))
 	(send ?rec put-justificaciones $?just)
 	(assert (valorado-nivel ?cont))
