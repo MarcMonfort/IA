@@ -283,7 +283,7 @@
 
 (definstances instancies
 
-; Fri Dec 06 19:21:53 CET 2019
+; Wed Dec 11 02:11:22 CET 2019
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -297,7 +297,8 @@
 		[recomendadorLibros_Class30000]
 		[recomendadorLibros_Class1]
 		[recomendadorLibros_Class50000]
-		[recomendadorLibros_Class50007]))
+		[recomendadorLibros_Class50007]
+		[recomendadorLibros_Class70006]))
 
 ([recomendadorLibros_Class1] of  Libro
 
@@ -324,16 +325,22 @@
 	(idioma_libro
 		[recomendadorLibros_Class1]
 		[recomendadorLibros_Class20000]
-		[recomendadorLibros_Class50022]))
+		[recomendadorLibros_Class50022]
+		[recomendadorLibros_Class70017]))
 
 ([recomendadorLibros_Class10001] of  Epoca
 
-	(epoca "modernista"))
+	(epoca "modernista")
+	(epoca_libro_autor
+		[recomendadorLibros_Class70007]
+		[recomendadorLibros_Class70006]))
 
 ([recomendadorLibros_Class10002] of  Epoca
 
 	(epoca "vanguardista")
-	(epoca_libro_autor [recomendadorLibros_Class50008]))
+	(epoca_libro_autor
+		[recomendadorLibros_Class50008]
+		[recomendadorLibros_Class70020]))
 
 ([recomendadorLibros_Class10003] of  Epoca
 
@@ -388,12 +395,18 @@
 ([recomendadorLibros_Class20001] of  Genero
 
 	(genero "romantica")
-	(genero_libro [recomendadorLibros_Class1]))
+	(genero_libro
+		[recomendadorLibros_Class1]
+		[recomendadorLibros_Class70003]
+		[recomendadorLibros_Class70006]
+		[recomendadorLibros_Class70010]
+		[recomendadorLibros_Class70013]
+		[recomendadorLibros_Class70019]))
 
 ([recomendadorLibros_Class20003] of  Libro
 
 	(anyo 1868)
-	(de_autor [recomendadorLibros_Class20004])
+	(de_autor [recomendadorLibros_Class70022])
 	(de_epoca [recomendadorLibros_Class4])
 	(de_genero [recomendadorLibros_Class20007])
 	(en_idioma_original [recomendadorLibros_Class20006])
@@ -402,22 +415,17 @@
 	(puntuacion 9)
 	(titulo "El Idiota"))
 
-([recomendadorLibros_Class20004] of  Autor
-
-	(autor "Fiodor Dostoyevski")
-	(autor_libro [recomendadorLibros_Class20003])
-	(de_epoca [recomendadorLibros_Class4])
-	(de_nacionalidad [recomendadorLibros_Class20005]))
-
 ([recomendadorLibros_Class20005] of  Nacionalidad
 
 	(nacionalidad "rusa")
-	(nacionalidad_autor [recomendadorLibros_Class20004]))
+	(nacionalidad_autor [recomendadorLibros_Class70022]))
 
 ([recomendadorLibros_Class20006] of  Idioma
 
 	(idioma "ruso")
-	(idioma_libro [recomendadorLibros_Class20003]))
+	(idioma_libro
+		[recomendadorLibros_Class20003]
+		[recomendadorLibros_Class70021]))
 
 ([recomendadorLibros_Class20007] of  Genero
 
@@ -425,7 +433,11 @@
 	(genero_libro
 		[recomendadorLibros_Class20003]
 		[recomendadorLibros_Class50018]
-		[recomendadorLibros_Class50022]))
+		[recomendadorLibros_Class50022]
+		[recomendadorLibros_Class70010]
+		[recomendadorLibros_Class70015]
+		[recomendadorLibros_Class70017]
+		[recomendadorLibros_Class70021]))
 
 ([recomendadorLibros_Class3] of  Nacionalidad
 
@@ -433,7 +445,8 @@
 	(nacionalidad_autor
 		[recomendadorLibros_Class2]
 		[recomendadorLibros_Class1]
-		[recomendadorLibros_Class50023]))
+		[recomendadorLibros_Class50023]
+		[recomendadorLibros_Class70018]))
 
 ([recomendadorLibros_Class30000] of  Libro
 
@@ -486,7 +499,12 @@
 		[recomendadorLibros_Class50007]
 		[recomendadorLibros_Class50010]
 		[recomendadorLibros_Class50015]
-		[recomendadorLibros_Class50014]))
+		[recomendadorLibros_Class50014]
+		[recomendadorLibros_Class70001]
+		[recomendadorLibros_Class70000]
+		[recomendadorLibros_Class70004]
+		[recomendadorLibros_Class70003]
+		[recomendadorLibros_Class70019]))
 
 ([recomendadorLibros_Class30005] of  Nacionalidad
 
@@ -500,7 +518,8 @@
 	(idioma "castellano")
 	(idioma_libro
 		[recomendadorLibros_Class30002]
-		[recomendadorLibros_Class30000]))
+		[recomendadorLibros_Class30000]
+		[recomendadorLibros_Class70003]))
 
 ([recomendadorLibros_Class4] of  Epoca
 
@@ -508,9 +527,12 @@
 	(epoca_libro_autor
 		[recomendadorLibros_Class2]
 		[recomendadorLibros_Class1]
-		[recomendadorLibros_Class20004]
 		[recomendadorLibros_Class20003]
-		[recomendadorLibros_Class20000]))
+		[recomendadorLibros_Class20000]
+		[recomendadorLibros_Class70011]
+		[recomendadorLibros_Class70010]
+		[recomendadorLibros_Class70014]
+		[recomendadorLibros_Class70013]))
 
 ([recomendadorLibros_Class40000] of  Tematica
 
@@ -522,12 +544,19 @@
 	(tematica "Dios")
 	(tematica_libro
 		[recomendadorLibros_Class1]
-		[recomendadorLibros_Class50018]))
+		[recomendadorLibros_Class50018]
+		[recomendadorLibros_Class70006]
+		[recomendadorLibros_Class70010]
+		[recomendadorLibros_Class70013]
+		[recomendadorLibros_Class70015]
+		[recomendadorLibros_Class70017]))
 
 ([recomendadorLibros_Class40002] of  Tematica
 
 	(tematica "caballerias")
-	(tematica_libro [recomendadorLibros_Class30000]))
+	(tematica_libro
+		[recomendadorLibros_Class30000]
+		[recomendadorLibros_Class70013]))
 
 ([recomendadorLibros_Class40003] of  Tematica
 
@@ -535,11 +564,18 @@
 	(tematica_libro
 		[recomendadorLibros_Class30000]
 		[recomendadorLibros_Class50014]
-		[recomendadorLibros_Class50022]))
+		[recomendadorLibros_Class50022]
+		[recomendadorLibros_Class70000]
+		[recomendadorLibros_Class70003]
+		[recomendadorLibros_Class70017]
+		[recomendadorLibros_Class70021]))
 
 ([recomendadorLibros_Class40004] of  Tematica
 
-	(tematica "lealtad"))
+	(tematica "lealtad")
+	(tematica_libro
+		[recomendadorLibros_Class70003]
+		[recomendadorLibros_Class70019]))
 
 ([recomendadorLibros_Class50000] of  Libro
 
@@ -571,7 +607,12 @@
 		[recomendadorLibros_Class50000]
 		[recomendadorLibros_Class50007]
 		[recomendadorLibros_Class50008]
-		[recomendadorLibros_Class50014]))
+		[recomendadorLibros_Class50014]
+		[recomendadorLibros_Class70000]
+		[recomendadorLibros_Class70006]
+		[recomendadorLibros_Class70010]
+		[recomendadorLibros_Class70013]
+		[recomendadorLibros_Class70019]))
 
 ([recomendadorLibros_Class50006] of  Tematica
 
@@ -579,7 +620,9 @@
 	(tematica_libro
 		[recomendadorLibros_Class20000]
 		[recomendadorLibros_Class50000]
-		[recomendadorLibros_Class50007]))
+		[recomendadorLibros_Class50007]
+		[recomendadorLibros_Class70006]
+		[recomendadorLibros_Class70010]))
 
 ([recomendadorLibros_Class50007] of  Libro
 
@@ -618,19 +661,27 @@
 ([recomendadorLibros_Class50011] of  Genero
 
 	(genero "viajes")
-	(genero_libro [recomendadorLibros_Class50008]))
+	(genero_libro
+		[recomendadorLibros_Class50008]
+		[recomendadorLibros_Class70000]))
 
 ([recomendadorLibros_Class50012] of  Tematica
 
 	(tematica "drogas")
-	(tematica_libro [recomendadorLibros_Class50008]))
+	(tematica_libro
+		[recomendadorLibros_Class50008]
+		[recomendadorLibros_Class70019]))
 
 ([recomendadorLibros_Class50013] of  Tematica
 
 	(tematica "bohemio")
 	(tematica_libro
 		[recomendadorLibros_Class50008]
-		[recomendadorLibros_Class50022]))
+		[recomendadorLibros_Class50022]
+		[recomendadorLibros_Class70006]
+		[recomendadorLibros_Class70013]
+		[recomendadorLibros_Class70017]
+		[recomendadorLibros_Class70021]))
 
 ([recomendadorLibros_Class50014] of  Libro
 
@@ -656,12 +707,16 @@
 	(nacionalidad "alemana")
 	(nacionalidad_autor
 		[recomendadorLibros_Class50015]
-		[recomendadorLibros_Class50019]))
+		[recomendadorLibros_Class50019]
+		[recomendadorLibros_Class70016]))
 
 ([recomendadorLibros_Class50017] of  Genero
 
 	(genero "realismo")
-	(genero_libro [recomendadorLibros_Class50014]))
+	(genero_libro
+		[recomendadorLibros_Class50014]
+		[recomendadorLibros_Class70003]
+		[recomendadorLibros_Class70021]))
 
 ([recomendadorLibros_Class50018] of  Libro
 
@@ -690,12 +745,20 @@
 		[recomendadorLibros_Class50019]
 		[recomendadorLibros_Class50018]
 		[recomendadorLibros_Class50022]
-		[recomendadorLibros_Class50023]))
+		[recomendadorLibros_Class50023]
+		[recomendadorLibros_Class70016]
+		[recomendadorLibros_Class70015]
+		[recomendadorLibros_Class70018]
+		[recomendadorLibros_Class70017]
+		[recomendadorLibros_Class70022]
+		[recomendadorLibros_Class70021]))
 
 ([recomendadorLibros_Class50021] of  Idioma
 
 	(idioma "aleman")
-	(idioma_libro [recomendadorLibros_Class50018]))
+	(idioma_libro
+		[recomendadorLibros_Class50018]
+		[recomendadorLibros_Class70015]))
 
 ([recomendadorLibros_Class50022] of  Libro
 
@@ -726,10 +789,252 @@
 ([recomendadorLibros_Class60001] of  Nacionalidad
 
 	(nacionalidad "estadounidense")
-	(nacionalidad_autor [recomendadorLibros_Class50010]))
+	(nacionalidad_autor
+		[recomendadorLibros_Class50010]
+		[recomendadorLibros_Class70014]))
 
+([recomendadorLibros_Class70000] of  Libro
 
+	(anyo 2004)
+	(de_autor [recomendadorLibros_Class70001])
+	(de_epoca [recomendadorLibros_Class30004])
+	(de_genero [recomendadorLibros_Class50011])
+	(de_tematica [recomendadorLibros_Class40003])
+	(en_idioma_original [recomendadorLibros_Class50003])
+	(nivel_lenguaje bajo)
+	(num_paginas 312)
+	(puntuacion 7)
+	(titulo "Viajes con Herodoto"))
 
+([recomendadorLibros_Class70001] of  Autor
+
+	(autor "Ryszard Kapuscinski")
+	(autor_libro [recomendadorLibros_Class70000])
+	(de_epoca [recomendadorLibros_Class30004])
+	(de_nacionalidad [recomendadorLibros_Class70002]))
+
+([recomendadorLibros_Class70002] of  Nacionalidad
+
+	(nacionalidad "polaca")
+	(nacionalidad_autor [recomendadorLibros_Class70001]))
+
+([recomendadorLibros_Class70003] of  Libro
+
+	(anyo 1967)
+	(de_autor [recomendadorLibros_Class70004])
+	(de_epoca [recomendadorLibros_Class30004])
+	(de_genero
+		[recomendadorLibros_Class50017]
+		[recomendadorLibros_Class20001])
+	(de_tematica
+		[recomendadorLibros_Class40004]
+		[recomendadorLibros_Class40003])
+	(en_idioma_original [recomendadorLibros_Class30006])
+	(es_clasico TRUE)
+	(nivel_lenguaje medio)
+	(num_paginas 471)
+	(puntuacion 9)
+	(titulo "Cien Anyos de Soledad"))
+
+([recomendadorLibros_Class70004] of  Autor
+
+	(autor "Gabriel Garcia Marquez")
+	(autor_libro [recomendadorLibros_Class70003])
+	(de_epoca [recomendadorLibros_Class30004])
+	(de_nacionalidad [recomendadorLibros_Class70005])
+	(es_popular TRUE))
+
+([recomendadorLibros_Class70005] of  Nacionalidad
+
+	(nacionalidad "colombiana")
+	(nacionalidad_autor [recomendadorLibros_Class70004]))
+
+([recomendadorLibros_Class70006] of  Libro
+
+	(anyo 1897)
+	(de_autor [recomendadorLibros_Class70007])
+	(de_epoca [recomendadorLibros_Class10001])
+	(de_genero
+		[recomendadorLibros_Class20001]
+		[recomendadorLibros_Class0])
+	(de_tematica
+		[recomendadorLibros_Class50013]
+		[recomendadorLibros_Class40001]
+		[recomendadorLibros_Class50006]
+		[recomendadorLibros_Class70009])
+	(en_idioma_original [recomendadorLibros_Class50003])
+	(es_clasico TRUE)
+	(es_popular TRUE)
+	(nivel_lenguaje medio)
+	(num_paginas 576)
+	(puntuacion 8)
+	(titulo "Dracula"))
+
+([recomendadorLibros_Class70007] of  Autor
+
+	(autor "Bram Stoker")
+	(autor_libro [recomendadorLibros_Class70006])
+	(de_epoca [recomendadorLibros_Class10001])
+	(de_nacionalidad [recomendadorLibros_Class70008])
+	(es_popular FALSE))
+
+([recomendadorLibros_Class70008] of  Nacionalidad
+
+	(nacionalidad "irlandesa")
+	(nacionalidad_autor [recomendadorLibros_Class70007]))
+
+([recomendadorLibros_Class70009] of  Tematica
+
+	(tematica "vampiros")
+	(tematica_libro [recomendadorLibros_Class70006]))
+
+([recomendadorLibros_Class70010] of  Libro
+
+	(anyo 1790)
+	(de_autor [recomendadorLibros_Class70011])
+	(de_epoca [recomendadorLibros_Class4])
+	(de_genero
+		[recomendadorLibros_Class20001]
+		[recomendadorLibros_Class20007])
+	(de_tematica
+		[recomendadorLibros_Class40001]
+		[recomendadorLibros_Class50006])
+	(en_idioma_original [recomendadorLibros_Class50003])
+	(nivel_lenguaje medio)
+	(puntuacion 8)
+	(titulo "El matrimonio del cielo y el infierno"))
+
+([recomendadorLibros_Class70011] of  Autor
+
+	(autor "William Blake")
+	(autor_libro [recomendadorLibros_Class70010])
+	(de_epoca [recomendadorLibros_Class4])
+	(de_nacionalidad [recomendadorLibros_Class70012]))
+
+([recomendadorLibros_Class70012] of  Nacionalidad
+
+	(nacionalidad "inglesa")
+	(nacionalidad_autor
+		[recomendadorLibros_Class70011]
+		[recomendadorLibros_Class70020]))
+
+([recomendadorLibros_Class70013] of  Libro
+
+	(anyo 1839)
+	(de_autor [recomendadorLibros_Class70014])
+	(de_epoca [recomendadorLibros_Class4])
+	(de_genero [recomendadorLibros_Class20001])
+	(de_tematica
+		[recomendadorLibros_Class50013]
+		[recomendadorLibros_Class40002]
+		[recomendadorLibros_Class40001])
+	(en_idioma_original [recomendadorLibros_Class50003])
+	(es_clasico TRUE)
+	(nivel_lenguaje medio)
+	(num_paginas 126)
+	(puntuacion 9)
+	(titulo "La caída de la Casa Usher"))
+
+([recomendadorLibros_Class70014] of  Autor
+
+	(autor "Edgar Allan Poe")
+	(autor_libro [recomendadorLibros_Class70013])
+	(de_epoca [recomendadorLibros_Class4])
+	(de_nacionalidad [recomendadorLibros_Class60001])
+	(es_popular TRUE))
+
+([recomendadorLibros_Class70015] of  Libro
+
+	(anyo 1819)
+	(de_autor [recomendadorLibros_Class70016])
+	(de_epoca [recomendadorLibros_Class50020])
+	(de_genero [recomendadorLibros_Class20007])
+	(de_tematica [recomendadorLibros_Class40001])
+	(en_idioma_original [recomendadorLibros_Class50021])
+	(es_clasico TRUE)
+	(nivel_lenguaje alto)
+	(num_paginas 1200)
+	(puntuacion 10)
+	(titulo "El Mundo como Voluntad y Representacion"))
+
+([recomendadorLibros_Class70016] of  Autor
+
+	(autor "Arthur Schopenhauer")
+	(autor_libro [recomendadorLibros_Class70015])
+	(de_epoca [recomendadorLibros_Class50020])
+	(de_nacionalidad [recomendadorLibros_Class50016]))
+
+([recomendadorLibros_Class70017] of  Libro
+
+	(anyo 1942)
+	(de_autor [recomendadorLibros_Class70018])
+	(de_epoca [recomendadorLibros_Class50020])
+	(de_genero [recomendadorLibros_Class20007])
+	(de_tematica
+		[recomendadorLibros_Class40001]
+		[recomendadorLibros_Class50013]
+		[recomendadorLibros_Class40003])
+	(en_idioma_original [recomendadorLibros_Class10000])
+	(nivel_lenguaje bajo)
+	(num_paginas 184)
+	(puntuacion 10)
+	(titulo "El Extranjero"))
+
+([recomendadorLibros_Class70018] of  Autor
+
+	(autor "Albert Camus")
+	(autor_libro [recomendadorLibros_Class70017])
+	(de_epoca [recomendadorLibros_Class50020])
+	(de_nacionalidad [recomendadorLibros_Class3]))
+
+([recomendadorLibros_Class70019] of  Libro
+
+	(anyo 1949)
+	(de_autor [recomendadorLibros_Class70020])
+	(de_epoca [recomendadorLibros_Class30004])
+	(de_genero [recomendadorLibros_Class20001])
+	(de_tematica
+		[recomendadorLibros_Class50012]
+		[recomendadorLibros_Class40004])
+	(en_idioma_original [recomendadorLibros_Class50003])
+	(nivel_lenguaje bajo)
+	(num_paginas 380)
+	(puntuacion 10)
+	(titulo "1984"))
+
+([recomendadorLibros_Class70020] of  Autor
+
+	(autor "George Orwell")
+	(autor_libro [recomendadorLibros_Class70019])
+	(de_epoca [recomendadorLibros_Class10002])
+	(de_nacionalidad [recomendadorLibros_Class70012]))
+
+([recomendadorLibros_Class70021] of  Libro
+
+	(anyo 1864)
+	(de_autor [recomendadorLibros_Class70022])
+	(de_epoca [recomendadorLibros_Class50020])
+	(de_genero
+		[recomendadorLibros_Class20007]
+		[recomendadorLibros_Class50017])
+	(de_tematica
+		[recomendadorLibros_Class40003]
+		[recomendadorLibros_Class50013])
+	(en_idioma_original [recomendadorLibros_Class20006])
+	(es_clasico TRUE)
+	(nivel_lenguaje alto)
+	(num_paginas 176)
+	(puntuacion 8)
+	(titulo "Memorias del subsuelo"))
+
+([recomendadorLibros_Class70022] of  Autor
+
+	(autor "Fiodor Dostoyevski")
+	(autor_libro
+		[recomendadorLibros_Class70021]
+		[recomendadorLibros_Class20003])
+	(de_epoca [recomendadorLibros_Class50020])
+	(de_nacionalidad [recomendadorLibros_Class20005]))
 
 )
 
