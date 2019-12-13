@@ -1,4 +1,4 @@
-; Fri Dec 13 10:05:37 CET 2019
+; Fri Dec 13 10:57:04 CET 2019
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -14,7 +14,9 @@
 		[recomendadorLibros_Class50000]
 		[recomendadorLibros_Class50007]
 		[recomendadorLibros_Class70006]
-		[recomendadorLibros_Class80030]))
+		[recomendadorLibros_Class80030]
+		[recomendadorLibros_Class90006]
+		[recomendadorLibros_Class90009]))
 
 ([recomendadorLibros_Class1] of  Libro
 
@@ -119,7 +121,8 @@
 		[recomendadorLibros_Class70013]
 		[recomendadorLibros_Class70019]
 		[recomendadorLibros_Class80008]
-		[recomendadorLibros_Class80021]))
+		[recomendadorLibros_Class80021]
+		[recomendadorLibros_Class90014]))
 
 ([recomendadorLibros_Class20003] of  Libro
 
@@ -155,7 +158,8 @@
 		[recomendadorLibros_Class70010]
 		[recomendadorLibros_Class70015]
 		[recomendadorLibros_Class70017]
-		[recomendadorLibros_Class70021]))
+		[recomendadorLibros_Class70021]
+		[recomendadorLibros_Class90016]))
 
 ([recomendadorLibros_Class3] of  Nacionalidad
 
@@ -238,7 +242,23 @@
 		[recomendadorLibros_Class80021]
 		[recomendadorLibros_Class80029]
 		[recomendadorLibros_Class80028]
-		[recomendadorLibros_Class80030]))
+		[recomendadorLibros_Class80030]
+		[recomendadorLibros_Class90003]
+		[recomendadorLibros_Class90002]
+		[recomendadorLibros_Class90007]
+		[recomendadorLibros_Class90006]
+		[recomendadorLibros_Class90013]
+		[recomendadorLibros_Class90012]
+		[recomendadorLibros_Class90015]
+		[recomendadorLibros_Class90014]
+		[recomendadorLibros_Class90017]
+		[recomendadorLibros_Class90016]
+		[recomendadorLibros_Class90019]
+		[recomendadorLibros_Class90018]
+		[recomendadorLibros_Class90021]
+		[recomendadorLibros_Class90020]
+		[recomendadorLibros_Class90023]
+		[recomendadorLibros_Class90022]))
 
 ([recomendadorLibros_Class30005] of  Nacionalidad
 
@@ -246,7 +266,8 @@
 	(nacionalidad_autor
 		[recomendadorLibros_Class30003]
 		[recomendadorLibros_Class30001]
-		[recomendadorLibros_Class80009]))
+		[recomendadorLibros_Class80009]
+		[recomendadorLibros_Class90007]))
 
 ([recomendadorLibros_Class30006] of  Idioma
 
@@ -257,7 +278,9 @@
 		[recomendadorLibros_Class70003]
 		[recomendadorLibros_Class80008]
 		[recomendadorLibros_Class80015]
-		[recomendadorLibros_Class80018]))
+		[recomendadorLibros_Class80018]
+		[recomendadorLibros_Class90006]
+		[recomendadorLibros_Class90014]))
 
 ([recomendadorLibros_Class4] of  Epoca
 
@@ -272,7 +295,9 @@
 		[recomendadorLibros_Class70014]
 		[recomendadorLibros_Class70013]
 		[recomendadorLibros_Class80027]
-		[recomendadorLibros_Class80026]))
+		[recomendadorLibros_Class80026]
+		[recomendadorLibros_Class90027]
+		[recomendadorLibros_Class90026]))
 
 ([recomendadorLibros_Class40000] of  Tematica
 
@@ -311,7 +336,8 @@
 		[recomendadorLibros_Class70000]
 		[recomendadorLibros_Class70003]
 		[recomendadorLibros_Class70017]
-		[recomendadorLibros_Class70021]))
+		[recomendadorLibros_Class70021]
+		[recomendadorLibros_Class90022]))
 
 ([recomendadorLibros_Class40004] of  Tematica
 
@@ -367,7 +393,13 @@
 		[recomendadorLibros_Class80021]
 		[recomendadorLibros_Class80026]
 		[recomendadorLibros_Class80028]
-		[recomendadorLibros_Class80030]))
+		[recomendadorLibros_Class80030]
+		[recomendadorLibros_Class90002]
+		[recomendadorLibros_Class90009]
+		[recomendadorLibros_Class90012]
+		[recomendadorLibros_Class90016]
+		[recomendadorLibros_Class90018]
+		[recomendadorLibros_Class90026]))
 
 ([recomendadorLibros_Class50006] of  Tematica
 
@@ -425,14 +457,16 @@
 		[recomendadorLibros_Class50008]
 		[recomendadorLibros_Class70000]
 		[recomendadorLibros_Class50000]
-		[recomendadorLibros_Class80026]))
+		[recomendadorLibros_Class80026]
+		[recomendadorLibros_Class90006]))
 
 ([recomendadorLibros_Class50012] of  Tematica
 
 	(tematica "drogas")
 	(tematica_libro
 		[recomendadorLibros_Class50008]
-		[recomendadorLibros_Class70019]))
+		[recomendadorLibros_Class70019]
+		[recomendadorLibros_Class90022]))
 
 ([recomendadorLibros_Class50013] of  Tematica
 
@@ -470,7 +504,9 @@
 	(nacionalidad_autor
 		[recomendadorLibros_Class50015]
 		[recomendadorLibros_Class50019]
-		[recomendadorLibros_Class70016]))
+		[recomendadorLibros_Class70016]
+		[recomendadorLibros_Class90021]
+		[recomendadorLibros_Class90023]))
 
 ([recomendadorLibros_Class50017] of  Genero
 
@@ -520,7 +556,9 @@
 	(idioma "aleman")
 	(idioma_libro
 		[recomendadorLibros_Class50018]
-		[recomendadorLibros_Class70015]))
+		[recomendadorLibros_Class70015]
+		[recomendadorLibros_Class90020]
+		[recomendadorLibros_Class90022]))
 
 ([recomendadorLibros_Class50022] of  Libro
 
@@ -555,7 +593,11 @@
 		[recomendadorLibros_Class50010]
 		[recomendadorLibros_Class70014]
 		[recomendadorLibros_Class80005]
-		[recomendadorLibros_Class80029]))
+		[recomendadorLibros_Class80029]
+		[recomendadorLibros_Class90013]
+		[recomendadorLibros_Class90017]
+		[recomendadorLibros_Class90019]
+		[recomendadorLibros_Class90027]))
 
 ([recomendadorLibros_Class70000] of  Libro
 
@@ -760,8 +802,8 @@
 		[recomendadorLibros_Class80011]
 		[recomendadorLibros_Class20001])
 	(de_tematica
-		[recomendadorLibros_Class50012]
-		[recomendadorLibros_Class40004])
+		[recomendadorLibros_Class40004]
+		[recomendadorLibros_Class50012])
 	(en_idioma_original [recomendadorLibros_Class50003])
 	(es_clasico TRUE)
 	(nivel_lenguaje bajo)
@@ -809,7 +851,8 @@
 	(genero_libro
 		[recomendadorLibros_Class70019]
 		[recomendadorLibros_Class80001]
-		[recomendadorLibros_Class80004]))
+		[recomendadorLibros_Class80004]
+		[recomendadorLibros_Class90016]))
 
 ([recomendadorLibros_Class80001] of  Libro
 
@@ -838,7 +881,9 @@
 	(nacionalidad_autor
 		[recomendadorLibros_Class80002]
 		[recomendadorLibros_Class80022]
-		[recomendadorLibros_Class80027]))
+		[recomendadorLibros_Class80027]
+		[recomendadorLibros_Class90003]
+		[recomendadorLibros_Class90010]))
 
 ([recomendadorLibros_Class80004] of  Libro
 
@@ -867,7 +912,9 @@
 		[recomendadorLibros_Class50000]
 		[recomendadorLibros_Class80008]
 		[recomendadorLibros_Class80021]
-		[recomendadorLibros_Class80030]))
+		[recomendadorLibros_Class80030]
+		[recomendadorLibros_Class90006]
+		[recomendadorLibros_Class90014]))
 
 ([recomendadorLibros_Class80007] of  Genero
 
@@ -964,7 +1011,9 @@
 ([recomendadorLibros_Class80017] of  Nacionalidad
 
 	(nacionalidad "argentina")
-	(nacionalidad_autor [recomendadorLibros_Class80016]))
+	(nacionalidad_autor
+		[recomendadorLibros_Class80016]
+		[recomendadorLibros_Class90015]))
 
 ([recomendadorLibros_Class80018] of  Libro
 
@@ -1026,7 +1075,8 @@
 	(tematica_libro
 		[recomendadorLibros_Class80021]
 		[recomendadorLibros_Class50007]
-		[recomendadorLibros_Class50000]))
+		[recomendadorLibros_Class50000]
+		[recomendadorLibros_Class90002]))
 
 ([recomendadorLibros_Class80025] of  Genero
 
@@ -1098,5 +1148,251 @@
 	(puntuacion 7)
 	(titulo "Los ojos del dragon"))
 
-([recomendadorLibros_Class80031] of  Autor
+([recomendadorLibros_Class90000] of  Genero
+
+	(genero "comedia")
+	(genero_libro
+		[recomendadorLibros_Class90002]
+		[recomendadorLibros_Class90006]
+		[recomendadorLibros_Class90018]
+		[recomendadorLibros_Class90020]))
+
+([recomendadorLibros_Class90001] of  Genero
+
+	(genero "ciencia ficcion")
+	(genero_libro
+		[recomendadorLibros_Class90002]
+		[recomendadorLibros_Class90014]
+		[recomendadorLibros_Class90016]))
+
+([recomendadorLibros_Class90002] of  Libro
+
+	(anyo 1979)
+	(de_autor [recomendadorLibros_Class90003])
+	(de_epoca [recomendadorLibros_Class30004])
+	(de_genero
+		[recomendadorLibros_Class90001]
+		[recomendadorLibros_Class90000])
+	(de_tematica
+		[recomendadorLibros_Class80024]
+		[recomendadorLibros_Class90004])
+	(en_idioma_original [recomendadorLibros_Class50003])
+	(nivel_lenguaje bajo)
+	(puntuacion 9)
+	(titulo "La guia del autoestopista galactico"))
+
+([recomendadorLibros_Class90003] of  Autor
+
+	(autor "Douglas Adams")
+	(autor_libro [recomendadorLibros_Class90002])
+	(de_epoca [recomendadorLibros_Class30004])
+	(de_nacionalidad [recomendadorLibros_Class80003]))
+
+([recomendadorLibros_Class90004] of  Tematica
+
+	(tematica "espacio")
+	(tematica_libro [recomendadorLibros_Class90002]))
+
+([recomendadorLibros_Class90005] of  Genero
+
+	(genero "infantil")
+	(genero_libro
+		[recomendadorLibros_Class90006]
+		[recomendadorLibros_Class90009]
+		[recomendadorLibros_Class90012]))
+
+([recomendadorLibros_Class90006] of  Libro
+
+	(anyo 1997)
+	(de_autor [recomendadorLibros_Class90007])
+	(de_epoca [recomendadorLibros_Class30004])
+	(de_genero
+		[recomendadorLibros_Class0]
+		[recomendadorLibros_Class80006]
+		[recomendadorLibros_Class50011]
+		[recomendadorLibros_Class90005]
+		[recomendadorLibros_Class90000])
+	(en_idioma_original [recomendadorLibros_Class30006])
+	(nivel_lenguaje bajo)
+	(puntuacion 9)
+	(titulo "El rey Arturo cabalga de nuevo, mas o menos"))
+
+([recomendadorLibros_Class90007] of  Autor
+
+	(autor "Miguel Angel Moleon")
+	(autor_libro [recomendadorLibros_Class90006])
+	(de_epoca [recomendadorLibros_Class30004])
+	(de_nacionalidad [recomendadorLibros_Class30005]))
+
+([recomendadorLibros_Class90009] of  Libro
+
+	(anyo 1883)
+	(de_autor [recomendadorLibros_Class90010])
+	(de_epoca [recomendadorLibros_Class90011])
+	(de_genero
+		[recomendadorLibros_Class0]
+		[recomendadorLibros_Class90005])
+	(en_idioma_original [recomendadorLibros_Class50003])
+	(nivel_lenguaje bajo)
+	(puntuacion 5)
+	(titulo "La isla del tesoro"))
+
+([recomendadorLibros_Class90010] of  Autor
+
+	(autor "Robert Luis Stevenson")
+	(autor_libro [recomendadorLibros_Class90009])
+	(de_epoca [recomendadorLibros_Class90011])
+	(de_nacionalidad [recomendadorLibros_Class80003]))
+
+([recomendadorLibros_Class90011] of  Epoca
+
+	(epoca "realismo")
+	(epoca_libro_autor
+		[recomendadorLibros_Class90010]
+		[recomendadorLibros_Class90009]))
+
+([recomendadorLibros_Class90012] of  Libro
+
+	(anyo 1963)
+	(de_autor [recomendadorLibros_Class90013])
+	(de_epoca [recomendadorLibros_Class30004])
+	(de_genero [recomendadorLibros_Class90005])
+	(en_idioma_original [recomendadorLibros_Class50003])
+	(nivel_lenguaje bajo)
+	(puntuacion 7)
+	(titulo "Donde viven los monstruos"))
+
+([recomendadorLibros_Class90013] of  Autor
+
+	(autor "Maurice Sendak")
+	(autor_libro [recomendadorLibros_Class90012])
+	(de_epoca [recomendadorLibros_Class30004])
+	(de_nacionalidad [recomendadorLibros_Class60001]))
+
+([recomendadorLibros_Class90014] of  Libro
+
+	(anyo 1940)
+	(de_autor [recomendadorLibros_Class90015])
+	(de_epoca [recomendadorLibros_Class30004])
+	(de_genero
+		[recomendadorLibros_Class80006]
+		[recomendadorLibros_Class20001]
+		[recomendadorLibros_Class90001])
+	(en_idioma_original [recomendadorLibros_Class30006])
+	(nivel_lenguaje medio)
+	(puntuacion 8)
+	(titulo "La invencion de Morel"))
+
+([recomendadorLibros_Class90015] of  Autor
+
+	(autor "Adolfo Bioy")
+	(autor_libro [recomendadorLibros_Class90014])
+	(de_epoca [recomendadorLibros_Class30004])
+	(de_nacionalidad [recomendadorLibros_Class80017]))
+
+([recomendadorLibros_Class90016] of  Libro
+
+	(anyo 1968)
+	(de_autor [recomendadorLibros_Class90017])
+	(de_epoca [recomendadorLibros_Class30004])
+	(de_genero
+		[recomendadorLibros_Class90001]
+		[recomendadorLibros_Class20007]
+		[recomendadorLibros_Class80000])
+	(en_idioma_original [recomendadorLibros_Class50003])
+	(nivel_lenguaje medio)
+	(puntuacion 8)
+	(titulo "Suenyan los androides con ovejas electricas?"))
+
+([recomendadorLibros_Class90017] of  Autor
+
+	(autor "Phillip K. Dick")
+	(autor_libro [recomendadorLibros_Class90016])
+	(de_epoca [recomendadorLibros_Class30004])
+	(de_nacionalidad [recomendadorLibros_Class60001]))
+
+([recomendadorLibros_Class90018] of  Libro
+
+	(anyo 1980)
+	(de_autor [recomendadorLibros_Class90019])
+	(de_epoca [recomendadorLibros_Class30004])
+	(de_genero [recomendadorLibros_Class90000])
+	(en_idioma_original [recomendadorLibros_Class50003])
+	(nivel_lenguaje medio)
+	(puntuacion 7)
+	(titulo "La conjura de los necios"))
+
+([recomendadorLibros_Class90019] of  Autor
+
+	(autor "John Kennedy Toole")
+	(autor_libro [recomendadorLibros_Class90018])
+	(de_epoca [recomendadorLibros_Class30004])
+	(de_nacionalidad [recomendadorLibros_Class60001]))
+
+([recomendadorLibros_Class90020] of  Libro
+
+	(anyo 2007)
+	(de_autor [recomendadorLibros_Class90021])
+	(de_epoca [recomendadorLibros_Class30004])
+	(de_genero [recomendadorLibros_Class90000])
+	(en_idioma_original [recomendadorLibros_Class50021])
+	(nivel_lenguaje bajo)
+	(puntuacion 6)
+	(titulo "Maldito karma"))
+
+([recomendadorLibros_Class90021] of  Autor
+
+	(autor "David Safier")
+	(autor_libro [recomendadorLibros_Class90020])
+	(de_epoca [recomendadorLibros_Class30004])
+	(de_nacionalidad [recomendadorLibros_Class50016]))
+
+([recomendadorLibros_Class90022] of  Libro
+
+	(anyo 1978)
+	(de_autor [recomendadorLibros_Class90023])
+	(de_epoca [recomendadorLibros_Class30004])
+	(de_genero [recomendadorLibros_Class90025])
+	(de_tematica
+		[recomendadorLibros_Class50012]
+		[recomendadorLibros_Class40003])
+	(en_idioma_original [recomendadorLibros_Class50021])
+	(nivel_lenguaje medio)
+	(puntuacion 8)
+	(titulo "Los ninyos de la estacion de la zoo"))
+
+([recomendadorLibros_Class90023] of  Autor
+
+	(autor "Kai Herman")
+	(autor_libro [recomendadorLibros_Class90022])
+	(de_epoca [recomendadorLibros_Class30004])
+	(de_nacionalidad [recomendadorLibros_Class50016]))
+
+([recomendadorLibros_Class90024] of  Autor
 )
+
+([recomendadorLibros_Class90025] of  Genero
+
+	(genero "drama")
+	(genero_libro
+		[recomendadorLibros_Class90022]
+		[recomendadorLibros_Class90026]))
+
+([recomendadorLibros_Class90026] of  Libro
+
+	(anyo 1851)
+	(de_autor [recomendadorLibros_Class90027])
+	(de_epoca [recomendadorLibros_Class4])
+	(de_genero [recomendadorLibros_Class90025])
+	(en_idioma_original [recomendadorLibros_Class50003])
+	(es_clasico TRUE)
+	(nivel_lenguaje medio)
+	(puntuacion 8)
+	(titulo "La casa de los siete tejados"))
+
+([recomendadorLibros_Class90027] of  Autor
+
+	(autor "Nathaniel Hawthorne")
+	(autor_libro [recomendadorLibros_Class90026])
+	(de_epoca [recomendadorLibros_Class4])
+	(de_nacionalidad [recomendadorLibros_Class60001]))
