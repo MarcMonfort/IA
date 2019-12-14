@@ -1,4 +1,4 @@
-; Wed Dec 11 02:11:22 CET 2019
+; Sat Dec 14 15:12:12 CET 2019
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -20,16 +20,16 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[recomendadorLibros_ProjectKB_Class10112]
-		[recomendadorLibros_ProjectKB_Class10113]
-		[recomendadorLibros_ProjectKB_Class10114]
-		[recomendadorLibros_ProjectKB_Class10115]
-		[recomendadorLibros_ProjectKB_Class10116]
-		[recomendadorLibros_ProjectKB_Class10117]
-		[recomendadorLibros_ProjectKB_Class10118]
-		[recomendadorLibros_ProjectKB_Class10119]
-		[recomendadorLibros_ProjectKB_Class10120]
-		[recomendadorLibros_ProjectKB_Class10121]))
+		[recomendadorLibros_ProjectKB_Class10122]
+		[recomendadorLibros_ProjectKB_Class10123]
+		[recomendadorLibros_ProjectKB_Class10124]
+		[recomendadorLibros_ProjectKB_Class10125]
+		[recomendadorLibros_ProjectKB_Class10126]
+		[recomendadorLibros_ProjectKB_Class10127]
+		[recomendadorLibros_ProjectKB_Class10128]
+		[recomendadorLibros_ProjectKB_Class10129]
+		[recomendadorLibros_ProjectKB_Class10130]
+		[recomendadorLibros_ProjectKB_Class10131]))
 
 ([CLSES_TAB] of  Widget
 
@@ -170,7 +170,7 @@
 	(name "classes_file_name")
 	(string_value "recomendadorLibros.pont"))
 
-([KB_785847_Class0] of  Map
+([KB_220157_Class0] of  Map
 )
 
 ([LAYOUT_PROPERTIES] of  Property_List
@@ -294,52 +294,52 @@
 
 	(name "SearchTab_Query"))
 
-([recomendadorLibros_ProjectKB_Class10112] of  String
+([recomendadorLibros_ProjectKB_Class10122] of  String
 
 	(name ":INSTANCE-ANNOTATION")
 	(string_value "%3AANNOTATION-TEXT"))
 
-([recomendadorLibros_ProjectKB_Class10113] of  String
+([recomendadorLibros_ProjectKB_Class10123] of  String
 
 	(name "Nacionalidad")
 	(string_value "nacionalidad"))
 
-([recomendadorLibros_ProjectKB_Class10114] of  String
+([recomendadorLibros_ProjectKB_Class10124] of  String
 
 	(name "Genero")
 	(string_value "genero"))
 
-([recomendadorLibros_ProjectKB_Class10115] of  String
+([recomendadorLibros_ProjectKB_Class10125] of  String
 
 	(name "Autor")
 	(string_value "autor"))
 
-([recomendadorLibros_ProjectKB_Class10116] of  String
+([recomendadorLibros_ProjectKB_Class10126] of  String
 
 	(name "Tematica")
 	(string_value "tematica"))
 
-([recomendadorLibros_ProjectKB_Class10117] of  String
+([recomendadorLibros_ProjectKB_Class10127] of  String
 
 	(name ":PAL-CONSTRAINT")
 	(string_value "%3APAL-NAME"))
 
-([recomendadorLibros_ProjectKB_Class10118] of  String
+([recomendadorLibros_ProjectKB_Class10128] of  String
 
 	(name ":META-CLASS")
 	(string_value "%3ANAME"))
 
-([recomendadorLibros_ProjectKB_Class10119] of  String
+([recomendadorLibros_ProjectKB_Class10129] of  String
 
 	(name "Idioma")
 	(string_value "idioma"))
 
-([recomendadorLibros_ProjectKB_Class10120] of  String
+([recomendadorLibros_ProjectKB_Class10130] of  String
 
 	(name "Epoca")
 	(string_value "epoca"))
 
-([recomendadorLibros_ProjectKB_Class10121] of  String
+([recomendadorLibros_ProjectKB_Class10131] of  String
 
 	(name "Libro")
 	(string_value "titulo"))
