@@ -1,4 +1,4 @@
-; Fri Dec 06 19:21:53 CET 2019
+; Sat Dec 14 20:18:30 CET 2019
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -46,12 +46,12 @@
 ;+		(cardinality 1 1)
 ;+		(inverse-slot epoca_libro_autor)
 		(create-accessor read-write))
-	(single-slot titulo
-		(type STRING)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot puntuacion
 		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot titulo
+		(type STRING)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(multislot autor_libro
@@ -158,13 +158,13 @@
 		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot anyo
-		(type INTEGER)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(multislot de_genero
 		(type INSTANCE)
 ;+		(allowed-classes Genero)
+		(create-accessor read-write))
+	(single-slot anyo
+		(type INTEGER)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot num_paginas
 		(type INTEGER)
@@ -198,14 +198,14 @@
 ;+		(allowed-classes Epoca)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot autor
-		(type STRING)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(multislot de_nacionalidad
 		(type INSTANCE)
 ;+		(allowed-classes Nacionalidad)
 		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(single-slot autor
+		(type STRING)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(multislot autor_libro
 		(type INSTANCE)
@@ -273,6 +273,8 @@
 		(create-accessor read-write)))
 
 
+
+
 ;;;  ----------------------------------------------
 ;;;  ----------------------------------------------
 ;;;  ----------------instancias---------------------
@@ -283,7 +285,7 @@
 
 (definstances instancies
 
-; Sat Dec 14 15:12:12 CET 2019
+; Sat Dec 14 20:18:30 CET 2019
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -302,7 +304,10 @@
 		[recomendadorLibros_Class90006]
 		[recomendadorLibros_Class90009]
 		[recomendadorLibros_Class100003]
-		[recomendadorLibros_Class50000]))
+		[recomendadorLibros_Class50000]
+		[recomendadorLibros_Class110000]
+		[recomendadorLibros_Class110003]
+		[recomendadorLibros_Class110006]))
 
 ([recomendadorLibros_Class1] of  Libro
 
@@ -332,7 +337,8 @@
 		[recomendadorLibros_Class50022]
 		[recomendadorLibros_Class70017]
 		[recomendadorLibros_Class80012]
-		[recomendadorLibros_Class100003]))
+		[recomendadorLibros_Class100003]
+		[recomendadorLibros_Class110022]))
 
 ([recomendadorLibros_Class100000] of  Libro
 
@@ -364,7 +370,8 @@
 	(nacionalidad_autor
 		[recomendadorLibros_Class100001]
 		[recomendadorLibros_Class100007]
-		[recomendadorLibros_Class100009]))
+		[recomendadorLibros_Class100009]
+		[recomendadorLibros_Class110036]))
 
 ([recomendadorLibros_Class100003] of  Libro
 
@@ -464,7 +471,14 @@
 		[recomendadorLibros_Class100014]
 		[recomendadorLibros_Class100013]
 		[recomendadorLibros_Class100018]
-		[recomendadorLibros_Class100017]))
+		[recomendadorLibros_Class100017]
+		[recomendadorLibros_Class110008]
+		[recomendadorLibros_Class110018]
+		[recomendadorLibros_Class110017]
+		[recomendadorLibros_Class110024]
+		[recomendadorLibros_Class110022]
+		[recomendadorLibros_Class110027]
+		[recomendadorLibros_Class110026]))
 
 ([recomendadorLibros_Class100010] of  Libro
 
@@ -486,9 +500,6 @@
 	(num_paginas 218)
 	(puntuacion 8)
 	(titulo "El Gran Gatsby"))
-
-([recomendadorLibros_Class100011] of  Autor
-)
 
 ([recomendadorLibros_Class100012] of  Autor
 
@@ -580,7 +591,11 @@
 		[recomendadorLibros_Class100004]
 		[recomendadorLibros_Class100003]
 		[recomendadorLibros_Class100016]
-		[recomendadorLibros_Class100015]))
+		[recomendadorLibros_Class100015]
+		[recomendadorLibros_Class110004]
+		[recomendadorLibros_Class110003]
+		[recomendadorLibros_Class110007]
+		[recomendadorLibros_Class110006]))
 
 ([recomendadorLibros_Class100020] of  Libro
 
@@ -658,7 +673,8 @@
 	(epoca "barroca")
 	(epoca_libro_autor
 		[recomendadorLibros_Class30001]
-		[recomendadorLibros_Class30000]))
+		[recomendadorLibros_Class30000]
+		[recomendadorLibros_Class110012]))
 
 ([recomendadorLibros_Class10005] of  Epoca
 
@@ -682,7 +698,308 @@
 
 ([recomendadorLibros_Class10008] of  Epoca
 
-	(epoca "preclásica"))
+	(epoca "preclásica")
+	(epoca_libro_autor
+		[recomendadorLibros_Class110031]
+		[recomendadorLibros_Class110032]
+		[recomendadorLibros_Class110036]
+		[recomendadorLibros_Class110035]))
+
+([recomendadorLibros_Class110000] of  Libro
+
+	(anyo 1983)
+	(de_autor [recomendadorLibros_Class110001])
+	(de_epoca [recomendadorLibros_Class30004])
+	(de_genero
+		[recomendadorLibros_Class0]
+		[recomendadorLibros_Class80006]
+		[recomendadorLibros_Class90005])
+	(de_tematica [recomendadorLibros_Class80023])
+	(en_idioma_original [recomendadorLibros_Class50003])
+	(nivel_lenguaje bajo)
+	(puntuacion 6)
+	(titulo "El color de la magia"))
+
+([recomendadorLibros_Class110001] of  Autor
+
+	(autor "Terry Pratchett")
+	(autor_libro [recomendadorLibros_Class110000])
+	(de_epoca [recomendadorLibros_Class30004])
+	(de_nacionalidad [recomendadorLibros_Class70012]))
+
+([recomendadorLibros_Class110003] of  Libro
+
+	(anyo 2001)
+	(de_autor [recomendadorLibros_Class110004])
+	(de_epoca [recomendadorLibros_Class10002])
+	(de_genero
+		[recomendadorLibros_Class0]
+		[recomendadorLibros_Class90025])
+	(de_tematica [recomendadorLibros_Class110005])
+	(en_idioma_original [recomendadorLibros_Class30006])
+	(es_popular TRUE)
+	(nivel_lenguaje medio)
+	(puntuacion 9)
+	(titulo "La sombra del viento"))
+
+([recomendadorLibros_Class110004] of  Autor
+
+	(autor "Carlos Ruiz Zafón")
+	(autor_libro [recomendadorLibros_Class110003])
+	(de_epoca [recomendadorLibros_Class10002])
+	(de_nacionalidad [recomendadorLibros_Class30005])
+	(es_popular TRUE))
+
+([recomendadorLibros_Class110005] of  Tematica
+
+	(tematica "suspenso")
+	(tematica_libro [recomendadorLibros_Class110003]))
+
+([recomendadorLibros_Class110006] of  Libro
+
+	(anyo 1990)
+	(de_autor [recomendadorLibros_Class110007])
+	(de_epoca [recomendadorLibros_Class10002])
+	(de_genero
+		[recomendadorLibros_Class0]
+		[recomendadorLibros_Class80006]
+		[recomendadorLibros_Class80010])
+	(de_tematica [recomendadorLibros_Class80023])
+	(en_idioma_original [recomendadorLibros_Class50003])
+	(nivel_lenguaje medio)
+	(puntuacion 7)
+	(titulo "El ojo del mundo"))
+
+([recomendadorLibros_Class110007] of  Autor
+
+	(autor "Robert Jordan")
+	(autor_libro [recomendadorLibros_Class110006])
+	(de_epoca [recomendadorLibros_Class10002])
+	(de_nacionalidad [recomendadorLibros_Class60001]))
+
+([recomendadorLibros_Class110008] of  Libro
+
+	(anyo 1869)
+	(de_autor [recomendadorLibros_Class110009])
+	(de_epoca [recomendadorLibros_Class10001])
+	(de_genero
+		[recomendadorLibros_Class80011]
+		[recomendadorLibros_Class110010]
+		[recomendadorLibros_Class110011]
+		[recomendadorLibros_Class20007])
+	(en_idioma_original [recomendadorLibros_Class20006])
+	(es_clasico TRUE)
+	(es_popular TRUE)
+	(nivel_lenguaje alto)
+	(puntuacion 8)
+	(titulo "Guerra y Paz"))
+
+([recomendadorLibros_Class110009] of  Autor
+
+	(autor "Leon Tolstoi")
+	(autor_libro [recomendadorLibros_Class110008])
+	(de_epoca [recomendadorLibros_Class4])
+	(de_nacionalidad [recomendadorLibros_Class20005]))
+
+([recomendadorLibros_Class110010] of  Genero
+
+	(genero "historico")
+	(genero_libro
+		[recomendadorLibros_Class110008]
+		[recomendadorLibros_Class110022]))
+
+([recomendadorLibros_Class110011] of  Genero
+
+	(genero "belica")
+	(genero_libro [recomendadorLibros_Class110008]))
+
+([recomendadorLibros_Class110012] of  Libro
+
+	(anyo 1550)
+	(de_autor [recomendadorLibros_Class110013])
+	(de_epoca [recomendadorLibros_Class10004])
+	(de_genero
+		[recomendadorLibros_Class80010]
+		[recomendadorLibros_Class110016])
+	(de_tematica [recomendadorLibros_Class40000])
+	(en_idioma_original [recomendadorLibros_Class30006])
+	(es_clasico TRUE)
+	(es_popular TRUE)
+	(nivel_lenguaje medio)
+	(puntuacion 8)
+	(titulo "Lazarillo de Tormes"))
+
+([recomendadorLibros_Class110013] of  Autor
+
+	(autor "anonimo")
+	(autor_libro [recomendadorLibros_Class110012])
+	(de_epoca [recomendadorLibros_Class110014])
+	(de_nacionalidad [recomendadorLibros_Class110015]))
+
+([recomendadorLibros_Class110014] of  Epoca
+
+	(epoca "no")
+	(epoca_libro_autor [recomendadorLibros_Class110013]))
+
+([recomendadorLibros_Class110015] of  Nacionalidad
+
+	(nacionalidad "no")
+	(nacionalidad_autor [recomendadorLibros_Class110013]))
+
+([recomendadorLibros_Class110016] of  Genero
+
+	(genero "picaresca")
+	(genero_libro [recomendadorLibros_Class110012]))
+
+([recomendadorLibros_Class110017] of  Libro
+
+	(anyo 1988)
+	(de_autor [recomendadorLibros_Class110018])
+	(de_epoca [recomendadorLibros_Class10001])
+	(de_genero
+		[recomendadorLibros_Class20007]
+		[recomendadorLibros_Class50011])
+	(de_tematica [recomendadorLibros_Class110021])
+	(en_idioma_original [recomendadorLibros_Class110020])
+	(es_popular TRUE)
+	(nivel_lenguaje bajo)
+	(puntuacion 7)
+	(titulo "El Alquimista"))
+
+([recomendadorLibros_Class110018] of  Autor
+
+	(autor "Paulo Coelho")
+	(autor_libro [recomendadorLibros_Class110017])
+	(de_epoca [recomendadorLibros_Class10001])
+	(de_nacionalidad [recomendadorLibros_Class110019]))
+
+([recomendadorLibros_Class110019] of  Nacionalidad
+
+	(nacionalidad "brasilenya")
+	(nacionalidad_autor [recomendadorLibros_Class110018]))
+
+([recomendadorLibros_Class110020] of  Idioma
+
+	(idioma "portugues")
+	(idioma_libro [recomendadorLibros_Class110017]))
+
+([recomendadorLibros_Class110021] of  Tematica
+
+	(tematica "desarrollo personal")
+	(tematica_libro [recomendadorLibros_Class110017]))
+
+([recomendadorLibros_Class110022] of  Libro
+
+	(anyo 1862)
+	(de_autor [recomendadorLibros_Class110024])
+	(de_epoca [recomendadorLibros_Class10001])
+	(de_genero
+		[recomendadorLibros_Class110010]
+		[recomendadorLibros_Class90025]
+		[recomendadorLibros_Class20007])
+	(en_idioma_original [recomendadorLibros_Class10000])
+	(es_clasico TRUE)
+	(es_popular TRUE)
+	(nivel_lenguaje alto)
+	(puntuacion 9)
+	(titulo "Los miserables"))
+
+([recomendadorLibros_Class110023] of  Autor
+)
+
+([recomendadorLibros_Class110024] of  Autor
+
+	(autor "Victor Hugo")
+	(autor_libro [recomendadorLibros_Class110022])
+	(de_epoca [recomendadorLibros_Class10001])
+	(de_nacionalidad [recomendadorLibros_Class3]))
+
+([recomendadorLibros_Class110026] of  Libro
+
+	(anyo 1955)
+	(de_autor [recomendadorLibros_Class110027])
+	(de_epoca [recomendadorLibros_Class10001])
+	(de_genero
+		[recomendadorLibros_Class110028]
+		[recomendadorLibros_Class20001])
+	(de_tematica
+		[recomendadorLibros_Class110029]
+		[recomendadorLibros_Class110030])
+	(en_idioma_original [recomendadorLibros_Class50003])
+	(es_popular FALSE)
+	(nivel_lenguaje medio)
+	(puntuacion 7)
+	(titulo "Lolita"))
+
+([recomendadorLibros_Class110027] of  Autor
+
+	(autor "Vladimir Nabokov")
+	(autor_libro [recomendadorLibros_Class110026])
+	(de_epoca [recomendadorLibros_Class10001])
+	(de_nacionalidad [recomendadorLibros_Class20005]))
+
+([recomendadorLibros_Class110028] of  Genero
+
+	(genero "erotica")
+	(genero_libro [recomendadorLibros_Class110026]))
+
+([recomendadorLibros_Class110029] of  Tematica
+
+	(tematica "moral")
+	(tematica_libro [recomendadorLibros_Class110026]))
+
+([recomendadorLibros_Class110030] of  Tematica
+
+	(tematica "pedofilia")
+	(tematica_libro [recomendadorLibros_Class110026]))
+
+([recomendadorLibros_Class110031] of  Libro
+
+	(anyo 120)
+	(de_autor [recomendadorLibros_Class110032])
+	(de_epoca [recomendadorLibros_Class10008])
+	(de_genero [recomendadorLibros_Class20007])
+	(en_idioma_original [recomendadorLibros_Class110033])
+	(nivel_lenguaje alto)
+	(puntuacion 8)
+	(titulo "Un manual de vida"))
+
+([recomendadorLibros_Class110032] of  Autor
+
+	(autor "Epicteto")
+	(autor_libro [recomendadorLibros_Class110031])
+	(de_epoca [recomendadorLibros_Class10008])
+	(de_nacionalidad [recomendadorLibros_Class110034]))
+
+([recomendadorLibros_Class110033] of  Idioma
+
+	(idioma "griego")
+	(idioma_libro
+		[recomendadorLibros_Class110031]
+		[recomendadorLibros_Class110035]))
+
+([recomendadorLibros_Class110034] of  Nacionalidad
+
+	(nacionalidad "griega")
+	(nacionalidad_autor [recomendadorLibros_Class110032]))
+
+([recomendadorLibros_Class110035] of  Libro
+
+	(anyo 170)
+	(de_autor [recomendadorLibros_Class110036])
+	(de_epoca [recomendadorLibros_Class10008])
+	(de_genero [recomendadorLibros_Class20007])
+	(en_idioma_original [recomendadorLibros_Class110033])
+	(nivel_lenguaje medio)
+	(puntuacion 6)
+	(titulo "Meditaciones"))
+
+([recomendadorLibros_Class110036] of  Autor
+
+	(autor "Marco Aurelio")
+	(autor_libro [recomendadorLibros_Class110035])
+	(de_epoca [recomendadorLibros_Class10008])
+	(de_nacionalidad [recomendadorLibros_Class100002]))
 
 ([recomendadorLibros_Class2] of  Autor
 
@@ -722,7 +1039,8 @@
 		[recomendadorLibros_Class100008]
 		[recomendadorLibros_Class100010]
 		[recomendadorLibros_Class100015]
-		[recomendadorLibros_Class100020]))
+		[recomendadorLibros_Class100020]
+		[recomendadorLibros_Class110026]))
 
 ([recomendadorLibros_Class20003] of  Libro
 
@@ -739,14 +1057,18 @@
 ([recomendadorLibros_Class20005] of  Nacionalidad
 
 	(nacionalidad "rusa")
-	(nacionalidad_autor [recomendadorLibros_Class70022]))
+	(nacionalidad_autor
+		[recomendadorLibros_Class70022]
+		[recomendadorLibros_Class110009]
+		[recomendadorLibros_Class110027]))
 
 ([recomendadorLibros_Class20006] of  Idioma
 
 	(idioma "ruso")
 	(idioma_libro
 		[recomendadorLibros_Class20003]
-		[recomendadorLibros_Class70021]))
+		[recomendadorLibros_Class70021]
+		[recomendadorLibros_Class110008]))
 
 ([recomendadorLibros_Class20007] of  Genero
 
@@ -762,7 +1084,12 @@
 		[recomendadorLibros_Class90016]
 		[recomendadorLibros_Class100000]
 		[recomendadorLibros_Class100006]
-		[recomendadorLibros_Class100024]))
+		[recomendadorLibros_Class100024]
+		[recomendadorLibros_Class110008]
+		[recomendadorLibros_Class110017]
+		[recomendadorLibros_Class110022]
+		[recomendadorLibros_Class110031]
+		[recomendadorLibros_Class110035]))
 
 ([recomendadorLibros_Class3] of  Nacionalidad
 
@@ -773,7 +1100,8 @@
 		[recomendadorLibros_Class50023]
 		[recomendadorLibros_Class70018]
 		[recomendadorLibros_Class80013]
-		[recomendadorLibros_Class100004]))
+		[recomendadorLibros_Class100004]
+		[recomendadorLibros_Class110024]))
 
 ([recomendadorLibros_Class30000] of  Libro
 
@@ -864,7 +1192,9 @@
 		[recomendadorLibros_Class90023]
 		[recomendadorLibros_Class90022]
 		[recomendadorLibros_Class100021]
-		[recomendadorLibros_Class100020]))
+		[recomendadorLibros_Class100020]
+		[recomendadorLibros_Class110001]
+		[recomendadorLibros_Class110000]))
 
 ([recomendadorLibros_Class30005] of  Nacionalidad
 
@@ -873,7 +1203,8 @@
 		[recomendadorLibros_Class30003]
 		[recomendadorLibros_Class30001]
 		[recomendadorLibros_Class80009]
-		[recomendadorLibros_Class90007]))
+		[recomendadorLibros_Class90007]
+		[recomendadorLibros_Class110004]))
 
 ([recomendadorLibros_Class30006] of  Idioma
 
@@ -886,7 +1217,9 @@
 		[recomendadorLibros_Class80015]
 		[recomendadorLibros_Class80018]
 		[recomendadorLibros_Class90006]
-		[recomendadorLibros_Class90014]))
+		[recomendadorLibros_Class90014]
+		[recomendadorLibros_Class110003]
+		[recomendadorLibros_Class110012]))
 
 ([recomendadorLibros_Class4] of  Epoca
 
@@ -903,7 +1236,8 @@
 		[recomendadorLibros_Class80027]
 		[recomendadorLibros_Class80026]
 		[recomendadorLibros_Class90027]
-		[recomendadorLibros_Class90026]))
+		[recomendadorLibros_Class90026]
+		[recomendadorLibros_Class110009]))
 
 ([recomendadorLibros_Class40000] of  Tematica
 
@@ -911,7 +1245,8 @@
 	(tematica_libro
 		[recomendadorLibros_Class1]
 		[recomendadorLibros_Class80026]
-		[recomendadorLibros_Class100024]))
+		[recomendadorLibros_Class100024]
+		[recomendadorLibros_Class110012]))
 
 ([recomendadorLibros_Class40001] of  Tematica
 
@@ -1018,7 +1353,10 @@
 		[recomendadorLibros_Class90018]
 		[recomendadorLibros_Class90026]
 		[recomendadorLibros_Class100010]
-		[recomendadorLibros_Class100013]))
+		[recomendadorLibros_Class100013]
+		[recomendadorLibros_Class110000]
+		[recomendadorLibros_Class110006]
+		[recomendadorLibros_Class110026]))
 
 ([recomendadorLibros_Class50006] of  Tematica
 
@@ -1082,7 +1420,8 @@
 		[recomendadorLibros_Class100000]
 		[recomendadorLibros_Class100010]
 		[recomendadorLibros_Class100003]
-		[recomendadorLibros_Class50000]))
+		[recomendadorLibros_Class50000]
+		[recomendadorLibros_Class110017]))
 
 ([recomendadorLibros_Class50012] of  Tematica
 
@@ -1231,7 +1570,8 @@
 		[recomendadorLibros_Class90017]
 		[recomendadorLibros_Class90019]
 		[recomendadorLibros_Class90027]
-		[recomendadorLibros_Class100012]))
+		[recomendadorLibros_Class100012]
+		[recomendadorLibros_Class110007]))
 
 ([recomendadorLibros_Class70000] of  Libro
 
@@ -1358,7 +1698,8 @@
 	(nacionalidad_autor
 		[recomendadorLibros_Class70011]
 		[recomendadorLibros_Class70020]
-		[recomendadorLibros_Class100016]))
+		[recomendadorLibros_Class100016]
+		[recomendadorLibros_Class110001]))
 
 ([recomendadorLibros_Class70013] of  Libro
 
@@ -1555,7 +1896,9 @@
 		[recomendadorLibros_Class100003]
 		[recomendadorLibros_Class50000]
 		[recomendadorLibros_Class100017]
-		[recomendadorLibros_Class100024]))
+		[recomendadorLibros_Class100024]
+		[recomendadorLibros_Class110000]
+		[recomendadorLibros_Class110006]))
 
 ([recomendadorLibros_Class80007] of  Genero
 
@@ -1598,7 +1941,9 @@
 		[recomendadorLibros_Class90002]
 		[recomendadorLibros_Class80028]
 		[recomendadorLibros_Class100017]
-		[recomendadorLibros_Class100020]))
+		[recomendadorLibros_Class100020]
+		[recomendadorLibros_Class110006]
+		[recomendadorLibros_Class110012]))
 
 ([recomendadorLibros_Class80011] of  Genero
 
@@ -1609,7 +1954,8 @@
 		[recomendadorLibros_Class80012]
 		[recomendadorLibros_Class100008]
 		[recomendadorLibros_Class100015]
-		[recomendadorLibros_Class100024]))
+		[recomendadorLibros_Class100024]
+		[recomendadorLibros_Class110008]))
 
 ([recomendadorLibros_Class80012] of  Libro
 
@@ -1719,7 +2065,9 @@
 	(tematica "magia")
 	(tematica_libro
 		[recomendadorLibros_Class80021]
-		[recomendadorLibros_Class100024]))
+		[recomendadorLibros_Class100024]
+		[recomendadorLibros_Class110000]
+		[recomendadorLibros_Class110006]))
 
 ([recomendadorLibros_Class80024] of  Tematica
 
@@ -1757,6 +2105,7 @@
 		[recomendadorLibros_Class50006])
 	(en_idioma_original [recomendadorLibros_Class50003])
 	(es_clasico TRUE)
+	(es_popular FALSE)
 	(nivel_lenguaje bajo)
 	(puntuacion 8)
 	(titulo "Frankestein"))
@@ -1864,7 +2213,8 @@
 		[recomendadorLibros_Class90009]
 		[recomendadorLibros_Class90012]
 		[recomendadorLibros_Class100003]
-		[recomendadorLibros_Class100013]))
+		[recomendadorLibros_Class100013]
+		[recomendadorLibros_Class110000]))
 
 ([recomendadorLibros_Class90006] of  Libro
 
@@ -2033,9 +2383,6 @@
 	(de_epoca [recomendadorLibros_Class30004])
 	(de_nacionalidad [recomendadorLibros_Class50016]))
 
-([recomendadorLibros_Class90024] of  Autor
-)
-
 ([recomendadorLibros_Class90025] of  Genero
 
 	(genero "drama")
@@ -2044,7 +2391,9 @@
 		[recomendadorLibros_Class90026]
 		[recomendadorLibros_Class100006]
 		[recomendadorLibros_Class100010]
-		[recomendadorLibros_Class100020]))
+		[recomendadorLibros_Class100020]
+		[recomendadorLibros_Class110003]
+		[recomendadorLibros_Class110022]))
 
 ([recomendadorLibros_Class90026] of  Libro
 
@@ -2064,6 +2413,7 @@
 	(autor_libro [recomendadorLibros_Class90026])
 	(de_epoca [recomendadorLibros_Class4])
 	(de_nacionalidad [recomendadorLibros_Class60001]))
+
 
 
 )
