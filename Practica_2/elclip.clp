@@ -1,4 +1,4 @@
-; Sat Dec 14 20:18:30 CET 2019
+; Sun Dec 15 17:16:40 CET 2019
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -46,12 +46,12 @@
 ;+		(cardinality 1 1)
 ;+		(inverse-slot epoca_libro_autor)
 		(create-accessor read-write))
-	(single-slot puntuacion
-		(type INTEGER)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot titulo
 		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot puntuacion
+		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(multislot autor_libro
@@ -150,21 +150,21 @@
 ;+		(allowed-classes Epoca)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
+	(single-slot puntuacion
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot titulo
 		(type STRING)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot puntuacion
+	(single-slot anyo
 		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(multislot de_genero
 		(type INSTANCE)
 ;+		(allowed-classes Genero)
-		(create-accessor read-write))
-	(single-slot anyo
-		(type INTEGER)
-;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot num_paginas
 		(type INTEGER)
@@ -198,14 +198,14 @@
 ;+		(allowed-classes Epoca)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
+	(single-slot autor
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(multislot de_nacionalidad
 		(type INSTANCE)
 ;+		(allowed-classes Nacionalidad)
 		(cardinality 1 ?VARIABLE)
-		(create-accessor read-write))
-	(single-slot autor
-		(type STRING)
-;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(multislot autor_libro
 		(type INSTANCE)
@@ -285,7 +285,7 @@
 
 (definstances instancies
 
-; Sat Dec 14 20:18:30 CET 2019
+; Sun Dec 15 17:16:40 CET 2019
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -541,6 +541,7 @@
 		[recomendadorLibros_Class80011]
 		[recomendadorLibros_Class20001])
 	(de_tematica [recomendadorLibros_Class40003])
+	(en_idioma_original [recomendadorLibros_Class50003])
 	(es_clasico TRUE)
 	(nivel_lenguaje medio)
 	(puntuacion 8)
@@ -1356,7 +1357,8 @@
 		[recomendadorLibros_Class100013]
 		[recomendadorLibros_Class110000]
 		[recomendadorLibros_Class110006]
-		[recomendadorLibros_Class110026]))
+		[recomendadorLibros_Class110026]
+		[recomendadorLibros_Class100015]))
 
 ([recomendadorLibros_Class50006] of  Tematica
 
@@ -2416,6 +2418,7 @@
 
 
 
+
 )
 
 
@@ -2492,6 +2495,7 @@
 	(printout t crlf)
 	(format t "Anyo: %d" ?self:anyo)
 	(printout t crlf)
+
 )
 
 (defmessage-handler MAIN::Recomendacion imprimir ()
@@ -2703,7 +2707,6 @@
 	?u <- (Usuario (edad ?e) (sexo ~desconocido))
 	(test (> ?e 0))
 	=>
-    (printout t "HAIL" crlf)
 	(focus recopilacion-prefs)
 )
 
@@ -3056,9 +3059,9 @@
 	;?rec <- (object (is-a Recomendacion) (contenido ?cont) (puntuacion ?p) (justificaciones $?just)) ;;;no es lo mismo??
 	(not (valorado-genero-favorito ?cont ?gen))
 	=>
-	(bind ?p (+ ?p 5))
+	(bind ?p (+ ?p 7))
 	(send ?rec put-puntuacion ?p)
-	(bind ?text (str-cat "Pertenece al genero favorito " (send ?gen get-genero) " -> +5"))
+	(bind ?text (str-cat "Pertenece al genero favorito " (send ?gen get-genero) " -> +7"))
 	(bind $?just (insert$ $?just (+ (length$ $?just) 1) ?text))
 	(send ?rec put-justificaciones $?just)
 	(assert (valorado-genero-favorito ?cont ?gen))
@@ -3122,9 +3125,9 @@
 	(not (valorado-nacionalidad-favorita ?cont ?nac))
 	=>
 
-	(bind ?p (+ ?p 20))
+	(bind ?p (+ ?p 4))
 	(send ?rec put-puntuacion ?p)
-	(bind ?text (str-cat "Pertenece a la nacionalidad favorita " (send ?nac get-nacionalidad) " -> +20"))
+	(bind ?text (str-cat "Pertenece a la nacionalidad favorita " (send ?nac get-nacionalidad) " -> +4"))
 	(bind $?just (insert$ $?just (+ (length$ $?just) 1) ?text))
 	(send ?rec put-justificaciones $?just)
 	(assert (valorado-nacionalidad-favorita ?cont ?nac))
@@ -3153,9 +3156,9 @@
 	;?rec <- (object (is-a Recomendacion) (contenido ?cont) (puntuacion ?p) (justificaciones $?just)) ;;;no es lo mismo??
 	(not (valorado-idioma ?cont))
 	=>
-	(bind ?p (+ ?p 3))
+	(bind ?p (+ ?p 4))
 	(send ?rec put-puntuacion ?p)
-	(bind ?text (str-cat "En idioma original " (send ?idi get-idioma) " -> +3"))
+	(bind ?text (str-cat "En idioma original " (send ?idi get-idioma) " -> +4"))
 	(bind $?just (insert$ $?just (+ (length$ $?just) 1) ?text))
 	(send ?rec put-justificaciones $?just)
 	(assert (valorado-idioma ?cont))
@@ -3253,9 +3256,9 @@
 
 	=>
 
-	(bind ?p (+ ?p 3))
+	(bind ?p (+ ?p 5))
 	(send ?rec put-puntuacion ?p)
-	(bind ?text (str-cat "Nivel lectura adecuado " ?lvl " -> + 3"))
+	(bind ?text (str-cat "Nivel lectura adecuado " ?lvl " -> + 5"))
 	(bind $?just (insert$ $?just (+ (length$ $?just) 1) ?text))
 	(send ?rec put-justificaciones $?just)
 	(assert (valorado-nivel ?cont))
