@@ -12,7 +12,7 @@
     (asignado_en ?l - libro ?m - mes)
 )
 
-(:action colocar_comensal
+(:action asignar_libro
     :parameters (?l - libro ?m1 - mes ?m2 - mes)
     :precondition (and (not(asignado ?l)) 
                         (or (and (leer ?l)

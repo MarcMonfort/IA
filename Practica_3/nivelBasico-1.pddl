@@ -25,11 +25,12 @@ El_nombre_del_viento El_temor_de_un_hombre_sabio Las_puertas_de_piedra - libro
 
 ; - - - - - - - - - - - - -
 
-(leido El_nombre_del_viento)
+;(leido El_nombre_del_viento)
 
 ; - - - - - - - - - - - - -
 
 (leer Las_puertas_de_piedra)
+
 
 )
 
