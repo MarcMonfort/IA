@@ -15,15 +15,16 @@
 (:action asignar_libro
     :parameters (?l - libro ?m1 - mes ?m2 - mes)
     :precondition (and (not(asignado ?l)) 
-                        (or (and (leer ?l)
-                                  (forall (?l2 - libro)
-                                      (imply (predecesor ?l2 ?l)  ;todos los predecesores se han leido o assignado
-                                            (or (leido ?l2) (and (asignado_en ?l2 ?m2) (anterior ?m2 ?m1)))
-                                      )
+                         (or (leer ?l) 
+                                  (exists (?l3 - libro) (and (predecesor ?l ?l3) (leer ?l3)) ) ;es predecesor de un libro que queremos leer
+                              )
+                              
+                              (forall (?l2 - libro)
+                                  (imply (predecesor ?l2 ?l)  ;todos los predecesores se han leido o assignado
+                                        (or (leido ?l2) (and (asignado_en ?l2 ?m2) (anterior ?m2 ?m1)))
                                   )
-                            )
-                            (exists (?l2 - libro) (and (predecesor ?l ?l2) (leer ?l2) (not (asignado ?l2))))
-                        )
+                              )
+                        
                   )
     :effect (and (asignado ?l) (asignado_en ?l ?m1))
     )
