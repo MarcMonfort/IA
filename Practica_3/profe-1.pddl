@@ -4,7 +4,7 @@
   Enero Febrero Marzo Abril Mayo Junio Julio Agosto Septiembre Octubre Noviembre Diciembre - mes
   ;Enero Febrero Marzo Abril - mes
   El_nombre_del_viento El_temor_de_un_hombre_sabio Las_puertas_de_piedra - libro
-  pre_1 pre_2 pre_3 pre_4 pre_5 pre_6 pre_7 pre_8 pre_9 pre_10 pre_11 pre_12 - libro
+  pre_1 pre_2 pre_3 pre_4 pre_5 - libro
  )
  (:init
   (anterior Enero Febrero)
@@ -91,17 +91,18 @@
   (predecesor pre_1 pre_2)
   (predecesor pre_1 pre_3)
   (predecesor pre_1 pre_4)
-(predecesor pre_1 pre_5)
+  (predecesor pre_1 pre_5)
 
   (predecesor pre_2 pre_3)
   (predecesor pre_2 pre_4)
-(predecesor pre_2 pre_5)
+  (predecesor pre_2 pre_5)
+
 
   (predecesor pre_3 pre_4)
-(predecesor pre_3 pre_5)
+  (predecesor pre_3 pre_5)
 
-(predecesor pre_4 pre_5)
 
+  (predecesor pre_4 pre_5)
 
 
   (predecesor El_nombre_del_viento El_temor_de_un_hombre_sabio)
@@ -112,7 +113,7 @@
 
   ;(leido El_nombre_del_viento)
   ;(leido pre_3)
-  ;(leido pre_1)
+  (leido pre_1)
 
   ; - - - - - - - - - - - - -
 
@@ -120,8 +121,8 @@
   ;(leer El_nombre_del_viento)
 
 
-  (leer pre_3) ; no funciona
-  ;(leer pre_2) ; si funciona
+  ;(leer pre_1) ; no funciona
+  (leer pre_5) ; si funciona
   )
 
   (:goal (forall (?l2 - libro) (imply (leer ?l2)
