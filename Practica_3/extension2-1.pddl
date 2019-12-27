@@ -3,7 +3,7 @@
  (:objects
   Enero Febrero Marzo Abril Mayo Junio Julio Agosto Septiembre Octubre Noviembre Diciembre - mes
   pre_1 pre_2 pre_3 pre_4 pre_5 - libro
-  par_1 par_2 par_3 - libro
+  par_1 par_2 par_3 par_4 par_5 - libro
  )
  (:init
   (pre Enero Febrero)
@@ -117,11 +117,8 @@
 
   (paralelo par_1 par_2)
   (paralelo par_1 par_3)
-
-	(paralelo par_2 par_1)
-  (paralelo par_2 par_3)
-
-	(paralelo par_3 par_1)
+	(paralelo par_1 par_4)
+	(paralelo par_1 par_5)
   (paralelo par_3 par_2)
 
   ; - - - - - - - - - - - - -
@@ -131,7 +128,7 @@
   ; - - - - - - - - - - - - -
 
   ;(leer pre_3)
-  (leer par_2)
+  (leer par_1)
 
   )
 
