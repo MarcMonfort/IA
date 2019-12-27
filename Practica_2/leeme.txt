@@ -1,0 +1,5 @@
+Es capaz de preguntar varias preguntas sobre el usuario (nombre, edad, genero), y sobre sus preferencias en cuanto a libros.
+
+Después tenienedo en cuenta los géneros que mas le gustan y la pre-puntuación de cada libro, devuelve los 3 libros con mas puntuación.
+
+Nos falta por añadir funciones de procesado que aumenten la puntuación de cada libro segun otros criterios.
