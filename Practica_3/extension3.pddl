@@ -12,11 +12,13 @@
   (leer ?l - libro)
   (asignado ?l - libro) ;no se usa
   (asignado_en ?l - libro ?m - mes)
+
+  (visto ?l - libro)
  )
 
  (:action asignar_libro
   :parameters (?l - libro ?m - mes)
-  :precondition (and (not (asignado_en ?l ?m))
+  :precondition (and (not (asignado_en ?l ?m)) (not (visto ?l))
     (forall (?l2 - libro) (imply (predecesor ?l2 ?l) 
                                 (or (leido ?l2) (and (asignado ?l2) (exists (?m2 - mes) (and (asignado_en ?l2 ?m2) (anterior ?m2 ?m))))   )))
 
@@ -30,7 +32,7 @@
   :effect (and(asignado_en ?l ?m) (asignado ?l))
  )
 
- (:action asignar_libro_REC
+ (:action xxx
   :parameters (?l - libro ?m - mes)
   :precondition (and (not (asignado_en ?l ?m))
     (forall (?l2 - libro) (imply (predecesor ?l2 ?l) 
@@ -40,7 +42,7 @@
 
 
 
-  :effect (asignado_en ?l ?m)
+  :effect (and (asignado_en ?l ?m) (visto ?l))
  )
 )
 

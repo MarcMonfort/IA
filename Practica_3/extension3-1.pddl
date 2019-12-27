@@ -126,7 +126,7 @@
 
   ; - - - - - - - - - - - - -
 
-  (leer pre_3)
+  (leer pre_4)
   ;(leer pre_5)
   ;(leer par_4)
 
