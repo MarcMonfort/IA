@@ -22,26 +22,21 @@
     (forall (?l2 - libro) (imply (predecesor ?l2 ?l) 
                                 (or (leido ?l2) (and (asignado ?l2) (exists (?m2 - mes) (and (asignado_en ?l2 ?m2) (anterior ?m2 ?m))))   )))
 
-
     (forall (?l2 - libro) (imply (or (paralelo ?l2 ?l) (paralelo ?l ?l2) ) 
                                 (or (leido ?l2) (exists (?m2 - mes) (and (asignado_en ?l2 ?m2) (or (= ?m2 ?m)(pre ?m2 ?m)(pre ?m ?m2))  )))))
   )
-
-
-
-  :effect (and(asignado_en ?l ?m) (asignado ?l))
+  :effect (and(asignado_en ?l ?m) (asignado ?l) (visto ?l))
  )
 
+
+
  (:action xxx
-  :parameters (?l - libro ?m - mes)
-  :precondition (and (not (asignado_en ?l ?m))
+  :parameters (?l - libro ?m - mes) 
+  :precondition (and (not (asignado_en ?l ?m)) (not (visto ?l))
     (forall (?l2 - libro) (imply (predecesor ?l2 ?l) 
                                 (or (leido ?l2) (exists (?m2 - mes) (and (asignado_en ?l2 ?m2) (anterior ?m2 ?m))))))
 
   )
-
-
-
   :effect (and (asignado_en ?l ?m) (visto ?l))
  )
 )
