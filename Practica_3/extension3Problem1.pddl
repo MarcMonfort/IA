@@ -2,8 +2,8 @@
  (:domain ext2Mala)
  (:objects
   Enero Febrero Marzo Abril Mayo Junio Julio Agosto Septiembre Octubre Noviembre Diciembre - mes
-  pre_1 pre_2 pre_3 pre_4 pre_5 - libro
-  par_1 par_2 par_3 par_4 par_5 - libro
+  PR_1 PR_2 PR_3 PR_4 PR_5 - libro
+  PA_1 PA_2 PA_3 PA_4 PA_5 - libro
  )
  (:init
   (pre Enero Febrero)
@@ -95,44 +95,85 @@
   (anterior Noviembre Diciembre)
 
 
-  ; - - - - - - - - - - - - -
+  ; - - - - - - - - - - - - -   Predecesores
 
 
-  (predecesor pre_1 pre_2)
-  (predecesor pre_1 pre_3)
-  (predecesor pre_1 pre_4)
-  (predecesor pre_1 pre_5)
+  (predecesor PR_1 PR_2)
+  (predecesor PR_1 PR_3)
+  (predecesor PR_1 PR_4)
+  (predecesor PR_1 PR_5)
 
-  (predecesor pre_2 pre_3)
-  (predecesor pre_2 pre_4)
-  (predecesor pre_2 pre_5)
+  (predecesor PR_2 PR_3)
+  (predecesor PR_2 PR_4)
+  (predecesor PR_2 PR_5)
 
-  (predecesor pre_3 pre_4)
-  (predecesor pre_3 pre_5)
+  (predecesor PR_3 PR_4)
+  (predecesor PR_3 PR_5)
 
-  (predecesor pre_4 pre_5)
+  (predecesor PR_4 PR_5)
 
 
-  ; - - - - - - - - - - - - -
+  ; - - - - - - - - - - - - -   Paralelos
 
-  (paralelo par_1 par_2)
-  (paralelo par_1 par_3)
-	(paralelo par_1 par_4)
-	(paralelo par_1 par_5)
-  (paralelo par_3 par_2)
+  (paralelo PA_1 PA_2)
+  (paralelo PA_1 PA_3)
+  (paralelo PA_1 PA_4)
+  (paralelo PA_1 PA_5)
 
-  ; - - - - - - - - - - - - -
+  (paralelo PA_2 PA_3)
+  (paralelo PA_2 PA_4)
+  (paralelo PA_2 PA_5)
 
-  ;(leido pre_2)
+	(paralelo PA_3 PA_4)
+  (paralelo PA_3 PA_5)
 
-  ; - - - - - - - - - - - - -
+  (paralelo PA_4 PA_5)
 
-  (leer pre_3)
-  (leer par_1)
+
+; - - - - - - - - - - - - -		Fluentes
+
+  (= (paginas Enero) 0)
+  (= (paginas Febrero) 0)
+  (= (paginas Marzo) 0)
+  (= (paginas Abril) 0)
+  (= (paginas Mayo) 0)
+  (= (paginas Junio) 0)
+  (= (paginas Julio) 0)
+  (= (paginas Agosto) 0)
+  (= (paginas Septiembre) 0)
+  (= (paginas Octubre) 0)
+  (= (paginas Noviembre) 0)
+  (= (paginas Diciembre) 0)
+
+  (= (paginas PR_1) 700)
+  (= (paginas PR_2) 700)
+  (= (paginas PR_3) 700)
+  (= (paginas PR_4) 700)
+  (= (paginas PR_5) 700)
+
+  (= (paginas PA_1) 100)
+  (= (paginas PA_2) 300)
+  (= (paginas PA_3) 300)
+  (= (paginas PA_4) 300)
+  (= (paginas PA_5) 500)
+
+
+  ; - - - - - - - - - - - - -		Leidos
+
+  ;(leido PA_2)
+
+  ; - - - - - - - - - - - - -   Leer
+
+  (leer PA_5)
+  (leer PR_5)
 
   )
+  (:goal (and (forall (?l2 - libro) (imply (leer ?l2)
+                                (asignado ?l2)))
+              ;(forall (?m2 - mes) (<= (paginas ?m2) 800))       
+                                )
+  )
 
-  (:goal (forall (?l2 - libro) (imply (leer ?l2)
-                                (or (leido ?l2) (exists (?m - mes) (asignado_en ?l2 ?m))))))
+  ;(:metric minimize (paginas-totales))
 )
 
