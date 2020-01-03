@@ -1,28 +1,38 @@
-import javafx.util.Pair;
+import java.util.LinkedList;
+import java.util.concurrent.ThreadLocalRandom;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+public class TreeUtils {
+    public static int getRandomInt() {
+        return ThreadLocalRandom.current().nextInt(0, 1000000);
+    }
 
-class InputOutput {
-    public static Integer input(String message) {
-        try {
-            Scanner myObj = new Scanner(System.in);  // Create a Scanner object
-            System.out.println(message);
-            Integer input_data = myObj.nextInt();  // Read user input
-            return input_data;
-        } catch (Exception e) {
-            System.out.println("Invalid input format");
-            return 0;
+    public static void doBFS(TreeNode root, boolean verbose) {
+        if (root==null)
+            return;
+
+        LinkedList<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+            TreeNode node = queue.pop();
+            if (verbose) System.out.println(node.getData());
+            for (TreeNode child: node.getChildren()) {
+                queue.add(child);
+            }
         }
     }
 
-    public static void usage() {
-        System.out.println("Expected input expects following parameters:");
-        System.out.println("Number_Trees, Max Depth, Max Degree");
-    }
+    public static void doDFS(TreeNode root, Boolean verbose, int level) {
+        if (root==null)
+            return;
 
-    public void print_predecessors(ArrayList<Pair<Integer, Integer>> Predecessors) {
-        for (int i = 0; i < Predecessors.size(); i++)
-            System.out.println("(predecesor " + Predecessors.get(i).getKey() + ' ' + Predecessors.get(i).getValue() + ')');
+        if (verbose) System.out.println(root.getData() + ' ' + child.getPaginas() + " at level " + level);
+        level += 1;
+        for (TreeNode child: root.getChildren()) {
+            System.out.println(child.getData() + ' ' + child.getPaginas() +  " at level " + level);
+        }
+        for (TreeNode child: root.getChildren()) {
+            doDFS(child, false, level);
+        }
     }
 }
