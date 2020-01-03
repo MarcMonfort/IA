@@ -1,5 +1,5 @@
-(define (problem ext2Mala-1)
- (:domain ext2Mala)
+(define (problem ext3-1)
+ (:domain ext3)
  (:objects
   Enero Febrero Marzo Abril Mayo Junio Julio Agosto Septiembre Octubre Noviembre Diciembre - mes
   PR_1 PR_2 PR_3 PR_4 PR_5 - libro
@@ -154,7 +154,7 @@
   (= (paginas PA_1) 100)
   (= (paginas PA_2) 300)
   (= (paginas PA_3) 300)
-  (= (paginas PA_4) 300)
+  (= (paginas PA_4) 200)
   (= (paginas PA_5) 500)
 
 

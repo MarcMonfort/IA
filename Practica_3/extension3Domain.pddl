@@ -1,4 +1,4 @@
-(define (domain ext2Mala)
+(define (domain ext3)
  (:requirements :adl :typing :fluents)
  (:types mes libro - object)
 
