@@ -129,6 +129,22 @@
 
   (paralelo PA_4 PA_5)
 
+; - - - - - - - - - - - - -		Fluentes
+
+  (= (paginas Enero) 0)
+  (= (paginas Febrero) 0)
+  (= (paginas Marzo) 0)
+  (= (paginas Abril) 0)
+  (= (paginas Mayo) 0)
+  (= (paginas Junio) 0)
+  (= (paginas Julio) 0)
+  (= (paginas Agosto) 0)
+  (= (paginas Septiembre) 0)
+  (= (paginas Octubre) 0)
+  (= (paginas Noviembre) 0)
+  (= (paginas Diciembre) 0)
+  (= (paginas-totales) 0)
+
   ; - - - - - - - - - - - - -		Leidos
 
   ;(leido PA_2)
@@ -136,12 +152,17 @@
   ; - - - - - - - - - - - - -		Leer
 
   (leer PR_5)
-  (leer PA_3)
+  ;(leer PA_3)
   ;(leer PA_4)
 
   )
 
-  (:goal (forall (?l2 - libro) (imply (leer ?l2)
-                                (asignado ?l2))))
+  (:goal (and (forall (?l2 - libro) (imply (leer ?l2)
+                                (asignado ?l2)))
+          (forall (?m2 - mes) (<= (paginas ?m2) 800)))
+                                
+    )
+
+  (:metric minimize (paginas-totales))
 )
 

@@ -121,7 +121,7 @@
 
   ; - - - - - - - - - - - - -		Leer
 
-  (leer A)
+  (leer D)
   ;(leer PA_3)
   ;(leer PA_4)
 

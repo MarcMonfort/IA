@@ -135,8 +135,8 @@
 
   ; - - - - - - - - - - - - -		Leer
 
-  (leer PR_5)
-  (leer PA_3)
+  (leer PR_2)
+  ;(leer PA_3)
   ;(leer PA_4)
 
   )

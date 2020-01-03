@@ -1,5 +1,5 @@
 (define (domain ext3)
- (:requirements :adl :typing)
+ (:requirements :adl :typing :fluents)
  (:types mes libro - object)
 
  (:predicates
@@ -15,6 +15,14 @@
 
   (visto ?l - libro)
  )
+
+
+ (:functions
+  (paginas ?m - mes)
+  (paginas-totales)
+ )
+
+
 
  (:action asignar_libro
   :parameters (?l - libro ?m - mes)

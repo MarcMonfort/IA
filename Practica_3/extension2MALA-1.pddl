@@ -123,11 +123,11 @@
 
   ; - - - - - - - - - - - - -
 
-  (leido pre_2)
+  ;(leido pre_2)
 
   ; - - - - - - - - - - - - -
 
-  ;(leer pre_3)
+  (leer pre_3)
   (leer par_1)
 
   )
