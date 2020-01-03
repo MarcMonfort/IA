@@ -26,10 +26,10 @@ public class TreeUtils {
         if (root==null)
             return;
 
-        if (verbose) System.out.println(root.getData() + ' ' + root.getPaginas() + " at level " + level);
+        if (verbose) System.out.println(root.getData() + " " + root.getPaginas() + " at level " + level);
         level += 1;
         for (TreeNode child: root.getChildren()) {
-            System.out.println(child.getData() + ' ' + child.getPaginas() +  " at level " + level);
+            System.out.println(child.getData() + " " + child.getPaginas() +  " at level " + level);
         }
         for (TreeNode child: root.getChildren()) {
             doDFS(child, false, level);
