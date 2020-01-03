@@ -1,5 +1,5 @@
-(define (problem profe-1)
- (:domain profe)
+(define (problem ext1-1)
+ (:domain ext1)
  (:objects
   Enero Febrero Marzo Abril Mayo Junio Julio Agosto Septiembre Octubre Noviembre Diciembre - mes
   ;Enero Febrero Marzo Abril - mes

@@ -1,4 +1,4 @@
-(define (domain profe)
+(define (domain ext1)
  (:requirements :adl :typing)
  (:types mes libro - object)
 
