@@ -113,11 +113,11 @@
 
   ;(leido El_nombre_del_viento)
   ;(leido pre_3)
-  (leido pre_1)
+  ;(leido pre_1)
 
   ; - - - - - - - - - - - - -
 
-  ;(leer Las_puertas_de_piedra)
+  (leer Las_puertas_de_piedra)
   ;(leer El_nombre_del_viento)
 
 
@@ -126,6 +126,6 @@
   )
 
   (:goal (forall (?l2 - libro) (imply (leer ?l2)
-                                (exists (?m - mes) (asignado_en ?l2 ?m)))))
+                                (asignado ?l2))))
 )
 
