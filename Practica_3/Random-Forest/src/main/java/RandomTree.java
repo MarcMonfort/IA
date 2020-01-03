@@ -24,7 +24,7 @@ public class RandomTree {
     public static void main(String[] args) throws IOException {
 
         InputOutput user_input = new InputOutput();
-        if (args.length < 3) {InputOutput.usage(); return;}
+        if (args.length != 3) {InputOutput.usage(); return;}
 
         /*Integer TREES = user_input.input("Introuduce the MAX number of trees you want in the forest (min. 3)");
         if (TREES <= 2) {System.out.println("Number of trees must be > 2"); return;}
@@ -33,7 +33,7 @@ public class RandomTree {
         Integer degree = user_input.input("Introuduce the MAX degree you want for any of the trees (min. 3)");
         if (degree <= 2) {System.out.println("Depth must be > 2"); return;}*/
 
-        int TREES = ThreadLocalRandom.current().nextInt(2, Integer.parseInt(args[1]));
+        int TREES = ThreadLocalRandom.current().nextInt(2, Integer.parseInt(args[0]));
         System.out.println("We are generating " + TREES + " trees" + '\n');
 
         int value = -1;
@@ -49,8 +49,8 @@ public class RandomTree {
 
             int random; int level = 1;
 
-            int depth = ThreadLocalRandom.current().nextInt(2, Integer.parseInt(args[2]));
-            int degree = ThreadLocalRandom.current().nextInt(2, Integer.parseInt(args[3]));
+            int depth = ThreadLocalRandom.current().nextInt(2, Integer.parseInt(args[1]));
+            int degree = ThreadLocalRandom.current().nextInt(2, Integer.parseInt(args[2]));
 
             System.out.println("Depth of this tree is, at most: " + depth);
             System.out.println("Degree for nodes of this tree is, at most: " + degree + '\n');
