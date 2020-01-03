@@ -22,25 +22,26 @@ public class RandomTree {
     }
 
     public static void main(String[] args) throws IOException {
+
         InputOutput user_input = new InputOutput();
+        if (args.length < 3) {InputOutput.usage(); return;}
 
-        /*Integer MAX_TREES = user_input.input("Introuduce the MAX number of trees you want in the forest (min. 3)");
-        if (MAX_TREES <= 2) {System.out.println("Number of trees must be > 2"); return;}
-
-        Integer MAX_DEPTH = user_input.input("Introuduce the MAX depth you want for any of the trees (min. 3)");
-        if (MAX_DEPTH <= 2) {System.out.println("Depth must be > 2"); return;}
-
-        Integer MAX_DEGREE = user_input.input("Introuduce the MAX degree you want for any of the trees (min. 3)");
-        if (MAX_DEGREE <= 2) {System.out.println("Depth must be > 2"); return;}*/
+        /*Integer TREES = user_input.input("Introuduce the MAX number of trees you want in the forest (min. 3)");
+        if (TREES <= 2) {System.out.println("Number of trees must be > 2"); return;}
+        Integer depth = user_input.input("Introuduce the MAX depth you want for any of the trees (min. 3)");
+        if (depth <= 2) {System.out.println("Depth must be > 2"); return;}
+        Integer degree = user_input.input("Introuduce the MAX degree you want for any of the trees (min. 3)");
+        if (degree <= 2) {System.out.println("Depth must be > 2"); return;}*/
 
         int TREES = ThreadLocalRandom.current().nextInt(2, Integer.parseInt(args[1]));
         System.out.println("We are generating " + TREES + " trees" + '\n');
 
-        int value = 0;
+        int value = -1;
 
         for (int T = 0; T < TREES; T++) {
             System.out.println('\n' + "Generating Tree " + (Integer) (T+1) + '\n');
             /* This one is a "ghost" node, doesn't represents any book */
+            value++;
             TreeNode root = new TreeNode(value, false, 0);
             LinkedList<TreeNode> queue = new LinkedList<>();
             ArrayList<TreeNode> list_nodes = new ArrayList<>();
@@ -80,6 +81,7 @@ public class RandomTree {
                 finding_precedences(list_nodes.get(index), list_nodes.get(index));
             }
             user_input.print_predecessors(Predecessors);
+            Predecessors.removeAll(Predecessors);
         }
     }
 }
