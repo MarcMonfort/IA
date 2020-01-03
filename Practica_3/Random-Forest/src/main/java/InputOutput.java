@@ -16,8 +16,13 @@ class InputOutput {
         }
     }
 
+    public static void usage() {
+        System.out.println("Expected input expects following parameters:");
+        System.out.println("Number_Trees, Max Depth, Max Degree");
+    }
+
     public void print_predecessors(ArrayList<Pair<Integer, Integer>> Predecessors) {
         for (int i = 0; i < Predecessors.size(); i++)
-            System.out.println(Predecessors.get(i).getKey() + " ---> " + Predecessors.get(i).getValue());
+            System.out.println("(predecesor " + Predecessors.get(i).getKey() + ' ' + Predecessors.get(i).getValue() + ')');
     }
 }
