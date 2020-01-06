@@ -1,7 +1,11 @@
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class TreeUtils {
+
+    public HashMap<Integer, ArrayList<Integer>> paralelos = new HashMap<Integer, ArrayList<Integer>>();
     public static int getRandomInt() {
         return ThreadLocalRandom.current().nextInt(0, 1000000);
     }

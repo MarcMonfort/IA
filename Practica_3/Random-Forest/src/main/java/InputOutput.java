@@ -17,8 +17,8 @@ class InputOutput {
     }
 
     public static void usage() {
-        System.out.println("Expected input expects following parameters:");
-        System.out.println("Number_Trees, Max Depth, Max Degree");
+        //System.out.println("Expected input expects following parameters:");
+        //System.out.println("Number_Trees, Max Depth, Max Degree");
     }
 
     public void print_predecessors(ArrayList<Pair<Integer, Integer>> Predecessors) {
