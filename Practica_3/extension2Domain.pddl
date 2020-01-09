@@ -34,7 +34,7 @@
 
 
 
- (:action xxx   ;permite assignar paralelos sin restricciones inversas
+ (:action poner_paralelo   ;permite assignar paralelos sin restricciones inversas
   :parameters (?l - libro ?m - mes) 
   :precondition (and (not (visto ?l))
     (forall (?l2 - libro) (imply (predecesor ?l2 ?l) 
