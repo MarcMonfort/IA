@@ -1,7 +1,6 @@
 import javafx.util.Pair;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 class InputOutput {
     public static Integer input(String message) {
@@ -13,6 +12,15 @@ class InputOutput {
         } catch (Exception e) {
             System.out.println("Invalid input format");
             return 0;
+        }
+    }
+    public void print_parallels(Map<Integer, List<Integer>> Parallels) {
+        Set< Map.Entry< Integer,List<Integer>> > st = Parallels.entrySet();
+        for (Map.Entry< Integer,List<Integer>> me:st) {
+            if (me.getValue().size() > 1) {
+                for (int i = 0; i < me.getValue().size(); i++) System.out.print(me.getValue().get(i) + " ");
+                System.out.println("\n");
+            }
         }
     }
 

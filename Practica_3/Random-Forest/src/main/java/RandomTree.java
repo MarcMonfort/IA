@@ -1,6 +1,5 @@
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.prefs.PreferenceChangeEvent;
 
@@ -185,6 +184,7 @@ public class RandomTree {
             TreeNode root = new TreeNode(value, false, 0);
             LinkedList<TreeNode> queue = new LinkedList<>();
             ArrayList<TreeNode> list_nodes = new ArrayList<>();
+            Map<Integer, List<Integer>> Parallels = new HashMap<Integer, List<Integer>>();
             queue.add(root);
 
             int random; int level = 1;
@@ -226,7 +226,7 @@ public class RandomTree {
             pddl(args[3] == "1");
             //user_input.print_predecessors(Predecessors);
             //Predecessors.removeAll(Predecessors);
-            TreeUtils.doDFS(root, true, 1);
+            TreeUtils.doDFS(root, true, 1, Parallels);
         }
     }
 }

@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class TreeUtils {
@@ -26,17 +24,23 @@ public class TreeUtils {
         }
     }
 
-    public static void doDFS(TreeNode root, Boolean verbose, int level) {
+    public static void doDFS(TreeNode root, Boolean verbose, int level, Map<Integer, List<Integer>> Parallels) {
         if (root==null)
             return;
 
-        if (verbose) System.out.println(root.getData() + " " + root.getPaginas() + " at level " + level);
+        if (verbose) {
+            System.out.println(root.getData() + " " + root.getPaginas() + " at level " + level);
+            if (Parallels.get(level) == null) Parallels.put(level, new ArrayList<Integer>());
+            Parallels.get(level).add(root.getData());
+        }
         level += 1;
         for (TreeNode child: root.getChildren()) {
             System.out.println(child.getData() + " " + child.getPaginas() +  " at level " + level);
+            if (Parallels.get(level) == null) Parallels.put(level, new ArrayList<Integer>());
+            Parallels.get(level).add(child.getData());
         }
         for (TreeNode child: root.getChildren()) {
-            doDFS(child, false, level);
+            doDFS(child, false, level, Parallels);
         }
     }
 }
