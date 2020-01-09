@@ -1,4 +1,4 @@
-(define (problem ext3-1)
+(define (problem ext3-2)
  (:domain ext3)
  (:objects
   Enero Febrero Marzo Abril Mayo Junio Julio Agosto Septiembre Octubre Noviembre Diciembre - mes
@@ -145,17 +145,17 @@
   (= (paginas Noviembre) 0)
   (= (paginas Diciembre) 0)
 
-  (= (paginas PR_1) 700)
+  (= (paginas PR_1) 100)
   (= (paginas PR_2) 700)
-  (= (paginas PR_3) 700)
-  (= (paginas PR_4) 700)
+  (= (paginas PR_3) 100)
+  (= (paginas PR_4) 100)
   (= (paginas PR_5) 700)
 
   (= (paginas PA_1) 100)
-  (= (paginas PA_2) 300)
-  (= (paginas PA_3) 300)
-  (= (paginas PA_4) 200)
-  (= (paginas PA_5) 500)
+  (= (paginas PA_2) 50)
+  (= (paginas PA_3) 500)
+  (= (paginas PA_4) 50)
+  (= (paginas PA_5) 100)
 
 
   ; - - - - - - - - - - - - -		Leidos

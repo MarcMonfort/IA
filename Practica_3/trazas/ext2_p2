@@ -1,0 +1,39 @@
+
+ff: parsing domain file
+domain 'EXT2' defined
+ ... done.
+ff: parsing problem file
+problem 'EXT2-2' defined
+ ... done.
+
+
+
+Cueing down from goal distance:   12 into depth [1]
+                                  10            [1]
+                                   8            [1]
+                                   6            [1]
+                                   5            [1]
+                                   4            [1]
+                                   2            [1]
+                                   1            [1]
+                                   0            
+
+ff: found legal plan as follows
+
+step    0: PONER_PARALELO H NOVIEMBRE
+        1: ASIGNAR_LIBRO D ENERO
+        2: ASIGNAR_LIBRO G OCTUBRE
+        3: ASIGNAR_LIBRO F NOVIEMBRE
+        4: PONER_PARALELO E DICIEMBRE
+        5: PONER_PARALELO C NOVIEMBRE
+        6: ASIGNAR_LIBRO B NOVIEMBRE
+        7: ASIGNAR_LIBRO A DICIEMBRE
+     
+
+time spent:    0.31 seconds instantiating 0 easy, 5550 hard action templates
+               0.00 seconds reachability analysis, yielding 115 facts and 4919 actions
+               0.00 seconds creating final representation with 115 relevant facts
+               0.15 seconds building connectivity graph
+               0.00 seconds searching, evaluating 18 states, to a max depth of 1
+               0.46 seconds total time
+

@@ -1,4 +1,4 @@
-(define (problem ext1-1)
+(define (problem ext1-2)
  (:domain ext1)
  (:objects
   Enero Febrero Marzo Abril Mayo Junio Julio Agosto Septiembre Octubre Noviembre Diciembre - mes
@@ -111,13 +111,12 @@
 
   ; - - - - - - - - - - - - -
 
-  ;(leido pre_1)
-  ;(leido pre_1)
+  (leido pre_2)
 
   ; - - - - - - - - - - - - -
 
-  (leer Las_puertas_de_piedra)
-  (leer pre_5)
+  (leer El_temor_de_un_hombre_sabio)
+  (leer pre_3)
 
   )
 

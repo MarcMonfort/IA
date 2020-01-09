@@ -117,13 +117,11 @@
 
   ; - - - - - - - - - - - - -		Leidos
 
-  ;(leido PA_2)
 
   ; - - - - - - - - - - - - -		Leer
 
   (leer A)
-  ;(leer PA_3)
-  ;(leer PA_4)
+
 
   )
 
