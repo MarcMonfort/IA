@@ -13,7 +13,9 @@ public class RandomTree {
     private static ArrayList<Pair<Integer, Integer>> Predecessors = new ArrayList<>();
     private static ArrayList<Integer> Leidos = new ArrayList<>();
     private static ArrayList<Integer> Paginas = new ArrayList<>();
-    private ArrayList<Pair<Integer, Integer>> Parallels = new ArrayList<>();
+    private static StringBuilder bufferparal = new StringBuilder();
+    private static StringBuilder bufferpre = new StringBuilder();
+    //private ArrayList<Pair<Integer, Integer>> Parallels = new ArrayList<>();
 
     public static void finding_precedences(TreeNode predecessor, TreeNode successor) {
         for (TreeNode child: successor.getChildren()) {
@@ -21,6 +23,7 @@ public class RandomTree {
             finding_precedences(predecessor, child);
         }
     }
+
 
     private static int last_node;
 
@@ -121,10 +124,8 @@ public class RandomTree {
                 "  \n" +
                 "\t(pre Noviembre Diciembre)\n" +
                 "  (anterior Noviembre Diciembre)");
-        /* We generate list of predecessors for a tree. Note: transitivity is not assumed => explicitly outputted */
-
-        user_input.print_predecessors(Predecessors);
-        Predecessors.removeAll(Predecessors);
+        System.out.println(bufferparal.toString());
+        System.out.println(bufferpre.toString());
         for(int i = 0; i < Leidos.size(); ++i) System.out.println("(leido " + Leidos.get(i) + ")");
         Leidos.removeAll(Leidos);
         if (extension2) {
@@ -161,7 +162,7 @@ public class RandomTree {
 
     public static void main(String[] args) throws IOException {
 
-        //InputOutput user_input = new InputOutput();
+        InputOutput user_input = new InputOutput();
         if (args.length != 4) {InputOutput.usage(); return;}
 
         /*Integer TREES = user_input.input("Introuduce the MAX number of trees you want in the forest (min. 3)");
@@ -223,10 +224,11 @@ public class RandomTree {
             for (int index = 0; index < list_nodes.size(); index++) {
                 finding_precedences(list_nodes.get(index), list_nodes.get(index));
             }
-            pddl(args[3] == "1");
-            //user_input.print_predecessors(Predecessors);
-            //Predecessors.removeAll(Predecessors);
+            bufferpre.append(user_input.print_predecessors(Predecessors));
+            Predecessors.removeAll(Predecessors);
             TreeUtils.doDFS(root, true, 1, Parallels);
+            bufferparal.append(user_input.print_parallels(Parallels));
         }
+        pddl(args[3] == "1");
     }
 }

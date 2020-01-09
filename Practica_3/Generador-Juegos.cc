@@ -10,7 +10,7 @@ int t_max = 7;
 int depth_max= 7;
 int dg_max = 7;
 
-string generate(int ntrees, int depth, int degree, int caso){
+string generate(int ntrees, int depth, int degree, char caso){
     stringstream ss;
     ss << ntrees;
     string s;
@@ -27,9 +27,10 @@ string generate(int ntrees, int depth, int degree, int caso){
 int main(int argc, char *argv[]){
     if (argv[1] == "0"){
         int ntrees, depth, degree;
-        cout >> "Insert maximum number of trees, maximum depth and maximum degree" << endl;
-        cin << ntrees << depth << degree;
-        int status = system(generate(ntrees, depth, degree, 1));
+        cout << "Insert maximum number of trees, maximum depth and maximum degree" << endl;
+        cin >> ntrees >> depth >> degree;
+        string s = generate(ntrees, depth, degree, '1');
+        int status = system(s.c_str());
     }else if(argv[1] == "1"){
         double tiempos = 0;
         double tiempos_dg = 0;
@@ -38,9 +39,10 @@ int main(int argc, char *argv[]){
             for(int j = 3; j < depth_max; j+=2){
                 for(int k = 3; k < dg_max; k+=2){
                     for(int l = 0; l < 10; ++l){
-                        int status = system(generate(i, j, k, 0));
+                        string s = generate(i, j, k, '0');
+                        int status = system(s.c_str());
                         auto t1 = chrono::high_resolution_clock::now();
-                        int status = system("ff -o extension2Domain.pddl -f salida.pddl");
+                        status = system("ff -o extension2Domain.pddl -f salida.pddl");
                         auto t2 = chrono::high_resolution_clock::now();
                         auto duration = std::chrono::duration_cast<std::chrono::microseconds>( t2 - t1 ).count();
                         tiempos_dg += duration;

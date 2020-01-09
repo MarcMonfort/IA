@@ -14,14 +14,21 @@ class InputOutput {
             return 0;
         }
     }
-    public void print_parallels(Map<Integer, List<Integer>> Parallels) {
+    public StringBuilder print_parallels(Map<Integer, List<Integer>> Parallels) {
+        StringBuilder paralelos = new StringBuilder();
         Set< Map.Entry< Integer,List<Integer>> > st = Parallels.entrySet();
         for (Map.Entry< Integer,List<Integer>> me:st) {
             if (me.getValue().size() > 1) {
-                for (int i = 0; i < me.getValue().size(); i++) System.out.print(me.getValue().get(i) + " ");
-                System.out.println("\n");
+                for (int i = 0; i < me.getValue().size(); i++){
+                    for(int j = i; j < me.getValue().size(); ++j) {
+                        paralelos.append("(paralelo " + me.getValue().get(i) + " " + me.getValue().get(j) + ")");
+                    }
+                    paralelos.append("\n");
+                }
+                paralelos.append("\n");
             }
         }
+        return paralelos;
     }
 
     public static void usage() {
@@ -29,8 +36,11 @@ class InputOutput {
         //System.out.println("Number_Trees, Max Depth, Max Degree");
     }
 
-    public void print_predecessors(ArrayList<Pair<Integer, Integer>> Predecessors) {
+    public StringBuilder print_predecessors(ArrayList<Pair<Integer, Integer>> Predecessors) {
+        StringBuilder s = new StringBuilder();
         for (int i = 0; i < Predecessors.size(); i++)
-            System.out.println("(predecesor " + Predecessors.get(i).getKey() + ' ' + Predecessors.get(i).getValue() + ')');
+            s.append("(predecesor " + Predecessors.get(i).getKey() + ' ' + Predecessors.get(i).getValue() + ')' + "\n");
+        s.append("\n");
+        return s;
     }
 }
